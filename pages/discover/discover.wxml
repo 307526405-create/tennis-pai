@@ -31,6 +31,16 @@
 </view>
 
 <view class="feed" wx:if="{{a==2}}">
-  <view class="map-box"><view class="mp" wx:for="{{cs}}" wx:key="id" style="top:{{item.y}}%;left:{{item.x}}%"><view class="mdot"></view><text class="mlb">{{item.name}}</text></view></view>
-  <view class="item" wx:for="{{cs}}" wx:key="id"><view class="vno">{{index+1}}</view><view class="i-body"><view class="i-name">{{item.name}}</view><view class="i-ct">{{item.fd}}片 · {{item.io}} · {{item.ft}}</view></view><text class="vd">{{item.ds}}</text></view>
+  <map class="real-map" latitude="39.92" longitude="116.40" scale="13" markers="{{markers}}" show-location="{{true}}" bindmarkertap="onMarkerTap">
+  </map>
+  <view class="court-list">
+    <view class="c-item" wx:for="{{cs}}" wx:key="id" bindtap="toCourt" data-id="{{item.id}}">
+      <view class="c-no">{{index+1}}</view>
+      <view class="c-info">
+        <view class="c-name">{{item.name}}</view>
+        <view class="c-desc">{{item.fd}}片 · {{item.io}}{{item.ft?' · '+item.ft:''}}</view>
+      </view>
+      <view class="c-dist">{{item.dist}}</view>
+    </view>
+  </view>
 </view>

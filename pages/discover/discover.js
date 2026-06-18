@@ -12,6 +12,18 @@ function mapEvent(e) {
     ct: e.court || '', lv: e.level || '', tn: e.max_players || 4, n: e.current_players || 0,
     f: e.status === 'full', joined: false, avs: [] };
 }
+function mapCourt(c) {
+  return {
+    id: c.id,
+    name: c.name,
+    fd: c.fields,
+    io: c.indoor,
+    ft: c.feature,
+    lat: c.lat,
+    lng: c.lng,
+    dist: '--'
+  };
+}
 
 Page({
   data: {
@@ -30,11 +42,12 @@ Page({
       { id: 3, t: '周三夜场 高水平对抗', d: '6.18 周三 19:00', ct: '国家网球中心', lv: '4.0级', avs: ['#2EBD85', '#7C5CE7', '#E74C3C', '#9B59B6'], n: 4, tn: 4, f: true }
     ],
     cs: [
-      { id: 1, name: '国家网球中心', fd: '36', io: '室内+室外', ft: '有教练', ds: '2.3km', y: 55, x: 25 },
-      { id: 2, name: '朝阳公园网球中心', fd: '12', io: '室外', ft: '可停车', ds: '1.8km', y: 30, x: 45 },
-      { id: 3, name: '望京网球馆', fd: '8', io: '室内', ft: '有淋浴', ds: '3.5km', y: 18, x: 68 },
-      { id: 4, name: '奥体中心', fd: '6', io: '红土+硬地', ft: '会员制', ds: '4.1km', y: 65, x: 55 }
-    ]
+      { id: 1, name: '国家网球中心', fd: '36', io: '室内+室外', ft: '有教练', dist: '2.3km' },
+      { id: 2, name: '朝阳公园网球中心', fd: '12', io: '室外', ft: '可停车', dist: '1.8km' },
+      { id: 3, name: '望京网球馆', fd: '8', io: '室内', ft: '有淋浴', dist: '3.5km' },
+      { id: 4, name: '奥体中心', fd: '6', io: '红土+硬地', ft: '会员制', dist: '4.1km' }
+    ],
+    markers: []
   },
   onLoad() {
     var that = this;
@@ -57,6 +70,19 @@ Page({
         }
       }).catch(function() {});
     } catch (e) {}
+
+    try {
+      api.get('/api/courts').then(function(res) {
+        var data = res.data || res;
+        if (data && data.length > 0) {
+          var courts = data.map(mapCourt);
+          var markers = data.map(function(c) {
+            return { id: c.id, latitude: c.lat, longitude: c.lng, title: c.name, width: 30, height: 30 };
+          });
+          that.setData({ cs: courts, markers: markers });
+        }
+      }).catch(function() {});
+    } catch (e) {}
   },
   sw(e) { this.setData({ a: e.currentTarget.dataset.i }); },
   goCreate() { wx.navigateTo({ url: '/pages/create/create' }); },
@@ -65,6 +91,14 @@ Page({
     wx.navigateTo({ url: '/pages/profile/profile?id=' + id });
   },
   toSearch() { wx.navigateTo({ url: '/pages/search/search' }); },
+  onMarkerTap(e) {
+    var id = e.detail.markerId;
+    wx.navigateTo({ url: '/pages/court/court?id=' + id });
+  },
+  toCourt(e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({ url: '/pages/court/court?id=' + id });
+  },
   join(e) {
     var id = e.currentTarget.dataset.id;
     var that = this;
