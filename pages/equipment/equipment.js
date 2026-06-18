@@ -1,6 +1,12 @@
 var app = getApp();
 var api = require('../../utils/api');
 
+function mapRacket(r) {
+  return { id: r.id, brand: r.brand, model: r.model, head: r.head_size || '',
+    weight: r.weight || '', balance: r.balance || '', pattern: r.pattern || '',
+    ra: r.stiffness || '', sw: r.swingweight || '', beam: r.beam || '', type: r.type || '', price: r.price || '' };
+}
+
 Page({
   data: {
     s: 44, ci: 0, bi: 0, ti: 0, showBrand: false, showType: false,
@@ -21,13 +27,11 @@ Page({
       api.get('/api/rackets').then(function(res) {
         var data = res.data || res;
         if (data && data.length > 0) {
-          that.setData({ rs: data });
+          that.setData({ rs: data.map(mapRacket) });
         }
       }).catch(function() {
-        // fallback 到本地数据
       });
     } catch (e) {
-      // api 不可用
     }
   },
   swCat(e) {
@@ -65,7 +69,7 @@ Page({
       api.get('/api/rackets').then(function(res) {
         var data = res.data || res;
         if (data && data.length > 0) {
-          that.setData({ rs: data });
+          that.setData({ rs: data.map(mapRacket) });
         }
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh();

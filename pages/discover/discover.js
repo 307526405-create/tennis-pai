@@ -1,5 +1,18 @@
 var api = require('../../utils/api');
 
+function mapPlayer(p) {
+  var n = p.name || '';
+  return { id: p.id, n: n, a: n[0] || '?', c: '#2E8B57', lv: p.level || '',
+    g: (p.equipment && p.equipment.model) || p.gear || '', el: String(p.elo || '1500'),
+    pct: p.win_rate != null ? Math.round(p.win_rate * 100) + '%' : '0%', gm: p.match_count || 0,
+    ds: '', active: !!p.active, st: p.style || '', court: p.court || '', city: p.city || '' };
+}
+function mapEvent(e) {
+  return { id: e.id, t: e.title || '', d: (e.date || '') + ' ' + (e.time || ''),
+    ct: e.court || '', lv: e.level || '', tn: e.max_players || 4, n: e.current_players || 0,
+    f: e.status === 'full', joined: false, avs: [] };
+}
+
 Page({
   data: {
     s: 44, a: 0,
@@ -27,26 +40,20 @@ Page({
     var that = this;
     this.setData({ s: wx.getWindowInfo().statusBarHeight });
 
-    // 尝试从后端加载球员列表
     try {
       api.get('/api/players').then(function(res) {
         var data = res.data || res;
         if (data && data.length > 0) {
-          that.setData({ ps: data });
+          that.setData({ ps: data.map(mapPlayer) });
         }
-      }).catch(function() {
-        // fallback 到本地假数据，不做处理
-      });
-    } catch (e) {
-      // api 不可用，使用本地假数据
-    }
+      }).catch(function() {});
+    } catch (e) {}
 
-    // 尝试从后端加载活动列表
     try {
       api.get('/api/events?status=open').then(function(res) {
         var data = res.data || res;
         if (data && data.length > 0) {
-          that.setData({ es: data });
+          that.setData({ es: data.map(mapEvent) });
         }
       }).catch(function() {});
     } catch (e) {}
@@ -62,21 +69,18 @@ Page({
     var id = e.currentTarget.dataset.id;
     var that = this;
 
-    // 先尝试后端加入
     try {
-      api.post('/api/events/' + id + '/join', { player_id: 1 }).then(function(res) {
+      api.post('/api/events/' + id + '/join', { player_id: wx.getStorageSync('currentUserId') || 1 }).then(function(res) {
         var data = res.data || res;
         if (data) {
-          // 后端成功，刷新活动列表
           api.get('/api/events?status=open').then(function(r2) {
             var d2 = r2.data || r2;
             if (d2 && d2.length > 0) {
-              that.setData({ es: d2 });
+              that.setData({ es: d2.map(mapEvent) });
             }
           }).catch(function() {});
         }
       }).catch(function() {
-        // 后端失败，本地更新
         that.localJoin(id);
       });
     } catch (e) {
@@ -98,10 +102,6 @@ Page({
   onShow() {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({ selected: 0 });
-    }
-    var app = getApp();
-    if (app && app.globalData && app.globalData.players) {
-      this.setData({ ps: app.globalData.players });
     }
   }
 });

@@ -16,7 +16,6 @@ Page({
 
     var that = this;
 
-    // 同步到后端
     try {
       api.post('/api/events', {
         title: d.title,
@@ -25,21 +24,46 @@ Page({
         level: d.lv,
         total: parseInt(d.tn) || 4
       }).then(function(res) {
-        // 后端保存成功
-        that.updateLocalAndBack();
+        that.refreshEventsAndBack();
       }).catch(function() {
-        // 后端失败，仍更新本地
-        that.updateLocalAndBack();
+        that.refreshEventsAndBack();
       });
     } catch (e) {
-      that.updateLocalAndBack();
+      that.refreshEventsAndBack();
     }
   },
-  updateLocalAndBack() {
+  refreshEventsAndBack() {
     var d = this.data;
     var pages = getCurrentPages();
     var prev = pages[pages.length - 2];
     if (prev) {
+      try {
+        var api = require('../../utils/api');
+        api.get('/api/events?status=open').then(function(res) {
+          var data = res.data || res;
+          if (data && data.length > 0) {
+            prev.setData({ es: data.map(function(e) {
+              return { id: e.id, t: e.title || '', d: (e.date || '') + ' ' + (e.time || ''),
+                ct: e.court || '', lv: e.level || '', tn: e.max_players || 4, n: e.current_players || 0,
+                f: e.status === 'full', joined: false, avs: [] };
+            }) });
+            wx.showToast({ title: '发布成功' });
+            setTimeout(function() { wx.navigateBack(); }, 500);
+            return;
+          }
+          thatLocal(d, prev);
+        }).catch(function() {
+          thatLocal(d, prev);
+        });
+      } catch (e) {
+        thatLocal(d, prev);
+      }
+    } else {
+      wx.showToast({ title: '发布成功' });
+      setTimeout(function() { wx.navigateBack(); }, 500);
+    }
+
+    function thatLocal(d, prev) {
       var es = prev.data.es || [];
       es.unshift({
         id: Date.now(),
@@ -53,9 +77,9 @@ Page({
         f: false
       });
       prev.setData({ es: es });
+      wx.showToast({ title: '发布成功' });
+      setTimeout(function() { wx.navigateBack(); }, 500);
     }
-    wx.showToast({ title: '发布成功' });
-    setTimeout(function() { wx.navigateBack(); }, 500);
   },
   back() { wx.navigateBack(); }
 });

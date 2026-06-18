@@ -1,6 +1,19 @@
 var app = getApp();
 var api = require('../../utils/api');
 
+function mapPlayer(p) {
+  var n = p.name || '';
+  return { id: p.id, n: n, a: n[0] || '?', c: '#2E8B57', lv: p.level || '',
+    g: (p.equipment && p.equipment.model) || p.gear || '', el: String(p.elo || '1500'),
+    pct: p.win_rate != null ? Math.round(p.win_rate * 100) + '%' : '0%', gm: p.match_count || 0,
+    ds: '', active: !!p.active, st: p.style || '', court: p.court || '', city: p.city || '' };
+}
+function mapRacket(r) {
+  return { id: r.id, brand: r.brand, model: r.model, head: r.head_size || '',
+    weight: r.weight || '', balance: r.balance || '', pattern: r.pattern || '',
+    ra: r.stiffness || '', sw: r.swingweight || '', beam: r.beam || '', type: r.type || '', price: r.price || '' };
+}
+
 Page({
   data: {
     s: 44, q: '', players: [], rackets: [],
@@ -19,55 +32,44 @@ Page({
       return;
     }
 
-    // 尝试后端搜索球员
     try {
-      api.get('/api/players?name=' + q).then(function(res) {
+      api.get('/api/players').then(function(res) {
         var data = res.data || res;
-        if (data && data.length > 0) {
-          that.setData({ players: data });
-        } else {
-          // 后端无结果，本地搜索
-          var ps = app.globalData.players ? app.globalData.players.filter(function(p) {
-            return p.n.includes(q) || (p.g && p.g.includes(q)) || p.lv === q;
-          }) : [];
-          that.setData({ players: ps });
-        }
+        var all = (data && data.length > 0) ? data.map(mapPlayer) : (app.globalData.players || []);
+        var ps = all.filter(function(p) {
+          return p.n.indexOf(q) >= 0 || (p.g && p.g.indexOf(q) >= 0) || p.lv === q;
+        });
+        that.setData({ players: ps });
       }).catch(function() {
-        // 后端失败，本地搜索
-        var ps = app.globalData.players ? app.globalData.players.filter(function(p) {
-          return p.n.includes(q) || (p.g && p.g.includes(q)) || p.lv === q;
-        }) : [];
+        var ps = (app.globalData.players || []).filter(function(p) {
+          return p.n.indexOf(q) >= 0 || (p.g && p.g.indexOf(q) >= 0) || p.lv === q;
+        });
         that.setData({ players: ps });
       });
     } catch (e) {
-      var ps = app.globalData.players ? app.globalData.players.filter(function(p) {
-        return p.n.includes(q) || (p.g && p.g.includes(q)) || p.lv === q;
-      }) : [];
+      var ps = (app.globalData.players || []).filter(function(p) {
+        return p.n.indexOf(q) >= 0 || (p.g && p.g.indexOf(q) >= 0) || p.lv === q;
+      });
       that.setData({ players: ps });
     }
 
-    // 尝试后端搜索装备
     try {
-      api.get('/api/rackets?brand=' + q).then(function(res) {
+      api.get('/api/rackets').then(function(res) {
         var data = res.data || res;
-        if (data && data.length > 0) {
-          that.setData({ rackets: data.slice(0, 5) });
-        } else {
-          // 后端无结果，本地搜索
-          var rs = app.globalData.rackets.filter(function(r) {
-            return r.model.includes(q) || r.brand.toUpperCase().includes(q.toUpperCase());
-          });
-          that.setData({ rackets: rs.slice(0, 5) });
-        }
+        var all = (data && data.length > 0) ? data.map(mapRacket) : (app.globalData.rackets || []);
+        var rs = all.filter(function(r) {
+          return r.model.indexOf(q) >= 0 || r.brand.toUpperCase().indexOf(q.toUpperCase()) >= 0;
+        });
+        that.setData({ rackets: rs.slice(0, 5) });
       }).catch(function() {
-        var rs = app.globalData.rackets.filter(function(r) {
-          return r.model.includes(q) || r.brand.toUpperCase().includes(q.toUpperCase());
+        var rs = (app.globalData.rackets || []).filter(function(r) {
+          return r.model.indexOf(q) >= 0 || r.brand.toUpperCase().indexOf(q.toUpperCase()) >= 0;
         });
         that.setData({ rackets: rs.slice(0, 5) });
       });
     } catch (e) {
-      var rs = app.globalData.rackets.filter(function(r) {
-        return r.model.includes(q) || r.brand.toUpperCase().includes(q.toUpperCase());
+      var rs = (app.globalData.rackets || []).filter(function(r) {
+        return r.model.indexOf(q) >= 0 || r.brand.toUpperCase().indexOf(q.toUpperCase()) >= 0;
       });
       that.setData({ rackets: rs.slice(0, 5) });
     }

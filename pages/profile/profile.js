@@ -1,5 +1,12 @@
 var api = require('../../utils/api');
 
+function mapPlayer(p) {
+  var n = p.name || '';
+  return { name: n, lv: p.level || '', st: p.style || '',
+    g: (p.equipment && p.equipment.model) || p.gear || '', court: p.court || '', city: p.city || '',
+    wxid: p.wxid || '', el: String(p.elo || '1500'), pct: p.win_rate != null ? Math.round(p.win_rate * 100) + '%' : '0%', gm: p.match_count || 0 };
+}
+
 Page({
   data: { s: 44, p: null, isSelf: true },
   onLoad(options) {
@@ -13,7 +20,7 @@ Page({
         api.get('/api/players/' + pid).then(function(res) {
           var data = res.data || res;
           if (data) {
-            that.setData({ p: { name: data.n || data.name, lv: data.lv, st: data.st, g: data.g, court: data.court, city: data.city, wxid: data.wxid }, isSelf: false });
+            that.setData({ p: mapPlayer(data), isSelf: false });
           } else {
             that.loadLocalPlayer(app, pid);
           }
