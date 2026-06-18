@@ -16,5 +16,7 @@
 .mw{background:rgba(46,139,87,.08);color:var(--g2)}.ml{background:rgba(200,60,60,.08);color:#C83C3C}
 .mi{flex:1;color:var(--t2)}.mn{color:var(--t);font-weight:600}.md{font-size:20rpx;color:var(--t3)}
 .rv{font-size:24rpx;color:var(--t2);line-height:1.6;margin-bottom:8rpx}
-.contact-bar{padding:40rpx;text-align:center}
+.edit-btn{font-size:26rpx;color:var(--g2);font-weight:600;margin-right:24rpx}
+.share-bar{text-align:center;padding:20rpx 0 120rpx}
+.share-link{font-size:26rpx;color:var(--g2);font-weight:600}
 .contact-btn{display:inline-block;padding:20rpx 60rpx;background:var(--g2);color:#fff;border-radius:44rpx;font-size:28rpx;font-weight:600}
