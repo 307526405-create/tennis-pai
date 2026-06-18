@@ -1,4 +1,7 @@
-<view class="nav" style="padding-top:{{s}}px"><text class="brand">网球<text class="brand-ac">派</text></text><text class="loc">{{loc}}</text></view>
+<view class="nav" style="padding-top:{{s}}px">
+  <text class="brand">网球<text class="brand-ac">派</text></text>
+  <text class="loc">{{loc}}</text>
+</view>
 <view class="spacer"></view>
 
 <view class="tabs">
@@ -7,6 +10,7 @@
   <view class="tab {{a==2?'on':''}}" bindtap="sw" data-i="2">球场</view>
 </view>
 
+<!-- 球友 -->
 <view wx:if="{{a==0}}">
   <view class="list">
     <view class="card" wx:for="{{ps}}" wx:key="id" bindtap="toP">
@@ -20,22 +24,28 @@
   </view>
 </view>
 
+<!-- 活动 -->
 <view wx:if="{{a==1}}">
-  <view class="evt" wx:for="{{es}}" wx:key="id">
-    <view class="badge {{item.f?'full':''}}">{{item.f?'已满':'报名中'}}</view>
-    <view class="title">{{item.t}}</view>
-    <view class="meta">{{item.d}} · {{item.ct}} · {{item.lv}}</view>
-    <view class="bar">
-      <view class="avs"><view class="avm" wx:for="{{item.avs}}" wx:key="*this" style="background:{{item}}"></view></view>
-      <text class="num">{{item.n}}/{{item.tn}}人</text>
-      <view class="btn {{item.f?'btn-f':''}}">{{item.f?'已满':'报名'}}</view>
+  <view class="list">
+    <view class="evt" wx:for="{{es}}" wx:key="id">
+      <text class="badge {{item.f?'full':''}}">{{item.f?'已满':'报名中'}}</text>
+      <view class="title">{{item.t}}</view>
+      <view class="meta">{{item.d}} · {{item.ct}} · {{item.lv}}</view>
+      <view class="bar">
+        <view class="avs"><view class="avm" wx:for="{{item.avs}}" wx:key="*this" style="background:{{item}}"></view></view>
+        <text class="num">{{item.n}}/{{item.tn}}人</text>
+        <view class="btn {{item.f?'btn-f':''}}">{{item.f?'已满':'报名'}}</view>
+      </view>
     </view>
   </view>
 </view>
 
+<!-- 球场 -->
 <view wx:if="{{a==2}}">
-  <view class="map"><view class="pin" wx:for="{{cs}}" wx:key="id" style="top:{{item.y}}%;left:{{item.x}}%"></view><view class="lb" wx:for="{{cs}}" wx:key="id" style="top:{{item.y-7}}%;left:{{item.x-5}}%">{{item.name}}</view></view>
-  <view class="ven">
+  <view class="map-box">
+    <view class="mp" wx:for="{{cs}}" wx:key="id" style="top:{{item.y}}%;left:{{item.x}}%"><view class="mp-dot"></view><text class="mp-lb">{{item.name}}</text></view>
+  </view>
+  <view class="list">
     <view class="v" wx:for="{{cs}}" wx:key="id">
       <view class="no">{{index+1}}</view>
       <view class="vi"><view class="vn">{{item.name}}</view><view class="vs">{{item.fd}}片 · {{item.io}} · {{item.ft}}</view></view>

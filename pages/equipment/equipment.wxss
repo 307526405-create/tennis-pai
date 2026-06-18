@@ -1,11 +1,7 @@
-.eq-tabs{display:flex;margin:20rpx 32rpx 0;gap:12rpx}
-.eqt{padding:10rpx 28rpx;font-size:26rpx;color:var(--t2);background:var(--card);border-radius:32rpx;font-weight:400}
+.eq-tabs{display:flex;margin:24rpx 64rpx 0;gap:16rpx}
+.eqt{padding:10rpx 32rpx;font-size:24rpx;color:var(--t2);background:var(--card);border-radius:32rpx;font-weight:400}
 .eqt.on{background:var(--g2);color:#fff;font-weight:600}
-.eq-list{margin:20rpx 32rpx}
-.eqi{display:flex;align-items:center;gap:20rpx;background:var(--card);border-radius:24rpx;padding:24rpx;margin-bottom:12rpx;box-shadow:0 2rpx 8rpx rgba(0,0,0,.03)}
-.eqi-thumb{width:88rpx;height:88rpx;border-radius:16rpx;background:#EDF2E8;display:flex;align-items:center;justify-content:center;font-size:40rpx;flex-shrink:0}
-.eqi-i{flex:1;min-width:0}
-.eqi-b{font-size:20rpx;color:var(--t3);font-weight:600;letter-spacing:1rpx}
-.eqi-n{font-size:28rpx;font-weight:600;color:var(--t)}
-.eqi-s{font-size:22rpx;color:var(--t3)}
-.eqi-p{font-size:32rpx;font-weight:600;color:var(--g1);flex-shrink:0}
+.eqc{align-items:center}
+.eq-thumb{width:88rpx;height:88rpx;border-radius:16rpx;background:#EDF2E8;display:flex;align-items:center;justify-content:center;font-size:40rpx;flex-shrink:0}
+.eq-brand{font-size:20rpx;color:var(--t3);font-weight:600}
+.eq-price{font-size:28rpx;font-weight:600;color:var(--g1);flex-shrink:0}
