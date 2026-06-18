@@ -6,19 +6,22 @@
 </view>
 
 <view class="eq-tabs">
-  <view class="eqt on">球拍</view><view class="eqt">球鞋</view><view class="eqt">服装</view><view class="eqt">球线</view>
+  <view class="eqt {{ci==0?'on':''}}" bindtap="swCat" data-i="0">球拍</view>
+  <view class="eqt {{ci==1?'on':''}}" bindtap="swCat" data-i="1">球鞋</view>
+  <view class="eqt {{ci==2?'on':''}}" bindtap="swCat" data-i="2">服装</view>
+  <view class="eqt {{ci==3?'on':''}}" bindtap="swCat" data-i="3">球线</view>
 </view>
 
 <view class="filter">
   <view class="fg {{showBrand?'fg-open':''}}" bindtap="toggleBrand">品牌<text class="fg-arrow">▼</text></view>
-  <view class="fg {{showType?'fg-open':''}}" bindtap="toggleType">类型<text class="fg-arrow">▼</text></view>
+  <view class="fg {{showType?'fg-open':''}}" bindtap="toggleType" wx:if="{{ci==0}}">类型<text class="fg-arrow">▼</text></view>
 </view>
 
 <view class="fo" wx:if="{{showBrand}}">
-  <view class="fi {{bi==i?'on':''}}" wx:for="{{brands}}" wx:key="*this" bindtap="selBrand" data-i="{{index}}">{{item}}</view>
+  <view class="fi {{bi==i?'on':''}}" wx:for="{{filters[ci].brands}}" wx:key="*this" bindtap="selBrand" data-i="{{index}}">{{item}}</view>
 </view>
 <view class="fo" wx:if="{{showType}}">
-  <view class="fi {{ti==i?'on':''}}" wx:for="{{types}}" wx:key="*this" bindtap="selType" data-i="{{index}}">{{item}}</view>
+  <view class="fi {{ti==i?'on':''}}" wx:for="{{filters[ci].types}}" wx:key="*this" bindtap="selType" data-i="{{index}}">{{item}}</view>
 </view>
 
 <scroll-view scroll-y class="grid">
@@ -29,4 +32,5 @@
       <view class="card-price">¥{{item.price}}</view>
     </view>
   </view>
+  <view wx:if="{{ci!=0}}" class="empty">整理中...</view>
 </scroll-view>
