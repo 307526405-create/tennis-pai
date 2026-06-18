@@ -5,13 +5,9 @@
 .pick-row{display:flex;gap:16rpx;padding:16rpx 40rpx}
 .pick{display:flex;align-items:center;gap:6rpx;padding:10rpx 20rpx;background:#FFF;border:1rpx solid #E8E8E8;border-radius:8rpx;font-size:22rpx}
 .pick-t{color:var(--t3)}.pick-v{color:var(--t);font-weight:600}.pick-arrow{font-size:14rpx;color:var(--t3)}
-.pick-menu{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-start;justify-content:center}
-.pick-mask{position:absolute;inset:0;background:rgba(0,0,0,.15)}
-.pick-list{position:relative;margin-top:300rpx;width:500rpx;background:#FFF;border-radius:12rpx;padding:8rpx 0;box-shadow:0 8rpx 32rpx rgba(0,0,0,.12);animation:fadeIn .15s}
-@keyframes fadeIn{from{opacity:0;transform:translateY(-8rpx)}to{opacity:1;transform:translateY(0)}}
-.pick-opt{padding:20rpx 32rpx;font-size:26rpx;color:var(--t);text-align:center}
-.pick-opt.on{color:var(--g2);font-weight:600}
-.pick-opt+.pick-opt{border-top:1rpx solid #F0F0F0}
+.pick-menu{display:flex;flex-wrap:wrap;gap:8rpx;padding:12rpx 40rpx}
+.pick-opt{padding:8rpx 20rpx;font-size:22rpx;color:var(--t2);background:#FFF;border:1rpx solid #E8E8E8;border-radius:16rpx}
+.pick-opt.on{background:var(--t);color:#fff;border-color:var(--t);font-weight:600}
 
 .elist{margin:0 40rpx}
 .erow{display:flex;align-items:center;gap:20rpx;padding:24rpx 0;border-bottom:1rpx solid #F0F0F0}
