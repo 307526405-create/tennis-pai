@@ -19,13 +19,21 @@
 
 <view class="feed" wx:if="{{a==0}}">
   <view class="item" wx:for="{{ps}}" wx:key="id" bindtap="toP">
-    <view class="i-av" style="background:{{item.c}}">{{item.a}}</view>
-    <view class="i-body">
-      <view class="i-row"><text class="i-name">{{item.n}}</text><text class="i-lv">{{item.lv}}</text></view>
-      <view class="i-tags"><text class="i-tag">{{item.st}}</text></view>
-      <view class="i-row2"><text class="i-gear">{{item.g}}</text><text class="i-ct">{{item.ct}}</text></view>
+    <view class="i-av" style="background:{{item.c}}">
+      {{item.a}}
+      <view class="i-dot {{item.active?'dot-on':'dot-off'}}"></view>
     </view>
-    <view class="i-score"><text class="i-el">{{item.el}}</text></view>
+    <view class="i-body">
+      <view class="i-row">
+        <text class="i-name">{{item.n}}</text>
+        <text class="i-lv">{{item.lv}}</text>
+        <text class="i-el">{{item.el}}</text>
+      </view>
+      <view class="i-row2">
+        <text class="i-gear">{{item.g}}</text>
+        <text class="i-dist">{{item.ds}}</text>
+      </view>
+    </view>
   </view>
 </view>
 
@@ -51,7 +59,7 @@
   </view>
   <view class="item" wx:for="{{cs}}" wx:key="id">
     <view class="vno">{{index+1}}</view>
-    <view class="i-body"><view class="i-name">{{item.name}}</view><view class="i-ct">{{item.fd}}片 · {{item.io}} · {{item.ft}}</view></view>
+    <view class="i-body"><view class="i-name">{{item.name}}</view><view class="i-dist">{{item.fd}}片 · {{item.io}} · {{item.ft}}</view></view>
     <text class="vd">{{item.ds}}</text>
   </view>
 </view>
