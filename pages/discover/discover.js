@@ -1,7 +1,6 @@
 Page({
   data: {
-    s: 44,
-    a: 0,
+    s: 44, a: 0, avail: false, showActive: [],
     ps: [
       { id: 1, n: '老赵', a: '赵', c: '#4A90D9', lv: '3.5', g: 'Blade 98 v9', el: '1510', pct: '55%', gm: 32, ds: '1.8km', active: true },
       { id: 2, n: '小美', a: '美', c: '#E07B5A', lv: '3.5', g: 'Pure Aero', el: '1490', pct: '48%', gm: 28, ds: '2.1km', active: false },
@@ -23,7 +22,11 @@ Page({
     ]
   },
   onLoad() {
-    this.setData({ s: wx.getWindowInfo().statusBarHeight });
+    var showActive = this.data.ps.filter(function(p) { return p.active; });
+    this.setData({ s: wx.getWindowInfo().statusBarHeight, showActive: showActive });
+  },
+  toggleAvail() {
+    this.setData({ avail: !this.data.avail });
   },
   sw(e) {
     this.setData({ a: e.currentTarget.dataset.i });

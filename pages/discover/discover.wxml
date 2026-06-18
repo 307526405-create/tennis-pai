@@ -13,10 +13,13 @@
   <view class="tab {{a==0?'on':''}}" bindtap="sw" data-i="0">球友</view>
   <view class="tab {{a==1?'on':''}}" bindtap="sw" data-i="1">约球</view>
   <view class="tab {{a==2?'on':''}}" bindtap="sw" data-i="2">球场</view>
+  <view class="tab-right">
+    <view class="avail {{avail?'avail-on':''}}" bindtap="toggleAvail">现在有空</view>
+  </view>
 </view>
 
 <view class="feed" wx:if="{{a==0}}">
-  <view class="item" wx:for="{{ps}}" wx:key="id" bindtap="toP">
+  <view class="item" wx:for="{{avail?showActive:ps}}" wx:key="id" bindtap="toP">
     <view class="i-av" style="background:{{item.c}}">{{item.a}}<view class="i-dot {{item.active?'dot-on':'dot-off'}}"></view></view>
     <view class="i-body">
       <view class="i-row"><text class="i-name">{{item.n}}</text><text class="i-lv">{{item.lv}}</text><text class="i-el">{{item.el}}</text></view>
