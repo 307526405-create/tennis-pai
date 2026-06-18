@@ -1,21 +1,41 @@
+var api = require('../../utils/api');
+
 Page({
   data: { s: 44, p: null, isSelf: true },
   onLoad(options) {
+    var that = this;
     this.setData({ s: wx.getWindowInfo().statusBarHeight });
     var app = getApp();
     var pid = options.id;
     if (pid) {
-      var player = null;
-      var players = app.globalData.players;
-      for (var i = 0; i < players.length; i++) {
-        if (players[i].id == pid) { player = players[i]; break; }
-      }
-      if (player) {
-        this.setData({ p: { name: player.n, lv: player.lv, st: player.st, g: player.g, court: player.court, city: player.city }, isSelf: false });
+      // 查看他人，先尝试后端API
+      try {
+        api.get('/api/players/' + pid).then(function(res) {
+          var data = res.data || res;
+          if (data) {
+            that.setData({ p: { name: data.n || data.name, lv: data.lv, st: data.st, g: data.g, court: data.court, city: data.city, wxid: data.wxid }, isSelf: false });
+          } else {
+            that.loadLocalPlayer(app, pid);
+          }
+        }).catch(function() {
+          that.loadLocalPlayer(app, pid);
+        });
+      } catch (e) {
+        this.loadLocalPlayer(app, pid);
       }
     } else {
       var p = wx.getStorageSync('profile');
       if (p) this.setData({ p: p, isSelf: true });
+    }
+  },
+  loadLocalPlayer(app, pid) {
+    var player = null;
+    var players = app.globalData.players;
+    for (var i = 0; i < players.length; i++) {
+      if (players[i].id == pid) { player = players[i]; break; }
+    }
+    if (player) {
+      this.setData({ p: { name: player.n, lv: player.lv, st: player.st, g: player.g, court: player.court, city: player.city }, isSelf: false });
     }
   },
   onShow() {
@@ -30,13 +50,14 @@ Page({
   toShare() { wx.navigateTo({ url: '/pages/share/share' }); },
   toSearch() { wx.navigateTo({ url: '/pages/search/search' }); },
   contact() {
+    var that = this;
     wx.showActionSheet({
       itemList: ['添加微信', '复制微信号'],
       success: function(res) {
         if (res.tapIndex === 0) {
           wx.showToast({ title: '请搜索微信号添加' });
         } else {
-          var w = this.data.p && this.data.p.wxid;
+          var w = that.data.p && that.data.p.wxid;
           if (w) {
             wx.setClipboardData({ data: w });
             wx.showToast({ title: '微信号已复制' });
@@ -44,7 +65,7 @@ Page({
             wx.showToast({ title: 'TA暂未填写微信号', icon: 'none' });
           }
         }
-      }.bind(this)
+      }
     });
   }
 });

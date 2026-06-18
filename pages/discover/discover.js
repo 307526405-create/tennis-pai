@@ -1,3 +1,5 @@
+var api = require('../../utils/api');
+
 Page({
   data: {
     s: 44, a: 0,
@@ -22,7 +24,32 @@ Page({
     ]
   },
   onLoad() {
+    var that = this;
     this.setData({ s: wx.getWindowInfo().statusBarHeight });
+
+    // 尝试从后端加载球员列表
+    try {
+      api.get('/api/players').then(function(res) {
+        var data = res.data || res;
+        if (data && data.length > 0) {
+          that.setData({ ps: data });
+        }
+      }).catch(function() {
+        // fallback 到本地假数据，不做处理
+      });
+    } catch (e) {
+      // api 不可用，使用本地假数据
+    }
+
+    // 尝试从后端加载活动列表
+    try {
+      api.get('/api/events?status=open').then(function(res) {
+        var data = res.data || res;
+        if (data && data.length > 0) {
+          that.setData({ es: data });
+        }
+      }).catch(function() {});
+    } catch (e) {}
   },
   sw(e) { this.setData({ a: e.currentTarget.dataset.i }); },
   goCreate() { wx.navigateTo({ url: '/pages/create/create' }); },
@@ -33,6 +60,30 @@ Page({
   toSearch() { wx.navigateTo({ url: '/pages/search/search' }); },
   join(e) {
     var id = e.currentTarget.dataset.id;
+    var that = this;
+
+    // 先尝试后端加入
+    try {
+      api.post('/api/events/' + id + '/join', { player_id: 1 }).then(function(res) {
+        var data = res.data || res;
+        if (data) {
+          // 后端成功，刷新活动列表
+          api.get('/api/events?status=open').then(function(r2) {
+            var d2 = r2.data || r2;
+            if (d2 && d2.length > 0) {
+              that.setData({ es: d2 });
+            }
+          }).catch(function() {});
+        }
+      }).catch(function() {
+        // 后端失败，本地更新
+        that.localJoin(id);
+      });
+    } catch (e) {
+      that.localJoin(id);
+    }
+  },
+  localJoin(id) {
     var es = this.data.es.map(function(ev) {
       if (ev.id === id) {
         if (ev.f) return ev;
