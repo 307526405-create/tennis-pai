@@ -5,9 +5,11 @@
 </view>
 
 <scroll-view scroll-y class="form">
+  <button class="wx-btn" open-type="chooseAvatar" bindchooseavatar="onAvatar">点击获取微信头像</button>
   <view class="fg">
     <view class="fl">名字</view>
     <input class="fi" placeholder="你的称呼" value="{{name}}" bindinput="setName"/>
+    <input class="fi-nick" type="nickname" placeholder="或点这里用微信昵称" bindinput="setName"/>
   </view>
   <view class="fg">
     <view class="fl">水平</view>

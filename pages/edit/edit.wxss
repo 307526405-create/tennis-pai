@@ -2,7 +2,9 @@
 .form{padding:0 40rpx}
 .fg{padding:28rpx 0;border-bottom:1rpx solid #F0F0F0}
 .fl{font-size:26rpx;color:var(--t3);margin-bottom:12rpx}
+.wx-btn{width:200rpx;height:200rpx;padding:0;margin:20rpx 0;border-radius:50%;overflow:hidden;font-size:22rpx;color:var(--t3);background:#F0F2ED;line-height:1.3}
 .fi{font-size:28rpx;color:var(--t);width:100%}
+.fi-nick{margin-top:8rpx}
 .fopts{display:flex;flex-wrap:wrap;gap:12rpx}
 .fo{padding:12rpx 24rpx;font-size:24rpx;color:var(--t2);background:#FFF;border:1rpx solid #E8E8E8;border-radius:8rpx}
 .fo.on{background:var(--g2);color:#fff;border-color:var(--g2);font-weight:600}
