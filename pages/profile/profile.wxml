@@ -11,6 +11,10 @@
   <view class="pav">{{p.name?p.name[0]:'张'}}</view>
   <view class="pnm">{{p.name||'老张'}}</view><view class="plv">NTRP {{p.lv||'3.5'}} · Elo 1512</view><view class="plc">{{p.city||'北京'}} · {{p.court||'朝阳区'}}</view>
   <view class="sts"><view><text class="sn">32</text><text class="sl">场次</text></view><view><text class="sn">58%</text><text class="sl">胜率</text></view><view><text class="sn">4.7</text><text class="sl">评分</text></view></view>
+  <view class="profile-actions">
+    <text class="act-btn" bindtap="toEdit">编辑资料</text>
+    <text class="act-btn" bindtap="toShare">分享名片</text>
+  </view>
   <view class="pb"><view class="ph">风格</view><view class="pts"><text class="pt">{{p.sn||'底线进攻型'}}</text></view></view>
   <view class="pb"><view class="ph">装备</view><view class="pts"><text class="pt pa" bindtap="eq">{{p.g||'Blade 98 v9'}}</text></view></view>
   <view class="pb"><view class="ph">最近参加</view>
@@ -24,8 +28,5 @@
   </view>
   <view class="contact-bar" wx:if="{{!isSelf}}">
     <button class="contact-btn" bindtap="contact">联系TA · 微信</button>
-  </view>
-  <view class="profile-actions">
-    <text class="act-btn" bindtap="toEdit">编辑资料</text>
   </view>
 </scroll-view>
