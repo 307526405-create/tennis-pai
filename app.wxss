@@ -1,1 +1,1 @@
-page{--g1:#1B5E3B;--g2:#2E8B57;--g3:#3DAF6E;--bg:#F5F7F3;--card:#FFF;--b:#D4DFCF;--t:#1A2E1A;--t2:#6B7F6B;--t3:#9AAE9A;background:var(--bg);color:var(--t);font-family:-apple-system,"PingFang SC",sans-serif;font-size:28rpx;font-weight:400;line-height:1.4}
+page{--g1:#1B5E3B;--g2:#2E8B57;--g3:#3DAF6E;--bg:#F4F8F2;--card:#FFF;--b:#D4DFCF;--t:#1A2E1A;--t2:#6B7F6B;--t3:#9AAE9A;background:var(--bg);color:var(--t);font-family:-apple-system,"PingFang SC",sans-serif;font-size:28rpx;font-weight:400;line-height:1.4}
