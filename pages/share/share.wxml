@@ -1,7 +1,7 @@
 <view class="page">
   <view class="card" id="card">
     <view class="c-top">
-      <view class="c-av">张</view>
+      <view class="c-av">{{p.name?p.name[0]:'张'}}</view>
       <view class="c-name">{{p.name||'老张'}}</view>
       <view class="c-lv">NTRP {{p.lv||'3.5'}}</view>
     </view>
