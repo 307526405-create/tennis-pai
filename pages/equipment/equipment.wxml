@@ -1,9 +1,13 @@
 <view class="nav" style="padding-top:{{s}}px">
   <view class="brand-wrap">
     <view class="brand-row">
-      <text class="brand">装备<text class="brand-ac">库</text></text>
+      <text class="brand">网球</text>
+      <view class="pai-wrap">
+        <text class="brand-ac">派</text>
+        <view class="pai-line"></view>
+      </view>
     </view>
-    <text class="brand-en">EQUIPMENT</text>
+    <text class="brand-en">TENNIS PAI</text>
   </view>
 </view>
 
@@ -14,15 +18,7 @@
   <view class="eqt">服装</view>
 </view>
 
-<scroll-view scroll-x class="brand-bar">
-  <view class="bg" bindtap="sb">
-    <text class="bg-t">品牌</text>
-    <text class="bg-v">{{brands[bb]}}</text>
-    <text class="bg-arrow">▼</text>
-  </view>
-</scroll-view>
-
-<view class="elist">
+<scroll-view scroll-y class="elist" style="height:calc(100vh - 300rpx)">
   <view class="erow" wx:for="{{rs}}" wx:key="id" bindtap="toD" data-id="{{index}}">
     <view class="ethumb">🎾</view>
     <view class="einfo">
@@ -37,10 +33,4 @@
       <text class="eprice">¥{{item.price}}</text>
     </view>
   </view>
-</view>
-
-<view class="tabbar">
-  <view class="tb" bindtap="goD">发现</view>
-  <view class="tb on">装备库</view>
-  <view class="tb" bindtap="goP">我的</view>
-</view>
+</scroll-view>

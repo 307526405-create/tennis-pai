@@ -2,10 +2,6 @@
 .eqt{padding:16rpx 0;margin-right:48rpx;font-size:28rpx;color:var(--t3);font-weight:400}
 .eqt.on{color:var(--t);font-weight:600;border-bottom:2rpx solid var(--g2);margin-bottom:-1rpx}
 
-.brand-bar{display:flex;padding:12rpx 40rpx}
-.bg{display:flex;align-items:center;gap:8rpx;padding:10rpx 20rpx;background:#FFF;border:1rpx solid #E8E8E8;border-radius:8rpx;font-size:22rpx}
-.bg-t{color:var(--t3)}.bg-v{color:var(--t);font-weight:600}.bg-arrow{font-size:16rpx;color:var(--t3)}
-
 .elist{margin:0 40rpx}
 .erow{display:flex;align-items:center;gap:20rpx;padding:24rpx 0;border-bottom:1rpx solid #F0F0F0}
 .ethumb{width:96rpx;height:96rpx;border-radius:8rpx;background:#F4F8F2;display:flex;align-items:center;justify-content:center;font-size:40rpx;flex-shrink:0}
@@ -17,7 +13,3 @@
 .espec{font-size:20rpx;color:var(--t3)}
 .eright{flex-shrink:0;text-align:right}
 .eprice{font-size:28rpx;font-weight:600;color:var(--g1)}
-
-.tabbar{position:fixed;bottom:0;left:0;right:0;display:flex;border-top:1rpx solid #E0E0E0;background:rgba(255,255,255,.95);height:88rpx;padding-bottom:env(safe-area-inset-bottom);z-index:99}
-.tb{flex:1;display:flex;align-items:center;justify-content:center;font-size:28rpx;color:#999;font-weight:400}
-.tb.on{color:#1B5E3B;font-weight:600}
