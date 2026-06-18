@@ -10,6 +10,9 @@
   <view class="tab {{a==0?'on':''}}" bindtap="sw" data-i="0">球友</view>
   <view class="tab {{a==1?'on':''}}" bindtap="sw" data-i="1">约球</view>
   <view class="tab {{a==2?'on':''}}" bindtap="sw" data-i="2">球场</view>
+  <view class="tab-right">
+    <view class="create-btn" bindtap="goCreate">发起约球</view>
+  </view>
 </view>
 
 <view class="feed" wx:if="{{a==0}}">

@@ -21,8 +21,8 @@ Page({
     var players=app.globalData.players;
     var me=null;
     for(var i=0;i<players.length;i++){if(players[i].me){me=players[i];break}}
-    if(me){me.n=name;me.a=name[0];me.lv=lv;me.g=g;me.active=true}
-    else{players.unshift({id:Date.now(),n:name,a:name[0],c:'#2E8B57',lv:lv,g:g,el:'1500',pct:'0%',gm:0,ds:'',active:true,me:true})}
+    if(me){me.n=name;me.a=name[0];me.lv=lv;me.g=g;me.st=d.styles[d.st];me.court=d.court;me.city=d.city;me.active=true}
+    else{players.unshift({id:Date.now(),n:name,a:name[0],c:'#2E8B57',lv:lv,g:g,st:d.styles[d.st],court:d.court,city:d.city,el:'1500',pct:'0%',gm:0,ds:'',active:true,me:true})}
     wx.showToast({title:'保存成功，已加入发现列表'});setTimeout(function(){wx.navigateBack()},800);
   },
   onAvatar(e){this.setData({avatar:e.detail.avatarUrl})},

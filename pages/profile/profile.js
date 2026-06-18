@@ -11,7 +11,7 @@ Page({
         if (players[i].id == pid) { player = players[i]; break; }
       }
       if (player) {
-        this.setData({ p: { name: player.n, lv: player.lv, sn: player.st, g: player.g, court: player.court, city: player.city }, isSelf: false });
+        this.setData({ p: { name: player.n, lv: player.lv, st: player.st, g: player.g, court: player.court, city: player.city }, isSelf: false });
       }
     } else {
       var p = wx.getStorageSync('profile');

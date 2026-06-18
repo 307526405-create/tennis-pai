@@ -11,7 +11,7 @@
       <view class="cs"><text class="csn">4.7</text><text class="csl">评分</text></view>
     </view>
     <view class="c-row">
-      <text class="cl">风格</text><text class="cv">{{p.sn||'底线进攻型'}}</text>
+      <text class="cl">风格</text><text class="cv">{{p.st||'底线进攻型'}}</text>
     </view>
     <view class="c-row">
       <text class="cl">装备</text><text class="cv">{{p.g||'Wilson Blade 98 v9'}}</text>

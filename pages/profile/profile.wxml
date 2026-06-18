@@ -25,7 +25,7 @@
 
   <view class="sec">
     <view class="sh">风格·装备</view>
-    <view class="sr"><text class="srl">风格</text>{{p.sn||'底线进攻型'}}</view>
+    <view class="sr"><text class="srl">风格</text>{{p.st||'底线进攻型'}}</view>
     <view class="sr"><text class="srl">球拍</text>{{p.g||'Blade 98 v9'}}</view>
     <view class="sr"><text class="srl">主场</text>{{p.court||'朝阳公园'}} · {{p.city||'北京'}}</view>
   </view>
