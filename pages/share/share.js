@@ -1,7 +1,7 @@
 Page({
   data:{s:44,p:null},
   onLoad(){
-    this.setData({s:wx.getSystemInfoSync().statusBarHeight});
+    this.setData({s:wx.getWindowInfo().statusBarHeight});
     const p=wx.getStorageSync('profile')||{};
     this.setData({p});
   },
