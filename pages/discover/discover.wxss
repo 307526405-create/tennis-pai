@@ -1,7 +1,8 @@
 .tabs{display:flex;align-items:center;margin:16rpx 40rpx;gap:0;border-bottom:1rpx solid #E8E8E8}
 .tab{font-size:28rpx;font-weight:400;color:var(--t3);padding:16rpx 0;margin-right:48rpx}
 .tab.on{color:var(--t);font-weight:600;border-bottom:2rpx solid var(--g2);margin-bottom:-1rpx}
-.tab-right{margin-left:auto}
+.tab-right{display:flex;gap:12rpx;margin-left:auto}
+.create-btn{font-size:22rpx;color:var(--g2);font-weight:600;padding:8rpx 16rpx;border:1rpx solid var(--g2);border-radius:20rpx}
 .avail{padding:10rpx 20rpx;font-size:22rpx;color:var(--t2);background:#FFF;border:1rpx solid #E8E8E8;border-radius:20rpx;font-weight:400}
 .avail-on{background:var(--g2);color:#fff;border-color:var(--g2);font-weight:600}
 

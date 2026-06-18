@@ -15,6 +15,7 @@
   <view class="tab {{a==2?'on':''}}" bindtap="sw" data-i="2">球场</view>
   <view class="tab-right">
     <view class="avail {{avail?'avail-on':''}}" bindtap="toggleAvail">现在有空</view>
+    <view class="create-btn" bindtap="goCreate">发起活动</view>
   </view>
 </view>
 

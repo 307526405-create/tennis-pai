@@ -1,0 +1,11 @@
+<view class="nav" style="padding-top:{{s}}px">
+  <text class="back" bindtap="back">‹</text>
+  <text class="ntitle">发起活动</text>
+</view>
+<view class="form">
+  <input class="fi" placeholder="活动标题，如：周六3.5级单打" value="{{title}}" bindinput="setT"/>
+  <input class="fi" placeholder="时间，如：6.21 周六 14:00" value="{{date}}" bindinput="setD"/>
+  <input class="fi" placeholder="地点，如：朝阳公园" value="{{court}}" bindinput="setCt"/>
+  <view class="fr"><input class="fi fs" placeholder="水平，如：3.5" value="{{lv}}" bindinput="setLv"/><input class="fi fs" placeholder="人数，如：4" value="{{tn}}" bindinput="setTn"/></view>
+  <view class="submit" bindtap="publish">发布活动</view>
+</view>
