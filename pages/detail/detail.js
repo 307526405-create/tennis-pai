@@ -1,9 +1,9 @@
 const app = getApp();
 Page({
-  data: { racket: null },
+  data: { statusBar: 44, r: null },
   onLoad(options) {
     const id = parseInt(options.id) || 0;
-    const rackets = app.globalData.rackets;
-    this.setData({ racket: rackets[id] || rackets[0] });
-  }
+    this.setData({ statusBar: wx.getSystemInfoSync().statusBarHeight, r: app.globalData.rackets[id] || app.globalData.rackets[0] });
+  },
+  back() { wx.navigateBack(); }
 });

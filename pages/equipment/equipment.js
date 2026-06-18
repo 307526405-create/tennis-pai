@@ -1,9 +1,8 @@
 const app = getApp();
 Page({
-  data: { active: 0, rackets: app.globalData.rackets },
-  onTabChange(e) { this.setData({ active: e.detail.index }); },
-  onTap(e) {
-    const id = e.currentTarget.dataset.id;
-    wx.navigateTo({ url: '/pages/detail/detail?id=' + id });
-  }
+  data: { statusBar: 44, eqTab: 0, rackets: app.globalData.rackets },
+  onLoad() { this.setData({ statusBar: wx.getSystemInfoSync().statusBarHeight }); },
+  setTab(e) { this.setData({ eqTab: e.currentTarget.dataset.i }); },
+  toDetail(e) { wx.navigateTo({ url: '/pages/detail/detail?id=' + e.currentTarget.dataset.id }); },
+  go(e) { wx.switchTab({ url: '/pages/' + e.currentTarget.dataset.p + '/' + e.currentTarget.dataset.p }); }
 });

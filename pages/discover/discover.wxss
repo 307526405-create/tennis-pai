@@ -1,43 +1,63 @@
-.loc-bar { padding: 12rpx 32rpx; font-size: 28rpx; font-weight: 600; color: #333; background: #fff; }
-.filter-row { display: flex; gap: 8rpx; padding: 16rpx 32rpx; white-space: nowrap; background: #fff; }
-.filter-tag { margin-right: 8rpx !important; }
+/* === Top Bar === */
+.top-bar{display:flex;align-items:center;justify-content:space-between;padding:0 28rpx;height:88rpx}
+.tb-brand{font-size:38rpx;font-weight:900;letter-spacing:-1rpx;color:var(--t)}
+.tb-ac{color:var(--ac);position:relative}
+.tb-ac::after{content:'';position:absolute;bottom:-2rpx;left:0;right:0;height:2rpx;background:var(--ac)}
+.tb-loc{font-size:22rpx;color:var(--t2);background:var(--p2);padding:6rpx 16rpx;border-radius:6rpx}
 
-/* Player list */
-.player-cell { padding: 0 !important; }
-.player-row { display: flex; align-items: center; gap: 16rpx; height: 88rpx; }
-.p-av { width: 48rpx; height: 48rpx; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24rpx; font-weight: 600; color: #fff; flex-shrink: 0; }
-.p-info { flex: 1; min-width: 0; }
-.p-top { display: flex; align-items: center; gap: 8rpx; }
-.p-name { font-size: 28rpx; font-weight: 600; color: #333; }
-.p-style { font-size: 24rpx; color: #999; }
-.p-gear { font-size: 20rpx; color: #999; display: block; margin-top: 4rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.p-score { text-align: right; flex-shrink: 0; }
-.p-elo { font-size: 24rpx; font-weight: 600; color: #07C160; display: block; }
-.p-pct { font-size: 20rpx; color: #999; }
+/* === Sub Tabs === */
+.sub-tabs{display:flex;margin:12rpx 24rpx 0;background:var(--p);border:1rpx solid var(--b);border-radius:8rpx;overflow:hidden}
+.st{flex:1;text-align:center;padding:16rpx 0;font-size:25rpx;font-weight:600;color:var(--t3);transition:all .1s}
+.st.on{background:rgba(184,212,48,.08);color:var(--ac)}
 
-/* Events */
-.evt-list { padding: 16rpx 32rpx; }
-.evt-card { background: #fff; border-radius: 16rpx; padding: 32rpx; margin-bottom: 24rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,.05); }
-.evt-badge { margin-bottom: 8rpx !important; }
-.evt-title { font-size: 28rpx; font-weight: 600; color: #333; margin-bottom: 8rpx; }
-.evt-meta { font-size: 24rpx; color: #999; margin-bottom: 16rpx; }
-.evt-bar { display: flex; align-items: center; gap: 12rpx; }
-.evt-avs { display: flex; }
-.evt-av { width: 48rpx; height: 48rpx; border-radius: 50%; border: 2px solid #fff; margin-left: -16rpx; }
-.evt-av:first-child { margin-left: 0; }
-.evt-num { font-size: 24rpx; color: #999; }
-.join-btn { margin-left: auto !important; }
+/* === Level bar === */
+.lv-bar{display:flex;gap:8rpx;padding:16rpx 24rpx;white-space:nowrap}
+.lv{padding:8rpx 20rpx;font-size:23rpx;color:var(--t2);border:1rpx solid var(--b);background:var(--p);font-weight:500}
+.lv-on{background:var(--ac);color:#000;border-color:var(--ac);font-weight:700}
 
-/* Map */
-.map-box { margin: 16rpx 32rpx; height: 400rpx; border-radius: 16rpx; background: #F0F0F0; position: relative; overflow: hidden; }
-.map-pin { position: absolute; width: 16rpx; height: 16rpx; border-radius: 50%; background: #07C160; box-shadow: 0 0 8rpx rgba(7,193,96,.3); transform: translate(-50%, -50%); }
-.map-label { position: absolute; font-size: 20rpx; color: #333; background: #fff; padding: 2rpx 8rpx; border-radius: 4rpx; white-space: nowrap; transform: translate(-50%, -50%); }
+/* === List rows === */
+.list{background:var(--p);border-top:1rpx solid var(--b)}
+.row{display:flex;align-items:center;gap:14rpx;padding:20rpx 24rpx;border-bottom:1rpx solid var(--b)}
+.row:active{background:rgba(255,255,255,.01)}
+.r-av{width:68rpx;height:68rpx;display:flex;align-items:center;justify-content:center;font-size:28rpx;font-weight:700;color:#fff;flex-shrink:0}
+.r-i{flex:1;min-width:0}
+.r-top{display:flex;align-items:center;gap:8rpx}
+.r-n{font-size:28rpx;font-weight:700;color:var(--t)}
+.r-lv{font-size:20rpx;background:rgba(184,212,48,.12);color:var(--ac);padding:2rpx 8rpx;font-weight:700}
+.r-st{font-size:22rpx;color:var(--t2)}
+.r-gear{font-size:20rpx;color:var(--t3);display:block;margin-top:4rpx;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.r-sc{text-align:right;flex-shrink:0}
+.r-el{font-size:26rpx;font-weight:700;color:var(--ac);display:block}
+.r-pct{font-size:20rpx;color:var(--t3)}
 
-/* Court list */
-.court-cell { padding: 0 !important; }
-.court-row { display: flex; align-items: center; gap: 12rpx; height: 88rpx; }
-.vn-num { width: 32rpx; height: 32rpx; border-radius: 50%; background: #07C160; color: #fff; font-size: 24rpx; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.vn-info { flex: 1; }
-.vn-name { font-size: 28rpx; font-weight: 600; color: #333; }
-.vn-meta { font-size: 24rpx; color: #999; margin-top: 4rpx; }
-.vn-dist { font-size: 24rpx; color: #07C160; font-weight: 600; flex-shrink: 0; }
+/* === Events === */
+.pg{padding-bottom:16rpx}
+.evt{margin:16rpx 24rpx;background:var(--p);border:1rpx solid var(--b);padding:24rpx;position:relative;overflow:hidden}
+.evt::before{content:'';position:absolute;top:0;left:0;right:0;height:1rpx;background:linear-gradient(90deg,transparent,var(--ac),transparent)}
+.ev-badge{display:inline-block;font-size:20rpx;font-weight:700;padding:2rpx 12rpx;background:rgba(184,212,48,.12);color:var(--ac);margin-bottom:8rpx}
+.ev-full{background:rgba(196,68,54,.12);color:#C44536}
+.ev-t{font-size:28rpx;font-weight:700;margin-bottom:6rpx}
+.ev-m{font-size:22rpx;color:var(--t2);margin-bottom:14rpx;display:flex;gap:12rpx}
+.ev-bar{display:flex;align-items:center;gap:10rpx}
+.ev-avs{display:flex}
+.ev-av{width:40rpx;height:40rpx;border-radius:50%;margin-left:-14rpx;border:2rpx solid var(--p)}
+.ev-av:first-child{margin-left:0}
+.ev-num{font-size:22rpx;color:var(--t2)}
+.ev-btn{margin-left:auto;background:var(--ac);color:#000;padding:10rpx 24rpx;font-size:23rpx;font-weight:700;cursor:pointer}
+.ev-btn-f{background:var(--p2);color:var(--t3)}
+
+/* === Map === */
+.map-box{margin:16rpx 24rpx;height:360rpx;background:var(--p);border:1rpx solid var(--b);position:relative;overflow:hidden;
+  background-image:radial-gradient(circle,var(--b) 1rpx,transparent 1rpx);background-size:28rpx 28rpx}
+.mp-pin{position:absolute;width:12rpx;height:12rpx;border-radius:50%;background:var(--ac);box-shadow:0 0 8rpx rgba(184,212,48,.4);transform:translate(-50%,-50%)}
+.mp-lb{position:absolute;font-size:18rpx;color:var(--t);background:var(--p);padding:2rpx 6rpx;border-radius:4rpx;white-space:nowrap;transform:translate(-50%,-50%)}
+
+/* Court row */
+.vn-no{width:40rpx;height:40rpx;background:var(--ac);color:#000;font-size:22rpx;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.vn-sub{font-size:20rpx;color:var(--t3);margin-top:4rpx}
+.vn-ds{font-size:24rpx;color:var(--ac);font-weight:700;flex-shrink:0}
+
+/* === Custom Tab === */
+.ctab{position:fixed;bottom:0;left:0;right:0;background:var(--p);border-top:1rpx solid var(--b);display:flex;padding:8rpx 0 34rpx;z-index:10}
+.ct{flex:1;text-align:center;font-size:20rpx;color:var(--t3);padding:6rpx 0;letter-spacing:1rpx;font-weight:500}
+.ct.on{color:var(--ac)}

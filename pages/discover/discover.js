@@ -1,41 +1,41 @@
 Page({
   data: {
-    location: '北京 · 朝阳区',
-    active: 0,
-    levels: [
-      { name: '全部水平', active: true },
-      { name: '2.0–3.0', active: false },
-      { name: '3.0–3.5', active: false },
-      { name: '3.5–4.0', active: false },
-      { name: '4.0+', active: false }
-    ],
+    statusBar: 44, loc: '北京 · 朝阳区',
+    active: 0, ctab: 0,
+    levels: ['全部','2.0-3.0','3.0-3.5','3.5-4.0','4.0+'],
     players: [
-      { id: 1, name: '老赵', avatar: '赵', color: '#4A90D9', level: '3.5', style: '底线进攻型', gear: 'Blade 98 v9', court: '朝阳公园', elo: '1510', pct: '55%' },
-      { id: 2, name: '小美', avatar: '美', color: '#E07B5A', level: '3.5', style: '底线防守型', gear: 'Pure Aero', court: '国网中心', elo: '1490', pct: '48%' },
-      { id: 3, name: '阿强', avatar: '强', color: '#2EBD85', level: '4.0', style: '发球上网型', gear: 'Speed Pro', court: '国家网球中心', elo: '1620', pct: '68%' },
-      { id: 4, name: '小王', avatar: '王', color: '#7C5CE7', level: '4.0', style: '全能型', gear: 'VCORE 98', court: '朝阳公园', elo: '1605', pct: '62%' },
-      { id: 5, name: '小李', avatar: '李', color: '#E74C3C', level: '3.0', style: '底线防守型', gear: 'Pure Drive', court: '国网中心', elo: '1350', pct: '42%' },
-      { id: 6, name: '大刘', avatar: '刘', color: '#E84393', level: '3.5', style: '全能型', gear: 'Clash 100', court: '朝阳公园', elo: '1455', pct: '50%' }
+      {id:1,n:'老赵',a:'赵',c:'#4A90D9',lv:'3.5',st:'底线进攻型',g:'Blade 98 v9',ct:'朝阳公园',el:'1510',pct:'55%'},
+      {id:2,n:'小美',a:'美',c:'#E07B5A',lv:'3.5',st:'底线防守型',g:'Pure Aero',ct:'国网中心',el:'1490',pct:'48%'},
+      {id:3,n:'阿强',a:'强',c:'#2EBD85',lv:'4.0',st:'发球上网型',g:'Speed Pro',ct:'国家网球中心',el:'1620',pct:'68%'},
+      {id:4,n:'小王',a:'王',c:'#7C5CE7',lv:'4.0',st:'全能型',g:'VCORE 98',ct:'朝阳公园',el:'1605',pct:'62%'},
+      {id:5,n:'小李',a:'李',c:'#E74C3C',lv:'3.0',st:'底线防守型',g:'Pure Drive',ct:'国网中心',el:'1350',pct:'42%'},
+      {id:6,n:'大刘',a:'刘',c:'#E84393',lv:'3.5',st:'全能型',g:'Clash 100',ct:'朝阳公园',el:'1455',pct:'50%'}
     ],
     events: [
-      { id: 1, badge: '报名中', full: false, title: '周六 3.5级单打切磋', date: '6.21 周六 14:00', court: '朝阳公园', level: '3.5级', avatars: ['#4A90D9','#2EBD85','#7C5CE7'], count: 3, total: 4 },
-      { id: 2, badge: '报名中', full: false, title: '周日早场 双打找搭子', date: '6.22 周日 08:00', court: '国家网球中心', level: '3.0级', avatars: ['#E07B5A','#E74C3C'], count: 2, total: 4 },
-      { id: 3, badge: '已满', full: true, title: '周三夜场 高水平对抗', date: '6.18 周三 19:00', court: '国家网球中心', level: '4.0级', avatars: ['#2EBD85','#7C5CE7','#E74C3C','#9B59B6'], count: 4, total: 4 }
+      {id:1,t:'周六 3.5级单打切磋',date:'6.21 周六 14:00',ct:'朝阳公园',lv:'3.5级',avs:['#4A90D9','#2EBD85','#7C5CE7'],n:3,tn:4,full:false},
+      {id:2,t:'周日早场 双打找搭子',date:'6.22 周日 08:00',ct:'国家网球中心',lv:'3.0级',avs:['#E07B5A','#E74C3C'],n:2,tn:4,full:false},
+      {id:3,t:'周三夜场 高水平对抗',date:'6.18 周三 19:00',ct:'国家网球中心',lv:'4.0级',avs:['#2EBD85','#7C5CE7','#E74C3C','#9B59B6'],n:4,tn:4,full:true}
     ],
     courts: [
-      { id: 1, name: '国家网球中心', fields: '36', indoor: '室内+室外', feature: '有教练', dist: '2.3km', top: 55, left: 25 },
-      { id: 2, name: '朝阳公园网球中心', fields: '12', indoor: '室外', feature: '可停车', dist: '1.8km', top: 30, left: 45 },
-      { id: 3, name: '望京网球馆', fields: '8', indoor: '室内', feature: '有淋浴', dist: '3.5km', top: 18, left: 68 },
-      { id: 4, name: '奥体中心', fields: '6', indoor: '红土+硬地', feature: '会员制', dist: '4.1km', top: 65, left: 55 }
+      {id:1,name:'国家网球中心',fd:'36',io:'室内+室外',ft:'有教练',ds:'2.3km',y:55,x:25},
+      {id:2,name:'朝阳公园网球中心',fd:'12',io:'室外',ft:'可停车',ds:'1.8km',y:30,x:45},
+      {id:3,name:'望京网球馆',fd:'8',io:'室内',ft:'有淋浴',ds:'3.5km',y:18,x:68},
+      {id:4,name:'奥体中心',fd:'6',io:'红土+硬地',ft:'会员制',ds:'4.1km',y:65,x:55}
     ]
   },
-  onTabChange(e) { this.setData({ active: e.detail.index }); },
-  onLevelTap(e) {
-    const idx = e.currentTarget.dataset.index;
-    const levels = this.data.levels.map((l, i) => { l.active = i === idx; return l; });
-    this.setData({ levels });
+  onLoad() {
+    const sys = wx.getSystemInfoSync();
+    this.setData({ statusBar: sys.statusBarHeight });
   },
-  onPlayerTap(e) {
-    wx.navigateTo({ url: '/pages/profile/profile' });
+  sw(e) { this.setData({ active: e.currentTarget.dataset.i }); },
+  fl(e) {
+    const i = e.currentTarget.dataset.i;
+    const levels = this.data.levels.map((l,j) => j===i ? l : l);
+    this.setData({ levels: [...this.data.levels], _sel: i });
+  },
+  toProfile() { wx.navigateTo({ url: '/pages/profile/profile' }); },
+  go(e) {
+    const p = e.currentTarget.dataset.p;
+    wx.switchTab({ url: '/pages/' + p + '/' + p });
   }
 });

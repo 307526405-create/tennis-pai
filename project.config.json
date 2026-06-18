@@ -1,6 +1,9 @@
 {
   "description": "网球派 - 网球爱好者的身份名片",
-  "packOptions": { "ignore": [], "include": [] },
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
   "setting": {
     "urlCheck": true,
     "es6": true,
@@ -22,7 +25,11 @@
     "useMultiFrameRuntime": true,
     "useApiHook": true,
     "useApiHostProcess": true,
-    "babelSetting": { "ignore": [], "disablePlugins": [], "outputPath": "" },
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
@@ -39,9 +46,12 @@
   },
   "compileType": "miniprogram",
   "libVersion": "3.6.0",
-  "appid": "wx0000000000000000",
+  "appid": "wx70978a5416bd77e3",
   "projectname": "网球派",
   "condition": {},
-  "editorSetting": { "tabIndent": "insertSpaces", "tabSize": 2 },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
   "simulatorPluginLibVersion": {}
 }
