@@ -1,0 +1,39 @@
+<view class="nav" style="padding-top:{{s}}px">
+  <view class="nav-row">
+    <view class="search-input">
+      <text class="si-icon">⌕</text>
+      <input class="si-field" placeholder="搜索球友、装备、球场..." value="{{q}}" bindinput="onInput" focus/>
+    </view>
+    <text class="cancel" bindtap="back">取消</text>
+  </view>
+</view>
+
+<view class="result" wx:if="{{q}}">
+  <view class="rh">球友</view>
+  <view class="item" wx:for="{{players}}" wx:key="id" bindtap="toP">
+    <view class="av" style="background:{{item.c}}">{{item.a}}</view>
+    <view class="info">
+      <view class="top"><text class="name">{{item.n}}</text><text class="lv">{{item.lv}}</text></view>
+      <text class="gear">{{item.g}}</text>
+    </view>
+  </view>
+
+  <view class="rh">装备</view>
+  <view class="item" wx:for="{{rackets}}" wx:key="id" bindtap="toD" data-id="{{index}}">
+    <view class="eq-thumb">🎾</view>
+    <view class="info">
+      <view class="name">{{item.model}}</view>
+      <text class="gear">{{item.brand}}</text>
+    </view>
+    <text class="price">¥{{item.price}}</text>
+  </view>
+
+  <view class="empty" wx:if="{{players.length==0&&rackets.length==0}}">没有找到"{{q}}"相关结果</view>
+</view>
+
+<view class="hot" wx:if="{{!q}}">
+  <view class="rh">热门搜索</view>
+  <view class="tags">
+    <view class="tag" wx:for="{{hots}}" wx:key="*this" bindtap="tapHot" data-w="{{item}}">{{item}}</view>
+  </view>
+</view>

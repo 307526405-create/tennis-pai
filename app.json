@@ -3,6 +3,7 @@
     "pages/discover/discover",
     "pages/equipment/equipment",
     "pages/detail/detail",
+    "pages/search/search",
     "pages/profile/profile"
   ],
   "window": {
