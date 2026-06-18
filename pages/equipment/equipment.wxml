@@ -18,6 +18,26 @@
   <view class="eqt">服装</view>
 </view>
 
+<view class="pick-row">
+  <view class="pick" bindtap="showPick">
+    <text class="pick-t">品牌</text>
+    <text class="pick-v">{{brands[bi]}}</text>
+    <text class="pick-arrow">▼</text>
+  </view>
+  <view class="pick" bindtap="showType">
+    <text class="pick-t">类型</text>
+    <text class="pick-v">{{types[ti]}}</text>
+    <text class="pick-arrow">▼</text>
+  </view>
+</view>
+
+<view class="pick-menu" wx:if="{{showBrand}}">
+  <view class="pick-mask" bindtap="hidePick"></view>
+  <view class="pick-list">
+    <view class="pick-opt {{bi==i?'on':''}}" wx:for="{{brands}}" wx:key="*this" bindtap="selBrand" data-i="{{index}}">{{item}}</view>
+  </view>
+</view>
+
 <scroll-view scroll-y class="elist" style="height:calc(100vh - 300rpx)">
   <view class="erow" wx:for="{{rs}}" wx:key="id" bindtap="toD" data-id="{{index}}">
     <view class="ethumb">🎾</view>
