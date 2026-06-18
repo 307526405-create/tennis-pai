@@ -6,7 +6,7 @@
 </view>
 
 <view class="eq-tabs">
-  <view class="eqt on">球拍</view><view class="eqt">球鞋</view><view class="eqt">球线</view><view class="eqt">服装</view>
+  <view class="eqt on">球拍</view><view class="eqt">球鞋</view><view class="eqt">服装</view><view class="eqt">球线</view>
 </view>
 
 <view class="filter">
