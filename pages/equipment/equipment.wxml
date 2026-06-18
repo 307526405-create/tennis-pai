@@ -11,21 +11,12 @@
   </view>
 </view>
 
-<scroll-view scroll-x class="brand-bar">
-  <view class="bb {{bb==0?'bb-on':''}}" bindtap="sb" data-i="0">全部</view>
-  <view class="bb {{bb==1?'bb-on':''}}" bindtap="sb" data-i="1">Wilson</view>
-  <view class="bb {{bb==2?'bb-on':''}}" bindtap="sb" data-i="2">Babolat</view>
-  <view class="bb {{bb==3?'bb-on':''}}" bindtap="sb" data-i="3">HEAD</view>
-  <view class="bb {{bb==4?'bb-on':''}}" bindtap="sb" data-i="4">Yonex</view>
-</scroll-view>
-
-<scroll-view scroll-y class="grid">
+<view class="grid">
   <view class="card" wx:for="{{rs}}" wx:key="id" bindtap="toD" data-id="{{index}}">
     <view class="card-img">🎾</view>
-    <view class="card-body">
-      <view class="card-brand">{{item.brand}}</view>
+    <view class="card-info">
       <view class="card-name">{{item.model}}</view>
       <view class="card-price">¥{{item.price}}</view>
     </view>
   </view>
-</scroll-view>
+</view>
