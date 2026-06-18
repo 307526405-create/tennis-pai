@@ -10,10 +10,7 @@
     "backgroundColor": "#F5F7F3"
   },
   "tabBar": {
-    "color": "#9AAE9A",
-    "selectedColor": "#1B5E3B",
-    "backgroundColor": "#FFFFFF",
-    "borderStyle": "white",
+    "custom": true,
     "list": [
       { "pagePath": "pages/discover/discover", "text": "发现" },
       { "pagePath": "pages/equipment/equipment", "text": "装备库" },

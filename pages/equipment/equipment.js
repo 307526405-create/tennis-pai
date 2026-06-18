@@ -1,1 +1,1 @@
-const app=getApp();Page({data:{s:44,rs:app.globalData.rackets},onLoad(){this.setData({s:wx.getSystemInfoSync().statusBarHeight})},toD(e){wx.navigateTo({url:'/pages/detail/detail?id='+e.currentTarget.dataset.id})}});
+const app=getApp();Page({data:{s:44,rs:app.globalData.rackets},onLoad(){this.setData({s:wx.getSystemInfoSync().statusBarHeight})},toD(e){wx.navigateTo({url:'/pages/detail/detail?id='+e.currentTarget.dataset.id})},onShow(){if(typeof this.getTabBar==='function'&&this.getTabBar()){this.getTabBar().setData({selected:1})}}});
