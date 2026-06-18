@@ -1,11 +1,5 @@
 <view class="tabbar">
-  <view class="tb {{selected==0?'on':''}}" bindtap="switchTab" data-path="/pages/discover/discover" data-idx="0">
-    <text class="tb-ic">🎾</text>发现
-  </view>
-  <view class="tb {{selected==1?'on':''}}" bindtap="switchTab" data-path="/pages/equipment/equipment" data-idx="1">
-    <text class="tb-ic">🎒</text>装备库
-  </view>
-  <view class="tb {{selected==2?'on':''}}" bindtap="switchTab" data-path="/pages/profile/profile" data-idx="2">
-    <text class="tb-ic">👤</text>我的
-  </view>
+  <view class="tb {{selected==0?'on':''}}" bindtap="switchTab" data-path="/pages/discover/discover" data-idx="0">发现</view>
+  <view class="tb {{selected==1?'on':''}}" bindtap="switchTab" data-path="/pages/equipment/equipment" data-idx="1">装备库</view>
+  <view class="tb {{selected==2?'on':''}}" bindtap="switchTab" data-path="/pages/profile/profile" data-idx="2">我的</view>
 </view>
