@@ -29,9 +29,13 @@
         <text class="i-lv">{{item.lv}}</text>
         <text class="i-el">{{item.el}}</text>
       </view>
+      <view class="i-row3">
+        <text class="i-stat">胜率{{item.pct}}</text>
+        <text class="i-stat">{{item.gm}}场</text>
+        <text class="i-dist">{{item.ds}}</text>
+      </view>
       <view class="i-row2">
         <text class="i-gear">{{item.g}}</text>
-        <text class="i-dist">{{item.ds}}</text>
       </view>
     </view>
   </view>

@@ -13,7 +13,7 @@
 
 .feed{margin:0 40rpx}
 .item{display:flex;align-items:center;gap:20rpx;padding:24rpx 0;border-bottom:1rpx solid #F0F0F0}
-.i-av{width:88rpx;height:88rpx;border-radius:12rpx;display:flex;align-items:center;justify-content:center;font-size:32rpx;font-weight:600;color:#fff;flex-shrink:0;position:relative}
+.i-av{width:88rpx;height:88rpx;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32rpx;font-weight:600;color:#fff;flex-shrink:0;position:relative}
 .i-dot{position:absolute;bottom:-2rpx;right:-2rpx;width:16rpx;height:16rpx;border-radius:50%;border:2rpx solid #F5F7F3}
 .dot-on{background:#3DAF6E}
 .dot-off{background:#CCC}
@@ -22,7 +22,8 @@
 .i-name{font-size:28rpx;font-weight:600;color:var(--t)}
 .i-lv{font-size:24rpx;color:var(--g2);font-weight:600}
 .i-el{font-size:22rpx;color:var(--g1);font-weight:600;margin-left:auto}
-.i-row2{display:flex;gap:16rpx}
+.i-row3{display:flex;gap:16rpx;margin-bottom:4rpx}
+.i-stat{font-size:20rpx;color:var(--t3)}
 .i-gear{font-size:20rpx;color:var(--t3)}
 .i-dist{font-size:20rpx;color:var(--t3)}
 
