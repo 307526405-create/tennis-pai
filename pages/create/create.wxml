@@ -1,6 +1,6 @@
 <view class="nav" style="padding-top:{{s}}px">
   <text class="back" bindtap="back">‹</text>
-  <text class="ntitle">发起活动</text>
+  <text class="ntitle">发起约球</text>
 </view>
 <view class="form">
   <input class="fi" placeholder="活动标题，如：周六3.5级单打" value="{{title}}" bindinput="setT"/>
