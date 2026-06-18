@@ -1,0 +1,38 @@
+<view class="nav" style="padding-top:{{s}}px">
+  <text class="back" bindtap="back">‹</text>
+  <text class="ntitle">创建名片</text>
+  <text class="save" bindtap="save">保存</text>
+</view>
+
+<scroll-view scroll-y class="form">
+  <view class="fg">
+    <view class="fl">名字</view>
+    <input class="fi" placeholder="你的称呼" value="{{name}}" bindinput="setName"/>
+  </view>
+  <view class="fg">
+    <view class="fl">水平</view>
+    <view class="fopts">
+      <view class="fo {{lv==i?'on':''}}" wx:for="{{levels}}" wx:key="*this" bindtap="setLv" data-i="{{index}}">{{item}}</view>
+    </view>
+  </view>
+  <view class="fg">
+    <view class="fl">风格</view>
+    <view class="fopts">
+      <view class="fo {{st==i?'on':''}}" wx:for="{{styles}}" wx:key="*this" bindtap="setSt" data-i="{{index}}">{{item}}</view>
+    </view>
+  </view>
+  <view class="fg">
+    <view class="fl">球拍</view>
+    <picker mode="selector" range="{{rackets}}" bindchange="setRacket">
+      <view class="picker">{{racketName||'选择你的球拍'}} ›</view>
+    </picker>
+  </view>
+  <view class="fg">
+    <view class="fl">常去球场</view>
+    <input class="fi" placeholder="如：朝阳公园" value="{{court}}" bindinput="setCourt"/>
+  </view>
+  <view class="fg">
+    <view class="fl">城市</view>
+    <input class="fi" placeholder="如：北京" value="{{city}}" bindinput="setCity"/>
+  </view>
+</scroll-view>
