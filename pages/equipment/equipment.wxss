@@ -1,6 +1,23 @@
-.grid{display:flex;flex-wrap:wrap;padding:20rpx 32rpx;gap:12rpx}
-.card{width:calc(50% - 6rpx);background:#FFF;border-radius:8rpx;overflow:hidden}
-.card-img{width:100%;height:260rpx;background:#F4F8F2;display:flex;align-items:center;justify-content:center;font-size:56rpx}
-.card-info{padding:16rpx}
-.card-name{font-size:26rpx;font-weight:600;color:var(--t)}
-.card-price{font-size:28rpx;font-weight:700;color:#C83C3C;margin-top:4rpx}
+.eq-tabs{display:flex;margin:20rpx 40rpx;gap:0;border-bottom:1rpx solid #E8E8E8}
+.eqt{padding:16rpx 0;margin-right:48rpx;font-size:24rpx;color:var(--t3);font-weight:400}
+.eqt.on{color:var(--t);font-weight:600;border-bottom:2rpx solid var(--g2);margin-bottom:-1rpx}
+
+.brand-bar{display:flex;gap:12rpx;padding:16rpx 40rpx;white-space:nowrap}
+.bb{padding:8rpx 20rpx;font-size:22rpx;color:var(--t2);background:#FFF;border:1rpx solid #E8E8E8;border-radius:20rpx;font-weight:400}
+.bb-on{background:var(--g2);color:#fff;border-color:var(--g2);font-weight:600}
+
+.elist{margin:0 40rpx}
+.erow{display:flex;align-items:center;gap:20rpx;padding:24rpx 0;border-bottom:1rpx solid #F0F0F0}
+.ethumb{width:96rpx;height:96rpx;border-radius:8rpx;background:#F4F8F2;display:flex;align-items:center;justify-content:center;font-size:40rpx;flex-shrink:0}
+.einfo{flex:1;min-width:0}
+.etop{display:flex;align-items:center;gap:10rpx;margin-bottom:4rpx}
+.ebrand{font-size:20rpx;color:var(--t3);font-weight:600}
+.etype{font-size:18rpx;color:var(--g2);background:rgba(46,139,87,.06);padding:1rpx 8rpx;border-radius:3rpx}
+.ename{font-size:28rpx;font-weight:600;color:var(--t);margin-bottom:4rpx}
+.espec{font-size:20rpx;color:var(--t3)}
+.eright{flex-shrink:0;text-align:right}
+.eprice{font-size:28rpx;font-weight:600;color:var(--g1)}
+
+.tabbar{position:fixed;bottom:0;left:0;right:0;display:flex;border-top:1rpx solid #E0E0E0;background:rgba(255,255,255,.95);height:88rpx;padding-bottom:env(safe-area-inset-bottom);z-index:99}
+.tb{flex:1;display:flex;align-items:center;justify-content:center;font-size:28rpx;color:#999;font-weight:400}
+.tb.on{color:#1B5E3B;font-weight:600}
