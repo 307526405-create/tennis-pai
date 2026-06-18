@@ -4,4 +4,5 @@ Page({data:{s:44,a:0,
   cs:[{id:1,name:'国家网球中心',fd:'36',io:'室内+室外',ft:'有教练',ds:'2.3km',y:55,x:25},{id:2,name:'朝阳公园网球中心',fd:'12',io:'室外',ft:'可停车',ds:'1.8km',y:30,x:45},{id:3,name:'望京网球馆',fd:'8',io:'室内',ft:'有淋浴',ds:'3.5km',y:18,x:68},{id:4,name:'奥体中心',fd:'6',io:'红土+硬地',ft:'会员制',ds:'4.1km',y:65,x:55}]
 },onLoad(){this.setData({s:wx.getWindowInfo().statusBarHeight})},sw(e){this.setData({a:e.currentTarget.dataset.i})},toggleAvail(){this.setData({avail:!this.data.avail})},goCreate(){wx.navigateTo({url:'/pages/create/create'})},toP(){wx.navigateTo({url:'/pages/profile/profile'})},toSearch(){wx.navigateTo({url:'/pages/search/search'})},
 join(e){const id=e.currentTarget.dataset.id;const es=this.data.es.map(ev=>{if(ev.id===id){if(ev.f)return ev;ev.joined=!ev.joined;ev.n+=ev.joined?1:-1;if(ev.n>=ev.tn)ev.f=true;else ev.f=false}return ev});this.setData({es})},
-onShow(){if(typeof this.getTabBar==='function'&&this.getTabBar())this.getTabBar().setData({selected:0})}})
+onShow(){if(typeof this.getTabBar==='function'&&this.getTabBar())this.getTabBar().setData({selected:0})},
+onPullDownRefresh(){wx.showNavigationBarLoading();setTimeout(()=>{wx.hideNavigationBarLoading();wx.stopPullDownRefresh();wx.showToast({title:'已刷新',icon:'none',duration:1000})},800)}})
