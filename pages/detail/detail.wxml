@@ -1,17 +1,11 @@
-<view class="nav" style="padding-top:{{s}}px">
-  <view class="nav-l" bindtap="back">
-    <text class="back">‹</text>
-    <text class="ntitle">装备详情</text>
-  </view>
+<view class="nav" style="padding-top:{{statusBar}}px">
+  <view class="nav-l" bindtap="back"><text class="back">‹</text><text class="ntitle">装备详情</text></view>
 </view>
 
 <scroll-view scroll-y wx:if="{{r}}">
   <view class="d-top">🎾</view>
   <view class="db">
-    <view class="etop" style="margin-bottom:6rpx">
-      <text class="ebrand">{{r.brand}}</text>
-      <text class="etype">{{r.type}}</text>
-    </view>
+    <view class="etop"><text class="ebrand">{{r.brand}}</text><text class="etype">{{r.type}}</text></view>
     <view class="dname">{{r.model}}</view>
     <view class="dstar" wx:if="{{r.star}}">⭐ {{r.star}}</view>
   </view>
@@ -33,27 +27,24 @@
   <view class="db">
     <view class="dh">参考价格</view>
     <view class="prices">
-      <view class="pc">
-        <text class="pcn">泰摩网球</text>
-        <text class="pca">¥{{r.price - 200}}</text>
+      <view class="pc" bindtap="goBuy" data-link="https://s.click.taobao.com/xxx">
+        <text class="pcn">淘宝</text><text class="pca">¥{{r.price - 200}}</text>
+        <text class="pcl">点击购买→</text>
       </view>
-      <view class="pc">
-        <text class="pcn">天猫旗舰</text>
-        <text class="pca" style="color:var(--t);font-weight:400">¥{{r.price}}</text>
+      <view class="pc" bindtap="goBuy" data-link="https://s.click.taobao.com/yyy">
+        <text class="pcn">天猫</text><text class="pca2">¥{{r.price}}</text>
+        <text class="pcl">点击购买→</text>
       </view>
-      <view class="pc">
-        <text class="pcn">京东</text>
-        <text class="pca" style="color:var(--t);font-weight:400">¥{{r.price - 81}}</text>
+      <view class="pc" bindtap="goBuy" data-link="https://s.click.jd.com/zzz">
+        <text class="pcn">京东</text><text class="pca2">¥{{r.price - 81}}</text>
+        <text class="pcl">点击购买→</text>
       </view>
     </view>
   </view>
 
   <view class="db">
     <view class="dh">球友讨论</view>
-    <view class="cmt" wx:for="{{[1,2]}}" wx:key="*this">
-      <view class="cu"><text class="cun">老张</text><text class="cus">★★★★★</text></view>
-      <view class="ct">用了半年，控制感极好。比v8更吃球，反手切削稳多了。</view>
-      <view class="cm">12 赞 · 2天前</view>
-    </view>
+    <view class="cmt"><view class="cu"><text class="cun">老张</text><text class="cus">★★★★★</text></view><view class="ct">用了半年，控制感极好。比v8更吃球，反手切削稳多了。</view><view class="cm">12 赞 · 2天前</view></view>
+    <view class="cmt"><view class="cu"><text class="cun">小美</text><text class="cus">★★★★</text></view><view class="ct">颜值满分，甜区偏小新手慎重。从Clash换过来需要适应几周。</view><view class="cm">8 赞 · 5天前</view></view>
   </view>
 </scroll-view>
