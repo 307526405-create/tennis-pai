@@ -10,7 +10,6 @@
   <view class="tab {{a==2?'on':''}}" bindtap="sw" data-i="2">球场</view>
 </view>
 
-<!-- 球友 -->
 <view wx:if="{{a==0}}">
   <view class="list">
     <view class="card" wx:for="{{ps}}" wx:key="id" bindtap="toP">
@@ -24,7 +23,6 @@
   </view>
 </view>
 
-<!-- 活动 -->
 <view wx:if="{{a==1}}">
   <view class="list">
     <view class="evt" wx:for="{{es}}" wx:key="id">
@@ -40,7 +38,6 @@
   </view>
 </view>
 
-<!-- 球场 -->
 <view wx:if="{{a==2}}">
   <view class="map-box">
     <view class="mp" wx:for="{{cs}}" wx:key="id" style="top:{{item.y}}%;left:{{item.x}}%"><view class="mp-dot"></view><text class="mp-lb">{{item.name}}</text></view>
@@ -52,10 +49,4 @@
       <text class="vd">{{item.ds}}</text>
     </view>
   </view>
-</view>
-
-<view class="tabbar">
-  <view class="tb on">发现</view>
-  <view class="tb" bindtap="eq">装备库</view>
-  <view class="tb" bindtap="pf">我的</view>
 </view>

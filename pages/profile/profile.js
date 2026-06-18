@@ -1,1 +1,1 @@
-Page({data:{s:44},onLoad(){this.setData({s:wx.getSystemInfoSync().statusBarHeight})},eq(){wx.navigateTo({url:'/pages/detail/detail?id=0'})},disc(){wx.switchTab({url:'/pages/discover/discover'})},eqp(){wx.switchTab({url:'/pages/equipment/equipment'})}});
+Page({data:{s:44},onLoad(){this.setData({s:wx.getSystemInfoSync().statusBarHeight})},eq(){wx.navigateTo({url:'/pages/detail/detail?id=0'})}});

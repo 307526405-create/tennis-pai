@@ -15,4 +15,3 @@
     <text class="eq-price">¥{{item.price}}</text>
   </view>
 </view>
-<view class="tabbar"><view class="tb" bindtap="disc">发现</view><view class="tb on">装备库</view><view class="tb" bindtap="pf">我的</view></view>
