@@ -1,5 +1,8 @@
 <view class="nav" style="padding-top:{{s}}px">
-  <text class="brand">网球<text class="brand-ac">派</text></text>
+  <view class="brand-wrap">
+    <text class="brand">网球<text class="brand-ac">派</text></text>
+    <text class="brand-en">TENNIS ID</text>
+  </view>
 </view>
 
 <view class="tabs">
