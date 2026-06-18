@@ -1,10 +1,1 @@
-page {
-  --bg: #0A140A; --p: #0F1D0F; --p2: #162716; --b: #1D331D; --b2: #253D25;
-  --t: #E8EFE8; --t2: #8A9E8A; --t3: #5A6E5A;
-  --ac: #B8D430; --ac2: #9AB820;
-  background: var(--bg); color: var(--t);
-  font-family: -apple-system, "PingFang SC", sans-serif;
-  font-size: 26rpx; font-weight: 400;
-  line-height: 1.3;
-  padding-bottom: 120rpx;
-}
+page{--g1:#1B5E3B;--g2:#2E8B57;--g3:#3DAF6E;--bg:#F5F7F3;--card:#FFF;--b:#D4DFCF;--t:#1A2E1A;--t2:#6B7F6B;--t3:#9AAE9A;--cream:#FBF9F3;background:var(--bg);color:var(--t);font-family:-apple-system,"PingFang SC",sans-serif;font-size:26rpx;font-weight:400;line-height:1.3}

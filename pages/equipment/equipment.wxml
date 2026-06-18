@@ -1,34 +1,10 @@
-<view class="top-bar" style="padding-top:{{statusBar}}px">
-  <view class="tb-brand">装备库</view>
-</view>
-<view class="sub-tabs">
-  <view class="st {{eqTab==0?'on':''}}" bindtap="setTab" data-i="0">球拍</view>
-  <view class="st {{eqTab==1?'on':''}}" bindtap="setTab" data-i="1">球鞋</view>
-  <view class="st {{eqTab==2?'on':''}}" bindtap="setTab" data-i="2">球线</view>
-  <view class="st {{eqTab==3?'on':''}}" bindtap="setTab" data-i="3">服装</view>
-</view>
-<scroll-view scroll-x class="lv-bar">
-  <view class="lv lv-on">全部</view>
-  <view class="lv">Wilson</view>
-  <view class="lv">Babolat</view>
-  <view class="lv">HEAD</view>
-  <view class="lv">Yonex</view>
-  <view class="lv">控制型</view>
-  <view class="lv">力量型</view>
-</scroll-view>
-<view class="list">
-  <view class="row" wx:for="{{rackets}}" wx:key="id" bindtap="toDetail" data-id="{{index}}">
-    <view class="eq-thumb">🎾</view>
-    <view class="r-i">
-      <view class="eq-brand">{{item.brand}}</view>
-      <view class="r-top"><text class="r-n">{{item.model}}</text></view>
-      <text class="r-gear">{{item.head}}in² · {{item.weight}} · {{item.balance}} · {{item.type}}</text>
-    </view>
-    <view class="eq-price">¥{{item.price}}</view>
+<view class="nav" style="padding-top:{{s}}px"><text class="brand">装备<text class="brand-ac">库</text></text></view>
+<view class="eq-tabs"><view class="eqt on">球拍</view><view class="eqt">球鞋</view><view class="eqt">球线</view><view class="eqt">服装</view></view>
+<view class="eq-list">
+  <view class="eqi" wx:for="{{rs}}" wx:key="id" bindtap="toD" data-id="{{index}}">
+    <view class="eqi-thumb">🎾</view>
+    <view class="eqi-i"><view class="eqi-b">{{item.brand}}</view><view class="eqi-n">{{item.model}}</view><view class="eqi-s">{{item.head}}in² · {{item.weight}} · {{item.balance}}</view></view>
+    <text class="eqi-p">¥{{item.price}}</text>
   </view>
 </view>
-<view class="ctab">
-  <view class="ct" bindtap="go" data-p="discover">发现</view>
-  <view class="ct on">装备库</view>
-  <view class="ct" bindtap="go" data-p="profile">我的</view>
-</view>
+<view class="tabbar"><view class="tb" bindtap="disc">发现</view><view class="tb on">装备库</view><view class="tb" bindtap="pf">我的</view></view>

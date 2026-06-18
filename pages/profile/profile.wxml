@@ -1,49 +1,21 @@
-<view class="top-bar" style="padding-top:{{statusBar}}px">
-  <view class="tb-brand">我的名片</view>
-  <view class="tb-edit">编辑</view>
-</view>
+<view class="nav" style="padding-top:{{s}}px"><text class="brand">我的<text class="brand-ac">名片</text></text></view>
 <scroll-view scroll-y>
-  <view class="pro-cover"><view class="pro-av">张</view></view>
-  <view class="p-name">老张</view>
-  <view class="p-lv">NTRP 3.5 · Elo 1512</view>
-  <view class="p-loc">北京 · 朝阳区</view>
+  <view class="cover"></view>
+  <view class="pav">张</view>
+  <view class="pnm">老张</view><view class="plv">NTRP 3.5 · Elo 1512</view><view class="plc">北京 · 朝阳区</view>
 
-  <view class="stats">
-    <view class="stt"><text class="sn">32</text><text class="sl">场次</text></view>
-    <view class="stt"><text class="sn">58%</text><text class="sl">胜率</text></view>
-    <view class="stt"><text class="sn">4.7</text><text class="sl">评分</text></view>
+  <view class="stats"><view><text class="sn">32</text><text class="sl">场次</text></view><view><text class="sn">58%</text><text class="sl">胜率</text></view><view><text class="sn">4.7</text><text class="sl">评分</text></view></view>
+
+  <view class="pb"><view class="ph">风格</view><view class="pts"><text class="pt">底线进攻型</text><text class="pt">正手强</text><text class="pt">移动快</text></view></view>
+  <view class="pb"><view class="ph">装备</view><view class="pts"><text class="pt pt-a" bindtap="eq">Blade 98 v9</text><text class="pt">Luxilon 4G</text><text class="pt">Vapor Pro 3</text></view></view>
+  <view class="pb"><view class="ph">最近参加</view>
+    <view class="mr"><text class="mb mw">WIN</text><text class="mi">vs <text class="mn">小李</text> 6-4 6-3 · 朝阳公园</text><text class="md">6.15</text></view>
+    <view class="mr"><text class="mb mw">WIN</text><text class="mi">vs <text class="mn">大刘</text> 7-5 4-6 10-8 · 国网中心</text><text class="md">6.08</text></view>
+    <view class="mr"><text class="mb ml">LOSS</text><text class="mi">vs <text class="mn">阿强</text> 3-6 4-6 · 国网中心</text><text class="md">6.01</text></view>
   </view>
-
-  <view class="pbox">
-    <view class="pb-h">风格</view>
-    <view class="pb-tags"><view class="pb-t">底线进攻型</view><view class="pb-t">正手强</view><view class="pb-t">移动快</view></view>
-  </view>
-
-  <view class="pbox">
-    <view class="pb-h">装备</view>
-    <view class="pb-tags">
-      <view class="pb-t pb-ta" bindtap="toEquip">Blade 98 v9</view>
-      <view class="pb-t">Luxilon 4G</view>
-      <view class="pb-t">Vapor Pro 3</view>
-    </view>
-  </view>
-
-  <view class="pbox">
-    <view class="pb-h">最近参加</view>
-    <view class="mr"><view class="mr-b mr-w">WIN</view><view class="mr-i">vs <text class="mr-n">小李</text> 6-4 6-3 · 朝阳公园</view><view class="mr-d">6.15</view></view>
-    <view class="mr"><view class="mr-b mr-w">WIN</view><view class="mr-i">vs <text class="mr-n">大刘</text> 7-5 4-6 10-8 · 国网中心</view><view class="mr-d">6.08</view></view>
-    <view class="mr"><view class="mr-b mr-l">LOSS</view><view class="mr-i">vs <text class="mr-n">阿强</text> 3-6 4-6 · 国网中心</view><view class="mr-d">6.01</view></view>
-  </view>
-
-  <view class="pbox">
-    <view class="pb-h">球友评价</view>
-    <view class="rv"><text class="rv-n">小李</text> 反手很稳，守时靠谱，每次约球都很愉快！</view>
-    <view class="rv"><text class="rv-n">阿强</text> 正手太猛了，学到了很多。</view>
+  <view class="pb"><view class="ph">球友评价</view>
+    <view class="rv">小李 反手很稳，守时靠谱，每次约球都很愉快！</view>
+    <view class="rv">阿强 正手太猛了，学到了很多。</view>
   </view>
 </scroll-view>
-
-<view class="ctab">
-  <view class="ct" bindtap="go" data-p="discover">发现</view>
-  <view class="ct" bindtap="go" data-p="equipment">装备库</view>
-  <view class="ct on">我的</view>
-</view>
+<view class="tabbar"><view class="tb" bindtap="disc">发现</view><view class="tb" bindtap="eqp">装备库</view><view class="tb on">我的</view></view>

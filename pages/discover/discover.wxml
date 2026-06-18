@@ -1,65 +1,51 @@
-<!-- 自定义顶栏 -->
-<view class="top-bar" style="padding-top:{{statusBar}}px">
-  <view class="tb-brand">网球<text class="tb-ac">派</text></view>
-  <view class="tb-loc">{{loc}}</view>
+<view class="nav" style="padding-top:{{s}}px"><text class="brand">网球<text class="brand-ac">派</text></text><text class="loc">{{loc}}</text></view>
+<view class="spacer"></view>
+
+<view class="tabs">
+  <view class="tab {{a==0?'on':''}}" bindtap="sw" data-i="0">球友</view>
+  <view class="tab {{a==1?'on':''}}" bindtap="sw" data-i="1">活动</view>
+  <view class="tab {{a==2?'on':''}}" bindtap="sw" data-i="2">球场</view>
 </view>
 
-<!-- 子Tab -->
-<view class="sub-tabs">
-  <view class="st {{active==0?'on':''}}" bindtap="sw" data-i="0">球友</view>
-  <view class="st {{active==1?'on':''}}" bindtap="sw" data-i="1">活动</view>
-  <view class="st {{active==2?'on':''}}" bindtap="sw" data-i="2">球场</view>
-</view>
-
-<!-- 球友 -->
-<view class="pg" wx:if="{{active==0}}">
-  <scroll-view scroll-x class="lv-bar">
-    <view class="lv {{item.on?'lv-on':''}}" wx:for="{{levels}}" wx:key="*this" bindtap="fl" data-i="{{index}}">{{item}}</view>
-  </scroll-view>
+<view wx:if="{{a==0}}">
   <view class="list">
-    <view class="row" wx:for="{{players}}" wx:key="id" bindtap="toProfile">
-      <view class="r-av" style="background:{{item.c}}">{{item.a}}</view>
-      <view class="r-i">
-        <view class="r-top"><text class="r-n">{{item.n}}</text><text class="r-lv">{{item.lv}}</text><text class="r-st">{{item.st}}</text></view>
-        <text class="r-gear">{{item.g}} · {{item.ct}}</text>
+    <view class="card" wx:for="{{ps}}" wx:key="id" bindtap="toP">
+      <view class="av" style="background:{{item.c}}">{{item.a}}</view>
+      <view class="info">
+        <view class="top"><text class="name">{{item.n}}</text><text class="lv">{{item.lv}}</text><text class="st">{{item.st}}</text></view>
+        <text class="gear">{{item.g}} · {{item.ct}}</text>
       </view>
-      <view class="r-sc"><text class="r-el">{{item.el}}</text><text class="r-pct">{{item.pct}}</text></view>
+      <view class="sc"><text class="el">{{item.el}}</text><text class="pct">{{item.pct}}</text></view>
     </view>
   </view>
 </view>
 
-<!-- 活动 -->
-<view class="pg" wx:if="{{active==1}}">
-  <view class="evt" wx:for="{{events}}" wx:key="id">
-    <view class="ev-badge {{item.full?'ev-full':''}}">{{item.full?'已满':'报名中'}}</view>
-    <view class="ev-t">{{item.t}}</view>
-    <view class="ev-m">{{item.date}} · {{item.ct}} · {{item.lv}}</view>
-    <view class="ev-bar">
-      <view class="ev-avs"><view class="ev-av" wx:for="{{item.avs}}" wx:key="*this" style="background:{{item}}"></view></view>
-      <text class="ev-num">{{item.n}}/{{item.tn}}人</text>
-      <view class="ev-btn {{item.full?'ev-btn-f':''}}">{{item.full?'已满':'报名'}}</view>
+<view wx:if="{{a==1}}">
+  <view class="evt" wx:for="{{es}}" wx:key="id">
+    <view class="badge {{item.f?'full':''}}">{{item.f?'已满':'报名中'}}</view>
+    <view class="title">{{item.t}}</view>
+    <view class="meta">{{item.d}} · {{item.ct}} · {{item.lv}}</view>
+    <view class="bar">
+      <view class="avs"><view class="avm" wx:for="{{item.avs}}" wx:key="*this" style="background:{{item}}"></view></view>
+      <text class="num">{{item.n}}/{{item.tn}}人</text>
+      <view class="btn {{item.f?'btn-f':''}}">{{item.f?'已满':'报名'}}</view>
     </view>
   </view>
 </view>
 
-<!-- 球场 -->
-<view class="pg" wx:if="{{active==2}}">
-  <view class="map-box">
-    <view class="mp-pin" wx:for="{{courts}}" wx:key="id" style="top:{{item.y}}%;left:{{item.x}}%"></view>
-    <view class="mp-lb" wx:for="{{courts}}" wx:key="id" style="top:{{item.y-7}}%;left:{{item.x-5}}%">{{item.name}}</view>
-  </view>
-  <view class="list">
-    <view class="row" wx:for="{{courts}}" wx:key="id">
-      <view class="vn-no">{{index+1}}</view>
-      <view class="r-i"><text class="r-n">{{item.name}}</text><view class="vn-sub">{{item.fd}}片 · {{item.io}} · {{item.ft}}</view></view>
-      <text class="vn-ds">{{item.ds}}</text>
+<view wx:if="{{a==2}}">
+  <view class="map"><view class="pin" wx:for="{{cs}}" wx:key="id" style="top:{{item.y}}%;left:{{item.x}}%"></view><view class="lb" wx:for="{{cs}}" wx:key="id" style="top:{{item.y-7}}%;left:{{item.x-5}}%">{{item.name}}</view></view>
+  <view class="ven">
+    <view class="v" wx:for="{{cs}}" wx:key="id">
+      <view class="no">{{index+1}}</view>
+      <view class="vi"><view class="vn">{{item.name}}</view><view class="vs">{{item.fd}}片 · {{item.io}} · {{item.ft}}</view></view>
+      <text class="vd">{{item.ds}}</text>
     </view>
   </view>
 </view>
 
-<!-- 自定义TabBar -->
-<view class="ctab">
-  <view class="ct {{ctab==0?'on':''}}" bindtap="go" data-p="discover">发现</view>
-  <view class="ct {{ctab==1?'on':''}}" bindtap="go" data-p="equipment">装备库</view>
-  <view class="ct {{ctab==2?'on':''}}" bindtap="go" data-p="profile">我的</view>
+<view class="tabbar">
+  <view class="tb on">发现</view>
+  <view class="tb" bindtap="eq">装备库</view>
+  <view class="tb" bindtap="pf">我的</view>
 </view>
