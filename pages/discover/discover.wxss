@@ -28,6 +28,7 @@
 .cf-i{width:100%;padding:16rpx 0;font-size:26rpx;color:var(--t);border-bottom:1rpx solid #F0F0F0;margin-bottom:8rpx}
 .cf-row{display:flex;gap:16rpx}.cf-s{flex:1}
 .cf-btn{text-align:center;padding:20rpx;background:var(--g2);color:#fff;border-radius:12rpx;font-size:26rpx;font-weight:600;margin-top:16rpx}
+.evt{padding:24rpx 0;border-bottom:1rpx solid #F0F0F0}
 .evt-top{display:flex;align-items:center;gap:12rpx;margin-bottom:8rpx}
 .evt-date{font-size:22rpx;color:var(--t3)}
 .badge{font-size:18rpx;font-weight:600;padding:2rpx 10rpx;border-radius:3rpx;background:rgba(46,139,87,.08);color:var(--g2)}
