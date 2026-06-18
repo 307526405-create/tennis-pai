@@ -1,0 +1,16 @@
+.page{background:var(--bg);min-height:100vh;padding:0 40rpx}
+.card{background:var(--card);border-radius:24rpx;padding:40rpx;margin-top:24rpx;box-shadow:0 4rpx 16rpx rgba(0,0,0,.06)}
+.c-top{display:flex;align-items:center;gap:20rpx;margin-bottom:32rpx}
+.c-av{width:80rpx;height:80rpx;border-radius:50%;background:var(--g2);color:#fff;font-size:32rpx;font-weight:600;display:flex;align-items:center;justify-content:center}
+.c-name{font-size:32rpx;font-weight:600;color:var(--t);flex:1}
+.c-lv{font-size:26rpx;color:var(--g2);font-weight:600}
+.c-stats{display:flex;gap:16rpx;margin-bottom:32rpx}
+.cs{flex:1;background:var(--bg);border-radius:12rpx;padding:24rpx;text-align:center}
+.csn{font-size:40rpx;font-weight:600;color:var(--g1);display:block}
+.csl{font-size:20rpx;color:var(--t3);display:block;margin-top:4rpx}
+.c-row{display:flex;gap:16rpx;padding:20rpx 0;border-bottom:1rpx solid #F0F0F0}
+.cl{font-size:24rpx;color:var(--t3);width:80rpx}.cv{font-size:24rpx;color:var(--t);font-weight:500}
+.c-qr{text-align:center;padding:32rpx 0 16rpx;font-size:22rpx;color:var(--t3)}
+.actions{display:flex;gap:16rpx;padding:40rpx 0}
+.btn{flex:1;height:88rpx;display:flex;align-items:center;justify-content:center;background:var(--g2);color:#fff;border-radius:16rpx;font-size:28rpx;font-weight:600}
+.btn-share{background:var(--t);color:#fff}

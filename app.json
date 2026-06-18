@@ -5,6 +5,7 @@
     "pages/detail/detail",
     "pages/search/search",
     "pages/edit/edit",
+    "pages/share/share",
     "pages/profile/profile"
   ],
   "window": {
