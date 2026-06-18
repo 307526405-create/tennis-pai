@@ -1,5 +1,5 @@
-.eq-tabs{display:flex;margin:20rpx 40rpx;gap:0;border-bottom:1rpx solid #E8E8E8}
-.eqt{padding:16rpx 0;margin-right:48rpx;font-size:24rpx;color:var(--t3);font-weight:400}
+.eq-tabs{display:flex;margin:16rpx 40rpx;gap:0;border-bottom:1rpx solid #E8E8E8}
+.eqt{padding:16rpx 0;margin-right:48rpx;font-size:28rpx;color:var(--t3);font-weight:400}
 .eqt.on{color:var(--t);font-weight:600;border-bottom:2rpx solid var(--g2);margin-bottom:-1rpx}
 
 .brand-bar{display:flex;gap:12rpx;padding:16rpx 40rpx;white-space:nowrap}
