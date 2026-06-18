@@ -1,0 +1,6 @@
+<van-tabs active="{{ active }}" bind:change="onTabChange" color="#07C160" title-active-color="#333" title-inactive-color="#999" sticky>
+  <van-tab title="球拍"><view class="eq-list" wx:for="{{rackets}}" wx:key="id"><van-cell bind:click="onTap" data-id="{{item.id}}" custom-class="eq-row"><view slot="title" class="eq-item"><view class="eq-thumb">🎾</view><view class="eq-info"><view class="eq-brand">{{item.brand}}</view><view class="eq-name">{{item.model}}</view><view class="eq-spec">{{item.head}}in² · {{item.weight}} · {{item.balance}}</view></view><text class="eq-price">¥{{item.price}}</text></view></van-cell></view></van-tab>
+  <van-tab title="球鞋"><view style="padding:40rpx;text-align:center;color:#999">球鞋数据整理中...</view></van-tab>
+  <van-tab title="球线"><view style="padding:40rpx;text-align:center;color:#999">球线数据整理中...</view></van-tab>
+  <van-tab title="服装"><view style="padding:40rpx;text-align:center;color:#999">服装数据整理中...</view></van-tab>
+</van-tabs>

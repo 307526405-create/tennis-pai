@@ -1,0 +1,36 @@
+<scroll-view scroll-y>
+  <view class="pro-cover"></view>
+  <view class="pro-av">张</view>
+  <view class="pro-name">老张</view>
+  <view class="pro-lv">NTRP 3.5 · Elo 1512</view>
+  <view class="pro-loc">北京 · 朝阳区</view>
+
+  <view class="pro-stats">
+    <view><text class="bn">32</text><text class="bl">场次</text></view>
+    <view><text class="bn">58%</text><text class="bl">胜率</text></view>
+    <view><text class="bn">4.7</text><text class="bl">评分</text></view>
+  </view>
+
+  <view class="ps-box">
+    <view class="ps-h">风格</view>
+    <view class="ps-tags"><van-tag type="default" size="medium">底线进攻型</van-tag><van-tag type="default" size="medium">正手强</van-tag><van-tag type="default" size="medium">移动快</van-tag></view>
+  </view>
+
+  <view class="ps-box">
+    <view class="ps-h">装备</view>
+    <view class="ps-tags"><van-tag type="default" size="medium" bind:click="onEquipTap">Blade 98 v9</van-tag><van-tag type="default" size="medium">Luxilon 4G</van-tag><van-tag type="default" size="medium">Vapor Pro 3</van-tag></view>
+  </view>
+
+  <view class="ps-box">
+    <view class="ps-h">最近参加</view>
+    <view class="m-row"><view class="mr win">WIN</view><view class="mi">vs <text style="font-weight:600">小李</text> 6-4 6-3 · 朝阳公园</view><view class="md">6.15</view></view>
+    <view class="m-row"><view class="mr win">WIN</view><view class="mi">vs <text style="font-weight:600">大刘</text> 7-5 4-6 10-8 · 国网中心</view><view class="md">6.08</view></view>
+    <view class="m-row"><view class="mr loss">LOSS</view><view class="mi">vs <text style="font-weight:600">阿强</text> 3-6 4-6 · 国网中心</view><view class="md">6.01</view></view>
+  </view>
+
+  <view class="ps-box">
+    <view class="ps-h">球友评价</view>
+    <view class="rv"><text class="rv-n">小李</text> 反手很稳，守时靠谱，每次约球都很愉快！</view>
+    <view class="rv"><text class="rv-n">阿强</text> 正手太猛了，学到了很多。</view>
+  </view>
+</scroll-view>

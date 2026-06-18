@@ -1,0 +1,56 @@
+<scroll-view scroll-y wx:if="{{racket}}">
+  <view class="d-top">🎾</view>
+  <view class="d-body">
+    <view class="d-brand">{{racket.brand}}</view>
+    <view class="d-name">{{racket.model}}</view>
+    <view class="d-rate" wx:if="{{racket.star}}">4.7 · 128人评价 · {{racket.star}}</view>
+    <view class="d-rate" wx:else>4.7 · 128人评价</view>
+    <view class="d-tags">
+      <van-tag type="success" size="medium">{{racket.type}}</van-tag>
+      <van-tag type="success" size="medium" wx:if="{{racket.star}}">{{racket.star}}</van-tag>
+    </view>
+
+    <view class="sec-t">参数</view>
+    <view class="s-grid">
+      <view class="sg"><text class="sgl">拍面</text><text class="sgv">{{racket.head}} sq in</text></view>
+      <view class="sg"><text class="sgl">重量</text><text class="sgv">{{racket.weight}}</text></view>
+      <view class="sg"><text class="sgl">平衡</text><text class="sgv">{{racket.balance}}</text></view>
+      <view class="sg"><text class="sgl">线床</text><text class="sgv">{{racket.pattern}}</text></view>
+      <view class="sg"><text class="sgl">硬度</text><text class="sgv">RA {{racket.ra}}</text></view>
+      <view class="sg"><text class="sgl">挥重</text><text class="sgv">{{racket.sw}}</text></view>
+      <view class="sg"><text class="sgl">拍框</text><text class="sgv">{{racket.beam}}</text></view>
+      <view class="sg"><text class="sgl">长度</text><text class="sgv">27 in</text></view>
+    </view>
+
+    <view class="sec-t">比价</view>
+    <view class="price-row">
+      <view class="p-card">
+        <text class="pc-s">泰摩网球</text>
+        <text class="pc-a">¥{{racket.price - 200}}</text>
+        <text class="pc-l">去购买 ›</text>
+      </view>
+      <view class="p-card">
+        <text class="pc-s">天猫旗舰</text>
+        <text class="pc-a" style="color:#333;font-weight:400">¥{{racket.price}}</text>
+        <text class="pc-l">去购买 ›</text>
+      </view>
+      <view class="p-card">
+        <text class="pc-s">京东</text>
+        <text class="pc-a" style="color:#333;font-weight:400">¥{{racket.price - 81}}</text>
+        <text class="pc-l">去购买 ›</text>
+      </view>
+    </view>
+
+    <view class="sec-t">球友讨论 · 86条</view>
+    <view class="comment">
+      <view class="c-user">老张 ★★★★★</view>
+      <view class="c-text">用了半年，控制感极好。比v8更吃球，反手切削稳多了。配Luxilon 4G 52磅。</view>
+      <view class="c-meta">12 赞 · 回复 · 2天前</view>
+    </view>
+    <view class="comment">
+      <view class="c-user">小美 ★★★★</view>
+      <view class="c-text">颜值满分，甜区偏小新手慎重。从Clash换过来需要适应几周。</view>
+      <view class="c-meta">8 赞 · 回复 · 5天前</view>
+    </view>
+  </view>
+</scroll-view>

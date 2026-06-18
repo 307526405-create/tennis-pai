@@ -1,0 +1,65 @@
+<!-- 发现球友 -->
+<view class="loc-bar">{{location}} <text style="font-size:22rpx;color:#999">▼</text></view>
+
+<van-tabs active="{{ active }}" bind:change="onTabChange" color="#07C160" title-active-color="#333" title-inactive-color="#999" sticky>
+  <van-tab title="球友">
+    <scroll-view scroll-x class="filter-row">
+      <van-tag wx:for="{{levels}}" wx:key="index" type="{{item.active ? 'primary' : ''}}" size="medium" custom-class="filter-tag" data-index="{{index}}" bind:click="onLevelTap">{{item.name}}</van-tag>
+    </scroll-view>
+    <van-cell-group border="{{false}}">
+      <van-cell wx:for="{{players}}" wx:key="id" bind:click="onPlayerTap" data-id="{{item.id}}" custom-class="player-cell">
+        <view slot="title" class="player-row">
+          <view class="p-av" style="background:{{item.color}}">{{item.avatar}}</view>
+          <view class="p-info">
+            <view class="p-top">
+              <text class="p-name">{{item.name}}</text>
+              <van-tag type="success" size="mini">{{item.level}}</van-tag>
+              <text class="p-style">{{item.style}}</text>
+            </view>
+            <text class="p-gear">{{item.gear}} · {{item.court}}</text>
+          </view>
+          <view class="p-score">
+            <text class="p-elo">{{item.elo}}</text>
+            <text class="p-pct">{{item.pct}}</text>
+          </view>
+        </view>
+      </van-cell>
+    </van-cell-group>
+  </van-tab>
+
+  <van-tab title="活动">
+    <view class="evt-list">
+      <view class="evt-card" wx:for="{{events}}" wx:key="id">
+        <van-tag type="{{item.full ? 'danger' : 'success'}}" size="medium" custom-class="evt-badge">{{item.badge}}</van-tag>
+        <view class="evt-title">{{item.title}}</view>
+        <view class="evt-meta">{{item.date}} · {{item.court}} · {{item.level}}</view>
+        <view class="evt-bar">
+          <view class="evt-avs">
+            <view class="evt-av" wx:for="{{item.avatars}}" wx:for-item="av" wx:key="*this" style="background:{{av}}"></view>
+          </view>
+          <text class="evt-num">{{item.count}}/{{item.total}}人</text>
+          <van-button type="{{item.full ? 'default' : 'primary'}}" size="small" round custom-class="join-btn" disabled="{{item.full}}">{{item.full ? '已满' : '报名'}}</van-button>
+        </view>
+      </view>
+    </view>
+  </van-tab>
+
+  <van-tab title="球场">
+    <view class="map-box">
+      <view class="map-pin" wx:for="{{courts}}" wx:key="id" style="top:{{item.top}}%;left:{{item.left}}%"></view>
+      <view class="map-label" wx:for="{{courts}}" wx:key="id" style="top:{{item.top - 6}}%;left:{{item.left - 6}}%">{{item.name}}</view>
+    </view>
+    <van-cell-group border="{{false}}">
+      <van-cell wx:for="{{courts}}" wx:key="id" custom-class="court-cell">
+        <view slot="title" class="court-row">
+          <view class="vn-num">{{index + 1}}</view>
+          <view class="vn-info">
+            <view class="vn-name">{{item.name}}</view>
+            <view class="vn-meta">{{item.fields}}片 · {{item.indoor}} · {{item.feature}}</view>
+          </view>
+          <text class="vn-dist">{{item.dist}}</text>
+        </view>
+      </van-cell>
+    </van-cell-group>
+  </van-tab>
+</van-tabs>
