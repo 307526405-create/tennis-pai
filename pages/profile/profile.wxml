@@ -1,4 +1,15 @@
-<view class="nav" style="padding-top:{{s}}px"><text class="brand">我的<text class="brand-ac">名片</text></text></view>
+<view class="nav" style="padding-top:{{s}}px">
+  <view class="brand-wrap">
+    <view class="brand-row">
+      <text class="brand">网球</text>
+      <view class="pai-wrap">
+        <text class="brand-ac">派</text>
+        <view class="pai-line"></view>
+      </view>
+    </view>
+    <text class="brand-en">TENNIS PAI</text>
+  </view>
+</view>
 <scroll-view scroll-y>
   <view class="cover"></view><view class="pav">张</view><view class="pnm">老张</view><view class="plv">NTRP 3.5 · Elo 1512</view><view class="plc">北京 · 朝阳区</view>
   <view class="sts"><view><text class="sn">32</text><text class="sl">场次</text></view><view><text class="sn">58%</text><text class="sl">胜率</text></view><view><text class="sn">4.7</text><text class="sl">评分</text></view></view>

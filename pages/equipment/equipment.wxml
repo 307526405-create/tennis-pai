@@ -1,6 +1,14 @@
 <view class="nav" style="padding-top:{{s}}px">
-  <text class="brand">装备<text class="brand-ac">库</text></text>
-  <text class="brand-en" style="margin-left:16rpx">EQUIPMENT</text>
+  <view class="brand-wrap">
+    <view class="brand-row">
+      <text class="brand">网球</text>
+      <view class="pai-wrap">
+        <text class="brand-ac">派</text>
+        <view class="pai-line"></view>
+      </view>
+    </view>
+    <text class="brand-en">TENNIS PAI</text>
+  </view>
 </view>
 
 <view class="eq-tabs">
