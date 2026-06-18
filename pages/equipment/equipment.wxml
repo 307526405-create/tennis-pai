@@ -21,14 +21,12 @@
   <view class="fi {{ti==i?'on':''}}" wx:for="{{types}}" wx:key="*this" bindtap="selType" data-i="{{index}}">{{item}}</view>
 </view>
 
-<scroll-view scroll-y class="elist">
-  <view class="erow" wx:for="{{rs}}" wx:key="id" bindtap="toD" data-id="{{index}}">
-    <view class="ethumb">🎾</view>
-    <view class="einfo">
-      <view class="etop"><text class="ebrand">{{item.brand}}</text><text class="etype">{{item.type}}</text></view>
-      <view class="ename">{{item.model}}</view>
-      <view class="espec">{{item.head}}in² · {{item.weight}} · {{item.balance}} · RA{{item.ra}}</view>
+<scroll-view scroll-y class="grid">
+  <view class="card" wx:for="{{rs}}" wx:key="id" bindtap="toD" data-id="{{index}}">
+    <view class="card-img">🎾</view>
+    <view class="card-body">
+      <view class="card-name">{{item.model}}</view>
+      <view class="card-price">¥{{item.price}}</view>
     </view>
-    <view class="eright"><text class="eprice">¥{{item.price}}</text></view>
   </view>
 </scroll-view>

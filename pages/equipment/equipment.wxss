@@ -11,14 +11,9 @@
 .fi{padding:8rpx 20rpx;font-size:22rpx;color:var(--t2);background:#FFF;border:1rpx solid #E8E8E8;border-radius:16rpx}
 .fi.on{background:var(--t);color:#fff;border-color:var(--t);font-weight:600}
 
-.elist{margin:0 40rpx}
-.erow{display:flex;align-items:center;gap:20rpx;padding:24rpx 0;border-bottom:1rpx solid #F0F0F0}
-.ethumb{width:96rpx;height:96rpx;border-radius:8rpx;background:#F4F8F2;display:flex;align-items:center;justify-content:center;font-size:40rpx;flex-shrink:0}
-.einfo{flex:1;min-width:0}
-.etop{display:flex;align-items:center;gap:10rpx;margin-bottom:4rpx}
-.ebrand{font-size:20rpx;color:var(--t3);font-weight:600}
-.etype{font-size:18rpx;color:var(--g2);background:rgba(46,139,87,.06);padding:1rpx 8rpx;border-radius:3rpx}
-.ename{font-size:28rpx;font-weight:600;color:var(--t);margin-bottom:4rpx}
-.espec{font-size:20rpx;color:var(--t3)}
-.eright{flex-shrink:0;text-align:right}
-.eprice{font-size:28rpx;font-weight:600;color:var(--g1)}
+.grid{display:flex;flex-wrap:wrap;padding:8rpx 32rpx;gap:12rpx}
+.card{width:calc(50% - 6rpx);background:#FFF;border-radius:8rpx;overflow:hidden}
+.card-img{width:100%;height:280rpx;background:#F4F8F2;display:flex;align-items:center;justify-content:center;font-size:56rpx}
+.card-body{padding:16rpx}
+.card-name{font-size:26rpx;font-weight:600;color:var(--t);line-height:1.3}
+.card-price{font-size:30rpx;font-weight:700;color:#C83C3C;margin-top:6rpx}
