@@ -1,53 +1,34 @@
 <view class="nav" style="padding-top:{{s}}px">
   <view class="brand-wrap">
-    <view class="brand-row">
-      <text class="brand">网球</text>
-      <view class="pai-wrap">
-        <text class="brand-ac">派</text>
-        <view class="pai-line"></view>
-      </view>
-    </view>
+    <view class="brand-row"><text class="brand">网球</text><view class="pai-wrap"><text class="brand-ac">派</text><view class="pai-line"></view></view></view>
     <text class="brand-en">TENNIS PAI</text>
   </view>
 </view>
 
 <view class="eq-tabs">
-  <view class="eqt on">球拍</view>
-  <view class="eqt">球鞋</view>
-  <view class="eqt">球线</view>
-  <view class="eqt">服装</view>
+  <view class="eqt on">球拍</view><view class="eqt">球鞋</view><view class="eqt">球线</view><view class="eqt">服装</view>
 </view>
 
-<view class="pick-row">
-  <view class="pick" bindtap="showPick">
-    <text class="pick-t">品牌</text>
-    <text class="pick-v">{{brands[bi]}}</text>
-    <text class="pick-arrow">▼</text>
-  </view>
-  <view class="pick" bindtap="showType">
-    <text class="pick-t">类型</text>
-    <text class="pick-v">{{types[ti]}}</text>
-    <text class="pick-arrow">▼</text>
-  </view>
+<view class="filter">
+  <view class="fg {{showBrand?'fg-open':''}}" bindtap="toggleBrand">品牌<text class="fg-arrow">▼</text></view>
+  <view class="fg {{showType?'fg-open':''}}" bindtap="toggleType">类型<text class="fg-arrow">▼</text></view>
 </view>
 
-<view class="pick-menu" wx:if="{{showBrand}}">
-    <view class="pick-opt {{bi==i?'on':''}}" wx:for="{{brands}}" wx:key="*this" bindtap="selBrand" data-i="{{index}}">{{item}}</view>
-  </view>
+<view class="fo" wx:if="{{showBrand}}">
+  <view class="fi {{bi==i?'on':''}}" wx:for="{{brands}}" wx:key="*this" bindtap="selBrand" data-i="{{index}}">{{item}}</view>
+</view>
+<view class="fo" wx:if="{{showType}}">
+  <view class="fi {{ti==i?'on':''}}" wx:for="{{types}}" wx:key="*this" bindtap="selType" data-i="{{index}}">{{item}}</view>
+</view>
 
-<scroll-view scroll-y class="elist" style="height:calc(100vh - 300rpx)">
+<scroll-view scroll-y class="elist">
   <view class="erow" wx:for="{{rs}}" wx:key="id" bindtap="toD" data-id="{{index}}">
     <view class="ethumb">🎾</view>
     <view class="einfo">
-      <view class="etop">
-        <text class="ebrand">{{item.brand}}</text>
-        <text class="etype">{{item.type}}</text>
-      </view>
+      <view class="etop"><text class="ebrand">{{item.brand}}</text><text class="etype">{{item.type}}</text></view>
       <view class="ename">{{item.model}}</view>
       <view class="espec">{{item.head}}in² · {{item.weight}} · {{item.balance}} · RA{{item.ra}}</view>
     </view>
-    <view class="eright">
-      <text class="eprice">¥{{item.price}}</text>
-    </view>
+    <view class="eright"><text class="eprice">¥{{item.price}}</text></view>
   </view>
 </scroll-view>
