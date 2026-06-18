@@ -1,9 +1,6 @@
 <view class="nav" style="padding-top:{{s}}px">
   <view class="brand-wrap">
-    <view class="brand-row">
-      <text class="brand">网球</text>
-      <view class="pai-wrap"><text class="brand-ac">派</text><view class="pai-line"></view></view>
-    </view>
+    <view class="brand-row"><text class="brand">网球</text><view class="pai-wrap"><text class="brand-ac">派</text><view class="pai-line"></view></view></view>
     <text class="brand-en">TENNIS PAI</text>
   </view>
   <view class="nav-search" bindtap="toSearch"><view class="search-icon"><view class="si-circle"></view><view class="si-line"></view></view></view>
@@ -13,42 +10,24 @@
   <view class="tab {{a==0?'on':''}}" bindtap="sw" data-i="0">球友</view>
   <view class="tab {{a==1?'on':''}}" bindtap="sw" data-i="1">约球</view>
   <view class="tab {{a==2?'on':''}}" bindtap="sw" data-i="2">球场</view>
-  <view class="tab-right">
-    <view class="avail {{avail?'avail-on':''}}" bindtap="toggleAvail">现在有空</view>
-  </view>
 </view>
 
 <view class="feed" wx:if="{{a==0}}">
-  <view class="item" wx:for="{{avail?showActive:ps}}" wx:key="id" bindtap="toP">
+  <view class="item" wx:for="{{ps}}" wx:key="id" bindtap="toP" data-id="{{item.id}}">
     <view class="i-av" style="background:{{item.c}}">{{item.a}}<view class="i-dot {{item.active?'dot-on':'dot-off'}}"></view></view>
-    <view class="i-body">
-      <view class="i-row"><text class="i-name">{{item.n}}</text><text class="i-lv">{{item.lv}}</text><text class="i-el">{{item.el}}</text></view>
-      <view class="i-row3"><text class="i-stat">胜率{{item.pct}}</text><text class="i-stat">{{item.gm}}场</text><text class="i-dist">{{item.ds}}</text></view>
-      <view class="i-row2"><text class="i-gear">{{item.g}}</text></view>
-    </view>
+    <view class="i-body"><view class="i-row"><text class="i-name">{{item.n}}</text><text class="i-lv">{{item.lv}}</text><text class="i-el">{{item.el}}</text></view><view class="i-row3"><text class="i-stat">胜率{{item.pct}}</text><text class="i-stat">{{item.gm}}场</text><text class="i-dist">{{item.ds}}</text></view><view class="i-row2"><text class="i-gear">{{item.g}}</text></view></view>
   </view>
 </view>
 
 <view class="feed" wx:if="{{a==1}}">
   <view class="evt" wx:for="{{es}}" wx:key="id">
     <view class="evt-top"><text class="badge {{item.f?'full':''}}">{{item.f?'已满':'报名中'}}</text><text class="evt-date">{{item.d}}</text></view>
-    <view class="evt-title">{{item.t}}</view>
-    <view class="evt-info">{{item.ct}} · {{item.lv}}</view>
-    <view class="evt-bar">
-      <view class="evt-avs"><view class="ea" wx:for="{{item.avs}}" wx:key="*this" style="background:{{item}}"></view></view>
-      <text class="evt-num">{{item.n}}/{{item.tn}}人</text>
-      <view class="join {{item.f?'join-f':''}}" bindtap="join" data-id="{{item.id}}">{{item.joined?'已报名':(item.f?'已满':'报名')}}</view>
-    </view>
+    <view class="evt-title">{{item.t}}</view><view class="evt-info">{{item.ct}} · {{item.lv}}</view>
+    <view class="evt-bar"><view class="evt-avs"><view class="ea" wx:for="{{item.avs}}" wx:key="*this" style="background:{{item}}"></view></view><text class="evt-num">{{item.n}}/{{item.tn}}人</text><view class="join {{item.f?'join-f':''}}" bindtap="join" data-id="{{item.id}}">{{item.joined?'已报名':(item.f?'已满':'报名')}}</view></view>
   </view>
 </view>
 
 <view class="feed" wx:if="{{a==2}}">
-  <view class="map-box">
-    <view class="mp" wx:for="{{cs}}" wx:key="id" style="top:{{item.y}}%;left:{{item.x}}%"><view class="mdot"></view><text class="mlb">{{item.name}}</text></view>
-  </view>
-  <view class="item" wx:for="{{cs}}" wx:key="id">
-    <view class="vno">{{index+1}}</view>
-    <view class="i-body"><view class="i-name">{{item.name}}</view><view class="i-ct">{{item.fd}}片 · {{item.io}} · {{item.ft}}</view></view>
-    <text class="vd">{{item.ds}}</text>
-  </view>
+  <view class="map-box"><view class="mp" wx:for="{{cs}}" wx:key="id" style="top:{{item.y}}%;left:{{item.x}}%"><view class="mdot"></view><text class="mlb">{{item.name}}</text></view></view>
+  <view class="item" wx:for="{{cs}}" wx:key="id"><view class="vno">{{index+1}}</view><view class="i-body"><view class="i-name">{{item.name}}</view><view class="i-ct">{{item.fd}}片 · {{item.io}} · {{item.ft}}</view></view><text class="vd">{{item.ds}}</text></view>
 </view>

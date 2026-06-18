@@ -31,8 +31,9 @@ Page({
   sw(e) {
     this.setData({ a: e.currentTarget.dataset.i });
   },
-  toP() {
-    wx.navigateTo({ url: '/pages/profile/profile' });
+  toP(e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({ url: '/pages/profile/profile?id=' + id });
   },
   toSearch() {
     wx.navigateTo({ url: '/pages/search/search' });
