@@ -22,4 +22,7 @@
     <view class="rv"><text class="rvn">小李</text> 反手很稳，守时靠谱，每次约球都很愉快！</view>
     <view class="rv"><text class="rvn">阿强</text> 正手太猛了，学到了很多。</view>
   </view>
+  <view class="contact-bar">
+    <button class="contact-btn" bindtap="contact">联系TA · 微信</button>
+  </view>
 </scroll-view>
