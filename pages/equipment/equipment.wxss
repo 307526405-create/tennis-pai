@@ -11,8 +11,8 @@
 .fi{padding:8rpx 20rpx;font-size:22rpx;color:var(--t2);background:#FFF;border:1rpx solid #E8E8E8;border-radius:16rpx}
 .fi.on{background:var(--t);color:#fff;border-color:var(--t);font-weight:600}
 
-.grid{display:flex;flex-wrap:wrap;padding:8rpx 32rpx 16rpx;justify-content:space-between}
-.card{width:330rpx;background:#FFF;border-radius:8rpx;overflow:hidden;margin-bottom:16rpx}
+.grid{overflow:hidden;padding:8rpx 24rpx}
+.card{float:left;width:332rpx;background:#FFF;border-radius:8rpx;overflow:hidden;margin:0 8rpx 16rpx}
 .card-img{width:100%;height:280rpx;background:#F4F8F2;display:flex;align-items:center;justify-content:center;font-size:56rpx}
 .card-body{padding:16rpx}
 .card-name{font-size:26rpx;font-weight:600;color:var(--t);line-height:1.3}
