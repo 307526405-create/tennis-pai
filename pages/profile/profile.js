@@ -1,1 +1,1 @@
-Page({data:{s:44},onLoad(){this.setData({s:wx.getSystemInfoSync().statusBarHeight})},eq(){wx.navigateTo({url:'/pages/detail/detail?id=0'})},goD(){wx.reLaunch({url:'/pages/discover/discover'})},goE(){wx.reLaunch({url:'/pages/equipment/equipment'})}});
+Page({data:{s:44},onLoad(){this.setData({s:wx.getSystemInfoSync().statusBarHeight})},eq(){wx.navigateTo({url:'/pages/detail/detail?id=0'})},goD(){wx.switchTab({url:'/pages/discover/discover'})},goE(){wx.switchTab({url:'/pages/equipment/equipment'})}});

@@ -40,9 +40,3 @@
     </view>
   </view>
 </view>
-
-<view class="tabbar">
-  <view class="tb" bindtap="goD">发现</view>
-  <view class="tb on">装备库</view>
-  <view class="tb" bindtap="goP">我的</view>
-</view>

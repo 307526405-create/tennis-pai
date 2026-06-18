@@ -14,4 +14,3 @@
     <view class="rv"><text class="rvn">阿强</text> 正手太猛了，学到了很多。</view>
   </view>
 </scroll-view>
-<view class="tabbar"><view class="tb" bindtap="goD">发现</view><view class="tb" bindtap="goE">装备库</view><view class="tb on">我的</view></view>
