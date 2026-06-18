@@ -28,7 +28,7 @@
   </view>
 </view>
 <view class="ctab">
-  <view class="ct" bindtap="go" data-p="discover">🏠 发现</view>
-  <view class="ct on">🎾 装备</view>
-  <view class="ct" bindtap="go" data-p="profile">👤 我的</view>
+  <view class="ct" bindtap="go" data-p="discover">发现</view>
+  <view class="ct on">装备库</view>
+  <view class="ct" bindtap="go" data-p="profile">我的</view>
 </view>

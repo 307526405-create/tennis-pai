@@ -59,7 +59,7 @@
 
 <!-- 自定义TabBar -->
 <view class="ctab">
-  <view class="ct {{ctab==0?'on':''}}" bindtap="go" data-p="discover">🏠 发现</view>
-  <view class="ct {{ctab==1?'on':''}}" bindtap="go" data-p="equipment">🎾 装备</view>
-  <view class="ct {{ctab==2?'on':''}}" bindtap="go" data-p="profile">👤 我的</view>
+  <view class="ct {{ctab==0?'on':''}}" bindtap="go" data-p="discover">发现</view>
+  <view class="ct {{ctab==1?'on':''}}" bindtap="go" data-p="equipment">装备库</view>
+  <view class="ct {{ctab==2?'on':''}}" bindtap="go" data-p="profile">我的</view>
 </view>
