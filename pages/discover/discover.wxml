@@ -1,6 +1,12 @@
 <view class="nav" style="padding-top:{{s}}px">
   <view class="brand-wrap">
-    <text class="brand">网球<text class="brand-ac">派</text></text>
+    <view class="brand-row">
+      <text class="brand">网球</text>
+      <view class="pai-wrap">
+        <text class="brand-ac">派</text>
+        <view class="pai-line"></view>
+      </view>
+    </view>
     <text class="brand-en">TENNIS PAI</text>
   </view>
 </view>

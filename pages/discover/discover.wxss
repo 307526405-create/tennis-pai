@@ -1,7 +1,10 @@
 .nav{display:flex;align-items:center;height:44px;padding:0 40rpx}
-.brand-wrap{display:flex;align-items:baseline;gap:12rpx}
+.brand-wrap{display:flex;flex-direction:column;gap:4rpx}
+.brand-row{display:flex;align-items:baseline}
 .brand{font-size:36rpx;font-weight:600;color:var(--g1)}
-.brand-ac{color:var(--g3)}
+.pai-wrap{position:relative}
+.brand-ac{font-size:36rpx;font-weight:600;color:var(--g3)}
+.pai-line{position:absolute;bottom:-2rpx;left:0;right:0;height:4rpx;background:var(--g3)}
 .brand-en{font-size:20rpx;font-weight:400;color:var(--t3);letter-spacing:2rpx}
 
 .tabs{display:flex;margin:16rpx 40rpx;gap:0}
