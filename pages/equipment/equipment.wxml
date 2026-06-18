@@ -11,36 +11,21 @@
   </view>
 </view>
 
-<view class="eq-tabs">
-  <view class="eqt on">球拍</view>
-  <view class="eqt">球鞋</view>
-  <view class="eqt">球线</view>
-  <view class="eqt">服装</view>
-</view>
-
 <scroll-view scroll-x class="brand-bar">
   <view class="bb {{bb==0?'bb-on':''}}" bindtap="sb" data-i="0">全部</view>
   <view class="bb {{bb==1?'bb-on':''}}" bindtap="sb" data-i="1">Wilson</view>
   <view class="bb {{bb==2?'bb-on':''}}" bindtap="sb" data-i="2">Babolat</view>
   <view class="bb {{bb==3?'bb-on':''}}" bindtap="sb" data-i="3">HEAD</view>
   <view class="bb {{bb==4?'bb-on':''}}" bindtap="sb" data-i="4">Yonex</view>
-  <view class="bb {{bb==5?'bb-on':''}}" bindtap="sb" data-i="5">Prince</view>
-  <view class="bb {{bb==6?'bb-on':''}}" bindtap="sb" data-i="6">Dunlop</view>
 </scroll-view>
 
-<scroll-view scroll-y class="elist" style="height:calc(100vh - 300rpx)">
-  <view class="erow" wx:for="{{rs}}" wx:key="id" bindtap="toD" data-id="{{index}}">
-    <view class="ethumb">🎾</view>
-    <view class="einfo">
-      <view class="etop">
-        <text class="ebrand">{{item.brand}}</text>
-        <text class="etype">{{item.type}}</text>
-      </view>
-      <view class="ename">{{item.model}}</view>
-      <view class="espec">{{item.head}}in² · {{item.weight}} · {{item.balance}} · RA{{item.ra}}</view>
-    </view>
-    <view class="eright">
-      <text class="eprice">¥{{item.price}}</text>
+<scroll-view scroll-y class="grid">
+  <view class="card" wx:for="{{rs}}" wx:key="id" bindtap="toD" data-id="{{index}}">
+    <view class="card-img">🎾</view>
+    <view class="card-body">
+      <view class="card-brand">{{item.brand}}</view>
+      <view class="card-name">{{item.model}}</view>
+      <view class="card-price">¥{{item.price}}</view>
     </view>
   </view>
 </scroll-view>
