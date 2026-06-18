@@ -1,4 +1,4 @@
-.cover{height:300rpx;background:var(--g1)}
+.cover{height:160rpx;background:var(--g1)}
 .pav{width:120rpx;height:120rpx;border-radius:32rpx;background:#fff;color:var(--g1);font-size:44rpx;font-weight:600;display:flex;align-items:center;justify-content:center;margin:-60rpx auto 0;box-shadow:0 8rpx 32rpx rgba(0,0,0,.08)}
 .pnm{text-align:center;font-size:36rpx;font-weight:600;color:var(--t);margin-top:16rpx}
 .plv{text-align:center;font-size:24rpx;color:var(--g2);font-weight:600;margin-top:4rpx}
