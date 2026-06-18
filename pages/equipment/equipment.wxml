@@ -1,17 +1,9 @@
-<view class="nav" style="padding-top:{{s}}px">
-  <text class="brand">装备<text class="brand-ac">库</text></text>
-</view>
-<view class="eq-tabs">
-  <view class="eqt on">球拍</view><view class="eqt">球鞋</view><view class="eqt">球线</view><view class="eqt">服装</view>
-</view>
+<view class="nav" style="padding-top:{{s}}px"><text class="brand">装备<text class="brand-ac">库</text></text></view>
+<view class="eq-tabs"><view class="eqt on">球拍</view><view class="eqt">球鞋</view><view class="eqt">球线</view><view class="eqt">服装</view></view>
 <view class="list" style="margin-top:24rpx">
   <view class="card eqc" wx:for="{{rs}}" wx:key="id" bindtap="toD" data-id="{{index}}">
-    <view class="eq-thumb">🎾</view>
-    <view class="info">
-      <view class="eq-brand">{{item.brand}}</view>
-      <view class="name">{{item.model}}</view>
-      <text class="gear">{{item.head}}in² · {{item.weight}} · {{item.balance}}</text>
-    </view>
+    <view class="eq-thumb">🎾</view><view class="info"><view class="eq-brand">{{item.brand}}</view><view class="name">{{item.model}}</view><text class="gear">{{item.head}}in² · {{item.weight}} · {{item.balance}}</text></view>
     <text class="eq-price">¥{{item.price}}</text>
   </view>
 </view>
+<view class="tabbar"><view class="tb" bindtap="goD">发现</view><view class="tb on">装备库</view><view class="tb" bindtap="goP">我的</view></view>

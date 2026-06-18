@@ -50,3 +50,9 @@
     </view>
   </view>
 </view>
+
+<view class="tabbar">
+  <view class="tb on">发现</view>
+  <view class="tb" bindtap="goE">装备库</view>
+  <view class="tb" bindtap="goP">我的</view>
+</view>

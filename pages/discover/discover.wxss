@@ -41,3 +41,7 @@
 .no{width:48rpx;height:48rpx;border-radius:50%;background:var(--g2);color:#fff;font-size:24rpx;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .vi{flex:1}.vn{font-size:28rpx;font-weight:600;color:var(--t)}.vs{font-size:20rpx;color:var(--t3);margin-top:4rpx}
 .vd{font-size:24rpx;color:var(--g2);font-weight:600}
+
+.tabbar{position:fixed;bottom:0;left:0;right:0;display:flex;border-top:1rpx solid #D4DFCF;background:#FFF;padding:24rpx 0 68rpx;z-index:99}
+.tb{flex:1;text-align:center;font-size:24rpx;color:#9AAE9A;font-weight:400}
+.tb.on{color:#1B5E3B;font-weight:600}

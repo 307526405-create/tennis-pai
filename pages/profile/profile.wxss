@@ -18,3 +18,7 @@
 .mi{flex:1;color:var(--t2)}.mn{color:var(--t);font-weight:600}.md{font-size:20rpx;color:var(--t3)}
 .rv{font-size:24rpx;color:var(--t2);line-height:1.5;margin-bottom:6rpx}
 .rvn{color:var(--t);font-weight:600}
+
+.tabbar{position:fixed;bottom:0;left:0;right:0;display:flex;border-top:1rpx solid #D4DFCF;background:#FFF;padding:24rpx 0 68rpx;z-index:99}
+.tb{flex:1;text-align:center;font-size:24rpx;color:#9AAE9A;font-weight:400}
+.tb.on{color:#1B5E3B;font-weight:600}
