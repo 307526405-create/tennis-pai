@@ -19,7 +19,7 @@
 </view>
 
 <view class="feed" wx:if="{{a==0}}">
-  <view class="item" wx:for="{{showPs}}" wx:key="id" bindtap="toP">
+  <view class="item" wx:for="{{ps}}" wx:key="id" bindtap="toP">
     <view class="i-av" style="background:{{item.c}}">{{item.a}}<view class="i-dot {{item.active?'dot-on':'dot-off'}}"></view></view>
     <view class="i-body">
       <view class="i-row"><text class="i-name">{{item.n}}</text><text class="i-lv">{{item.lv}}</text><text class="i-el">{{item.el}}</text></view>
@@ -30,24 +30,6 @@
 </view>
 
 <view class="feed" wx:if="{{a==1}}">
-  <view class="evt-top-bar">
-    <text class="evt-count">{{es.length}}个活动</text>
-    <view class="create-btn" bindtap="toggleCreate">{{showCreate?'收起':'发起活动'}}</view>
-  </view>
-  <view class="create-form" wx:if="{{showCreate}}">
-    <input class="cf-i" placeholder="活动标题，如：周六3.5级单打" value="{{newTitle}}" bindinput="setNewTitle"/>
-    <view class="cf-row">
-      <input class="cf-i cf-s" placeholder="时间，如：6.21周六14:00" value="{{newDate}}" bindinput="setNewDate"/>
-      <input class="cf-i cf-s" placeholder="地点" value="{{newCourt}}" bindinput="setNewCourt"/>
-    </view>
-    <view class="cf-row">
-      <input class="cf-i cf-s" placeholder="水平，如：3.5" value="{{newLv}}" bindinput="setNewLv"/>
-      <picker mode="selector" range="{{[2,3,4,6,8]}}" bindchange="setNewTn">
-        <view class="cf-i cf-s">{{newTn||'人数'}}人</view>
-      </picker>
-    </view>
-    <view class="cf-btn" bindtap="createEvent">发布活动</view>
-  </view>
   <view class="evt" wx:for="{{es}}" wx:key="id">
     <view class="evt-top"><text class="badge {{item.f?'full':''}}">{{item.f?'已满':'报名中'}}</text><text class="evt-date">{{item.d}}</text></view>
     <view class="evt-title">{{item.t}}</view>
