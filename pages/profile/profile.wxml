@@ -1,41 +1,32 @@
+<view class="nav" style="padding-top:{{s}}px">
+  <view class="brand-wrap">
+    <view class="brand-row"><text class="brand">网球</text><view class="pai-wrap"><text class="brand-ac">派</text><view class="pai-line"></view></view></view>
+    <text class="brand-en">TENNIS PAI</text>
+  </view>
+  <text class="nav-search" bindtap="toSearch">
+    <view class="search-icon"><view class="si-circle"></view><view class="si-line"></view></view>
+  </text>
+</view>
 <scroll-view scroll-y style="padding-bottom:160rpx">
   <view class="pav">{{p.name?p.name[0]:'张'}}</view>
-  <view class="pnm">{{p.name||'老张'}}</view>
-  <view class="plv">NTRP {{p.lv||'3.5'}} · Elo 1512</view>
-  <view class="plc">{{p.city||'北京'}} · {{p.court||'朝阳区'}}</view>
-
-  <view class="sts">
-    <view><text class="sn">32</text><text class="sl">场次</text></view>
-    <view><text class="sn">58%</text><text class="sl">胜率</text></view>
-    <view><text class="sn">4.7</text><text class="sl">评分</text></view>
-  </view>
-
+  <view class="pnm">{{p.name||'老张'}}</view><view class="plv">NTRP {{p.lv||'3.5'}} · Elo 1512</view><view class="plc">{{p.city||'北京'}} · {{p.court||'朝阳区'}}</view>
+  <view class="sts"><view><text class="sn">32</text><text class="sl">场次</text></view><view><text class="sn">58%</text><text class="sl">胜率</text></view><view><text class="sn">4.7</text><text class="sl">评分</text></view></view>
   <view class="profile-actions">
     <text class="act-btn" bindtap="toEdit">编辑资料</text>
     <text class="act-btn" bindtap="toShare">分享名片</text>
   </view>
-
-  <view class="div-line"></view>
-
-  <view class="sec-h">风格·装备</view>
-  <view class="sec-row"><text class="slb">风格</text>{{p.sn||'底线进攻型'}}</view>
-  <view class="sec-row"><text class="slb">球拍</text>{{p.g||'Blade 98 v9'}}</view>
-  <view class="sec-row"><text class="slb">主场</text>{{p.court||'朝阳公园'}} · {{p.city||'北京'}}</view>
-
-  <view class="div-line"></view>
-
-  <view class="sec-h">最近比赛</view>
-  <view class="mr"><view class="mt mw">W</view><view class="mi">vs <text class="mn">小李</text> 6-4 6-3 · 朝阳公园</view><view class="md">6.15</view></view>
-  <view class="mr"><view class="mt mw">W</view><view class="mi">vs <text class="mn">大刘</text> 7-5 4-6 10-8 · 国网中心</view><view class="md">6.08</view></view>
-  <view class="mr"><view class="mt ml">L</view><view class="mi">vs <text class="mn">阿强</text> 3-6 4-6 · 国网中心</view><view class="md">6.01</view></view>
-
-  <view class="div-line"></view>
-
-  <view class="sec-h">球友评价</view>
-  <view class="rv">"反手很稳，守时靠谱" — 小李</view>
-  <view class="rv">"正手太猛了，学到了很多" — 阿强</view>
-
+  <view class="pb"><view class="ph">风格</view><view class="pts"><text class="pt">{{p.sn||'底线进攻型'}}</text></view></view>
+  <view class="pb"><view class="ph">装备</view><view class="pts"><text class="pt pa" bindtap="eq">{{p.g||'Blade 98 v9'}}</text></view></view>
+  <view class="pb"><view class="ph">最近参加</view>
+    <view class="mr"><text class="mb mw">WIN</text><text class="mi">vs <text class="mn">小李</text> 6-4 6-3 · 朝阳公园</text><text class="md">6.15</text></view>
+    <view class="mr"><text class="mb mw">WIN</text><text class="mi">vs <text class="mn">大刘</text> 7-5 4-6 10-8 · 国网中心</text><text class="md">6.08</text></view>
+    <view class="mr"><text class="mb ml">LOSS</text><text class="mi">vs <text class="mn">阿强</text> 3-6 4-6 · 国网中心</text><text class="md">6.01</text></view>
+  </view>
+  <view class="pb"><view class="ph">球友评价</view>
+    <view class="rv"><text class="rvn">小李</text> 反手很稳，守时靠谱，每次约球都很愉快！</view>
+    <view class="rv"><text class="rvn">阿强</text> 正手太猛了，学到了很多。</view>
+  </view>
   <view class="contact-bar" wx:if="{{!isSelf}}">
-    <button class="contact-btn" bindtap="contact">联系TA</button>
+    <button class="contact-btn" bindtap="contact">联系TA · 微信</button>
   </view>
 </scroll-view>
