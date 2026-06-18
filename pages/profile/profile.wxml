@@ -3,7 +3,6 @@
     <view class="brand-row"><text class="brand">网球</text><view class="pai-wrap"><text class="brand-ac">派</text><view class="pai-line"></view></view></view>
     <text class="brand-en">TENNIS PAI</text>
   </view>
-  <text class="edit-btn" bindtap="toEdit">编辑</text>
   <text class="nav-search" bindtap="toSearch">
     <view class="search-icon"><view class="si-circle"></view><view class="si-line"></view></view>
   </text>
@@ -26,5 +25,7 @@
   <view class="contact-bar" wx:if="{{!isSelf}}">
     <button class="contact-btn" bindtap="contact">联系TA · 微信</button>
   </view>
-  <view class="share-bar"><text class="share-link" bindtap="toShare">分享名片</text></view>
+  <view class="profile-actions">
+    <text class="act-btn" bindtap="toEdit">编辑资料</text>
+  </view>
 </scroll-view>
