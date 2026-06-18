@@ -3,7 +3,7 @@
     <view class="brand-row"><text class="brand">网球</text><view class="pai-wrap"><text class="brand-ac">派</text><view class="pai-line"></view></view></view>
     <text class="brand-en">TENNIS PAI</text>
   </view>
-  <text class="nav-search" bindtap="toSearch">🔍</text>
+  <text class="nav-search" bindtap="toSearch">搜索</text>
 </view>
 
 <view class="eq-tabs">
