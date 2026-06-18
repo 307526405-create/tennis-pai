@@ -1,39 +1,59 @@
-<view class="top-bar" style="padding-top:{{statusBar}}px">
-  <view class="tb-brand" bindtap="back">‹ 装备库</view>
+<view class="nav" style="padding-top:{{s}}px">
+  <view class="nav-l" bindtap="back">
+    <text class="back">‹</text>
+    <text class="ntitle">装备详情</text>
+  </view>
 </view>
+
 <scroll-view scroll-y wx:if="{{r}}">
   <view class="d-top">🎾</view>
-  <view class="d-body">
-    <view class="eq-brand">{{r.brand}}</view>
-    <view class="d-name">{{r.model}}</view>
-    <view class="d-rate" wx:if="{{r.star}}"><text class="d-stars">4.7</text> · 128评 · {{r.star}}</view>
-    <view class="d-rate" wx:else><text class="d-stars">4.7</text> · 128人评价</view>
-    <view class="d-tags">
-      <view class="d-tag">{{r.type}}</view>
-      <view class="d-tag" wx:if="{{r.star}}">{{r.star}}</view>
+  <view class="db">
+    <view class="etop" style="margin-bottom:6rpx">
+      <text class="ebrand">{{r.brand}}</text>
+      <text class="etype">{{r.type}}</text>
     </view>
+    <view class="dname">{{r.model}}</view>
+    <view class="dstar" wx:if="{{r.star}}">⭐ {{r.star}}</view>
+  </view>
 
-    <view class="sec-t">参数</view>
-    <view class="s-grid">
-      <view class="sg"><text class="sgl">拍面</text><text class="sgv">{{r.head}} sq in</text></view>
-      <view class="sg"><text class="sgl">重量</text><text class="sgv">{{r.weight}}</text></view>
-      <view class="sg"><text class="sgl">平衡</text><text class="sgv">{{r.balance}}</text></view>
-      <view class="sg"><text class="sgl">线床</text><text class="sgv">{{r.pattern}}</text></view>
-      <view class="sg"><text class="sgl">硬度</text><text class="sgv">RA {{r.ra}}</text></view>
-      <view class="sg"><text class="sgl">挥重</text><text class="sgv">{{r.sw}}</text></view>
-      <view class="sg"><text class="sgl">拍框</text><text class="sgv">{{r.beam}}</text></view>
-      <view class="sg"><text class="sgl">长度</text><text class="sgv">27 in</text></view>
+  <view class="db">
+    <view class="dh">规格参数</view>
+    <view class="sg">
+      <view class="sgi"><text class="sl">拍面</text><text class="sv">{{r.head}} sq in</text></view>
+      <view class="sgi"><text class="sl">空拍重量</text><text class="sv">{{r.weight}}</text></view>
+      <view class="sgi"><text class="sl">平衡点</text><text class="sv">{{r.balance}}</text></view>
+      <view class="sgi"><text class="sl">线床</text><text class="sv">{{r.pattern}}</text></view>
+      <view class="sgi"><text class="sl">硬度</text><text class="sv">RA {{r.ra}}</text></view>
+      <view class="sgi"><text class="sl">挥重</text><text class="sv">{{r.sw}}</text></view>
+      <view class="sgi"><text class="sl">拍框厚度</text><text class="sv">{{r.beam}}</text></view>
+      <view class="sgi"><text class="sl">长度</text><text class="sv">27 in</text></view>
     </view>
+  </view>
 
-    <view class="sec-t">比价</view>
-    <view class="price-row">
-      <view class="pc"><text class="pcs">泰摩网球</text><text class="pca">¥{{r.price - 200}}</text><text class="pcl">去购买 ›</text></view>
-      <view class="pc"><text class="pcs">天猫</text><text class="pca" style="color:var(--t);font-weight:400">¥{{r.price}}</text><text class="pcl">去购买 ›</text></view>
-      <view class="pc"><text class="pcs">京东</text><text class="pca" style="color:var(--t);font-weight:400">¥{{r.price - 81}}</text><text class="pcl">去购买 ›</text></view>
+  <view class="db">
+    <view class="dh">参考价格</view>
+    <view class="prices">
+      <view class="pc">
+        <text class="pcn">泰摩网球</text>
+        <text class="pca">¥{{r.price - 200}}</text>
+      </view>
+      <view class="pc">
+        <text class="pcn">天猫旗舰</text>
+        <text class="pca" style="color:var(--t);font-weight:400">¥{{r.price}}</text>
+      </view>
+      <view class="pc">
+        <text class="pcn">京东</text>
+        <text class="pca" style="color:var(--t);font-weight:400">¥{{r.price - 81}}</text>
+      </view>
     </view>
+  </view>
 
-    <view class="sec-t">球友讨论 · 86条</view>
-    <view class="cmt"><view class="c-u">老张 ★★★★★</view><view class="c-t">用了半年，控制感极好。比v8更吃球，反手切削稳多了。配Luxilon 4G 52磅。</view><view class="c-m">12 赞 · 回复 · 2天前</view></view>
-    <view class="cmt"><view class="c-u">小美 ★★★★</view><view class="c-t">颜值满分，甜区偏小新手慎重。从Clash换过来需要适应几周。</view><view class="c-m">8 赞 · 回复 · 5天前</view></view>
+  <view class="db">
+    <view class="dh">球友讨论</view>
+    <view class="cmt" wx:for="{{[1,2]}}" wx:key="*this">
+      <view class="cu"><text class="cun">老张</text><text class="cus">★★★★★</text></view>
+      <view class="ct">用了半年，控制感极好。比v8更吃球，反手切削稳多了。</view>
+      <view class="cm">12 赞 · 2天前</view>
+    </view>
   </view>
 </scroll-view>
