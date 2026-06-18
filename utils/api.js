@@ -1,4 +1,4 @@
-var BASE = 'http://localhost:8080';
+var BASE = 'http://localhost:8081';
 function get(url) {
   return new Promise(function(resolve, reject) {
     wx.request({ url: BASE + url, method: 'GET', success: function(r) { resolve(r.data); }, fail: reject });
