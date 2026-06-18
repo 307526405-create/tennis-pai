@@ -2,8 +2,8 @@
 .eqt{padding:16rpx 0;margin-right:48rpx;font-size:28rpx;color:var(--t3);font-weight:400}
 .eqt.on{color:var(--t);font-weight:600;border-bottom:2rpx solid var(--g2);margin-bottom:-1rpx}
 
-.brand-bar{display:flex;gap:12rpx;padding:16rpx 40rpx;white-space:nowrap}
-.bb{padding:8rpx 20rpx;font-size:22rpx;color:var(--t2);background:#FFF;border:1rpx solid #E8E8E8;border-radius:20rpx;font-weight:400}
+.brand-bar{display:flex;gap:8rpx;padding:12rpx 40rpx;white-space:nowrap}
+.bb{padding:6rpx 16rpx;font-size:20rpx;color:var(--t2);background:#FFF;border:1rpx solid #E8E8E8;border-radius:16rpx;font-weight:400}
 .bb-on{background:var(--g2);color:#fff;border-color:var(--g2);font-weight:600}
 
 .elist{margin:0 40rpx}
