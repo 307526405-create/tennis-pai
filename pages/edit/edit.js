@@ -5,5 +5,7 @@ onLoad(){const rs=app.globalData.rackets;this.setData({s:wx.getWindowInfo().stat
 setName(e){this.setData({name:e.detail.value})},setLv(e){this.setData({lv:e.currentTarget.dataset.i})},
 setSt(e){this.setData({st:e.currentTarget.dataset.i})},setRacket(e){const i=parseInt(e.detail.value);this.setData({racket:i,racketName:this.data.rackets[i]})},
 setCourt(e){this.setData({court:e.detail.value})},setCity(e){this.setData({city:e.detail.value})},
-save(){const d=this.data;const p={name:d.name,lv:d.levels[d.lv],st:d.styles[d.st],racket:d.racket,g:app.globalData.rackets[d.racket]?.model,court:d.court,city:d.city,avatar:d.avatar};wx.setStorageSync('profile',p);wx.showToast({title:'保存成功'});setTimeout(()=>wx.navigateBack(),500)},onAvatar(e){this.setData({avatar:e.detail.avatarUrl})},
+save(){const d=this.data;const p={name:d.name,lv:d.levels[d.lv],st:d.styles[d.st],racket:d.racket,g:app.globalData.rackets[d.racket]?.model,court:d.court,city:d.city,avatar:d.avatar};wx.setStorageSync('profile',p);
+  const players=app.globalData.players;const me=players.find(x=>x.me);if(me){me.n=d.name;me.a=d.name[0];me.lv=d.levels[d.lv];me.g=p.g;me.active=true}else{players.unshift({id:Date.now(),n:d.name,a:d.name[0],c:'#2E8B57',lv:d.levels[d.lv],g:p.g,el:'1500',pct:'0%',gm:0,ds:'',active:true,me:true})}
+  wx.showToast({title:'保存成功'});setTimeout(()=>wx.navigateBack(),500)},onAvatar(e){this.setData({avatar:e.detail.avatarUrl})},
 back(){wx.navigateBack()}});
