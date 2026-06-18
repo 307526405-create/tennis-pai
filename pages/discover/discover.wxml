@@ -9,7 +9,12 @@
     </view>
     <text class="brand-en">TENNIS PAI</text>
   </view>
-  <text class="nav-search" bindtap="toSearch">⌕</text>
+  <view class="nav-search" bindtap="toSearch">
+    <view class="search-icon">
+      <view class="si-circle"></view>
+      <view class="si-line"></view>
+    </view>
+  </view>
 </view>
 
 <view class="tabs">
