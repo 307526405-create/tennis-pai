@@ -33,7 +33,7 @@
 <scroll-view scroll-y class="grid">
   <view class="card" wx:for="{{rs}}" wx:key="id" bindtap="toD" data-id="{{index}}">
     <view class="card-img-wrap">
-      <view class="card-img-fb" style="background:{{item.color||'#2E8B57'}}">{{item.brand?a[0]}}</view>
+      <image class="card-img-fb" src="http://localhost:8081/api/images/rackets/{{item.id}}.png" mode="aspectFill"/>
     </view>
     <view class="card-body">
       <view class="card-name">{{item.model}}</view>
