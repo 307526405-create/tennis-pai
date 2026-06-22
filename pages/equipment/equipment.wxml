@@ -33,8 +33,8 @@
 <scroll-view scroll-y class="grid">
   <view class="card" wx:for="{{rs}}" wx:key="id" bindtap="toD" data-id="{{index}}">
     <view class="card-img-wrap">
-      <image class="card-img" src="{{item.image||''}}" mode="aspectFill" binderror="onImgErr" data-id="{{index}}"/>
-      <view class="card-img-fb" wx:if="{{!item.image}}">{{item.brand?a[0]}}🎾</view>
+      <image class="card-img" src="{{item.image||''}}" mode="aspectFill"/>
+      <view class="card-img-fb" wx:if="{{!item.image}}">🎾</view>
     </view>
     <view class="card-body">
       <view class="card-name">{{item.model}}</view>
