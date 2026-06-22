@@ -1,0 +1,11 @@
+.evt{padding:24rpx 40rpx;border-bottom:1rpx solid #F0F0F0}
+.evt-top{display:flex;align-items:center;gap:12rpx;margin-bottom:8rpx}
+.evt-date{font-size:22rpx;color:var(--t3)}
+.badge{font-size:18rpx;font-weight:600;padding:2rpx 10rpx;border-radius:3rpx;background:rgba(46,139,87,.08);color:var(--g2)}.badge.full{background:#F0F0F0;color:var(--t3)}
+.evt-title{font-size:28rpx;font-weight:600;color:var(--t);margin-bottom:6rpx}
+.evt-info{font-size:22rpx;color:var(--t2);margin-bottom:14rpx}
+.evt-bar{display:flex;align-items:center;justify-content:flex-end;gap:12rpx}
+.evt-num{font-size:22rpx;color:var(--t2)}
+.join{padding:8rpx 24rpx;background:var(--g2);color:#fff;border-radius:20rpx;font-size:22rpx;font-weight:600}.join-f{background:#F0F0F0;color:var(--t3)}
+.empty{text-align:center;padding:80rpx;font-size:26rpx;color:var(--t3)}
+.create-btn{font-size:22rpx;color:var(--g2);font-weight:600;padding:8rpx 16rpx;border:1rpx solid var(--g2);border-radius:20rpx}

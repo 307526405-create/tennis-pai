@@ -1,5 +1,6 @@
 <view class="tab-bar">
   <view class="tab {{selected===0?'on':''}}" data-path="/pages/discover/discover" data-idx="0" bindtap="sw">发现</view>
-  <view class="tab {{selected===1?'on':''}}" data-path="/pages/courts/courts" data-idx="1" bindtap="sw">球场</view>
-  <view class="tab {{selected===2?'on':''}}" data-path="/pages/profile/profile" data-idx="2" bindtap="sw">我的</view>
+  <view class="tab {{selected===1?'on':''}}" data-path="/pages/events/events" data-idx="1" bindtap="sw">约球</view>
+  <view class="tab {{selected===2?'on':''}}" data-path="/pages/courts/courts" data-idx="2" bindtap="sw">球场</view>
+  <view class="tab {{selected===3?'on':''}}" data-path="/pages/profile/profile" data-idx="3" bindtap="sw">我的</view>
 </view>

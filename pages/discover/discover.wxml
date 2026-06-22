@@ -6,25 +6,9 @@
   <view class="nav-search" bindtap="toSearch"><view class="search-icon"><view class="si-circle"></view><view class="si-line"></view></view></view>
 </view>
 
-<view class="tabs">
-  <view class="tab {{a===0?'on':''}}" bindtap="sw" data-i="0">球友</view>
-  <view class="tab {{a===1?'on':''}}" bindtap="sw" data-i="1">约球</view>
-  <view class="tab-right">
-    <view class="create-btn" bindtap="goCreate">发起约球</view>
-  </view>
-</view>
-
-<scroll-view scroll-y style="padding-bottom:160rpx" wx:if="{{a===0}}">
+<scroll-view scroll-y style="padding-bottom:160rpx">
   <view class="item" wx:for="{{ps}}" wx:key="id" bindtap="toP" data-id="{{item.id}}">
     <view class="i-av" style="background:{{item.c}}">{{item.a}}<view class="i-dot {{item.active?'dot-on':'dot-off'}}"></view></view>
     <view class="i-body"><view class="i-row"><text class="i-name">{{item.n}}</text><text class="i-lv">{{item.lv}}</text><text class="i-el">{{item.el}}</text></view><view class="i-row3"><text class="i-stat">胜率{{item.pct}}</text><text class="i-stat">{{item.gm}}场</text></view><view class="i-row2"><text class="i-gear">{{item.g}}</text></view></view>
-  </view>
-</scroll-view>
-
-<scroll-view scroll-y style="padding-bottom:160rpx" wx:if="{{a===1}}">
-  <view class="evt" wx:for="{{es}}" wx:key="id">
-    <view class="evt-top"><text class="badge {{item.f?'full':''}}">{{item.f?'已满':'报名中'}}</text><text class="evt-date">{{item.d}}</text></view>
-    <view class="evt-title">{{item.t}}</view><view class="evt-info">{{item.ct}} · {{item.lv}}</view>
-    <view class="evt-bar"><text class="evt-num">{{item.n}}/{{item.tn}}人</text><view class="join {{item.f?'join-f':''}}" bindtap="join" data-id="{{item.id}}">{{item.joined?'已报名':(item.f?'已满':'报名')}}</view></view>
   </view>
 </scroll-view>

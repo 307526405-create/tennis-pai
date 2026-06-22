@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/discover/discover",
+    "pages/events/events",
     "pages/courts/courts",
     "pages/profile/profile",
     "pages/detail/detail",
@@ -9,10 +10,7 @@
     "pages/create/create",
     "pages/share/share"
   ],
-  "window": {
-    "navigationStyle": "custom",
-    "backgroundColor": "#F4F8F2"
-  },
+  "window": { "navigationStyle": "custom", "backgroundColor": "#F4F8F2" },
   "lazyCodeLoading": "requiredComponents",
   "tabBar": {
     "custom": true,
@@ -21,17 +19,12 @@
     "backgroundColor": "#FFFFFF",
     "list": [
       { "pagePath": "pages/discover/discover", "text": "发现" },
+      { "pagePath": "pages/events/events", "text": "约球" },
       { "pagePath": "pages/courts/courts", "text": "球场" },
       { "pagePath": "pages/profile/profile", "text": "我的" }
     ]
   },
   "sitemapLocation": "sitemap.json",
-  "permission": {
-    "scope.userLocation": {
-      "desc": "用于显示附近球场和你的位置"
-    }
-  },
-  "requiredPrivateInfos": [
-    "getLocation"
-  ]
+  "permission": { "scope.userLocation": { "desc": "用于显示附近球场和你的位置" } },
+  "requiredPrivateInfos": ["getLocation"]
 }
