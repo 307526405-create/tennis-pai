@@ -8,7 +8,23 @@
 
 <map latitude="39.92" longitude="116.40" scale="13" markers="{{markers}}" show-location style="width:100%;height:480rpx"></map>
 
-<scroll-view scroll-y class="clist" style="padding-bottom:160rpx">
+<view class="report-btn" bindtap="showReport">+ 上报球场</view>
+
+<view class="clist" style="padding-bottom:160rpx">
+
+<!-- 上报表单 -->
+<view class="report-form" wx:if="{{showForm}}">
+  <view class="rf-title">上报新球场</view>
+  <input class="rf-input" placeholder="球场名称" value="{{rname}}" bindinput="setRname"/>
+  <input class="rf-input" placeholder="城市（如广州）" value="{{rcity}}" bindinput="setRcity"/>
+  <input class="rf-input" placeholder="几片场地" value="{{rfields}}" bindinput="setRfields" type="number"/>
+  <view class="rf-row">
+    <button class="rf-btn" bindtap="submitCourt">提交</button>
+    <button class="rf-btn rf-cancel" bindtap="hideForm">取消</button>
+  </view>
+</view>
+
+
   <view class="citem" wx:for="{{courts}}" wx:key="id">
     <view class="cno">{{index+1}}</view>
     <view class="cinfo">
@@ -18,4 +34,4 @@
     </view>
     <view class="cdist">{{item.distance||'--'}}</view>
   </view>
-</scroll-view>
+</view>
