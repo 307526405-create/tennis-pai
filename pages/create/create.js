@@ -40,6 +40,55 @@ Page({
     });
   },
 
+  pickCourt() {
+    var that = this;
+    var courts = this.data.courtList || [];
+    if (courts.length === 0) {
+      // 从后端加载球场列表
+      try {
+        api.get('/api/courts').then(function(res) {
+          var data = res.data || res;
+          if (data && data.length > 0) {
+            var names = data.slice(0, 6).map(function(c) { return c.name; });
+            names.push('其他（手动输入）');
+            that.setData({ courtList: data });
+            that.showCourtPicker(names);
+          }
+        }).catch(function() {
+          wx.showToast({ title: '请手动输入球场名', icon: 'none' });
+        });
+      } catch (e) {}
+    } else {
+      var names = courts.slice(0, 6).map(function(c) { return c.name; });
+      names.push('其他（手动输入）');
+      that.showCourtPicker(names);
+    }
+  },
+
+  showCourtPicker(names) {
+    var that = this;
+    wx.showActionSheet({
+      itemList: names,
+      success: function(r) {
+        if (r.tapIndex === names.length - 1) {
+          // 手动输入
+          wx.showModal({
+            title: '输入球场名',
+            editable: true,
+            placeholderText: '如：朝阳公园',
+            success: function(res) {
+              if (res.content && res.content.trim()) {
+                that.setData({ court: res.content.trim() });
+              }
+            }
+          });
+        } else {
+          that.setData({ court: names[r.tapIndex] });
+        }
+      }
+    });
+  },
+
   publish() {
     var d = this.data;
     if (!d.title || !d.date) { wx.showToast({ title: '请填写标题和日期', icon: 'none' }); return; }

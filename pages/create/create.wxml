@@ -17,7 +17,9 @@
 
   <!-- 场地水平 -->
   <view class="group">
-    <input class="gr-in" placeholder="地点，如：朝阳公园网球中心" value="{{court}}" bindinput="setCt"/>
+    <view class="gr" bindtap="pickCourt">
+      <text class="gl">地点</text><text class="gv-t">{{court||'选择球场'}}</text><text class="arr">›</text>
+    </view>
     <picker mode="selector" range="{{levels}}" bindchange="onLevel">
       <view class="gr"><text class="gl">水平</text><text class="gv-t">{{lv}}</text><text class="arr">›</text></view>
     </picker>
