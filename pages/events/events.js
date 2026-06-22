@@ -23,9 +23,21 @@ Page({
     try {
       api.get('/api/events?status=open').then(function(res) {
         var data = res.data || res;
-        if (data && data.length > 0) that.setData({ events: data.map(mapEvent) });
-      }).catch(function() {});
-    } catch (e) {}
+        if (data && data.length > 0) {
+          that.setData({ events: data.map(mapEvent) });
+        }
+      }).catch(function() {
+        that.loadFallback();
+      });
+    } catch (e) { that.loadFallback(); }
+  },
+  loadFallback() {
+    // 离线也能看
+    this.setData({ events: [
+      { id:1,t:'周末双打约球',d:'6.21 09:00',ct:'国家网球中心',lv:'4.0',tn:4,n:1,left:3,f:false,price:'AA制',creator:'老赵',players:['老赵'],dist:'2.3km',joined:false },
+      { id:2,t:'工作日晚间单打',d:'6.23 19:00',ct:'朝阳公园',lv:'3.5',tn:2,n:1,left:1,f:false,price:'免费',creator:'小美',players:['小美'],dist:'1.8km',joined:false },
+      { id:3,t:'周六早场训练',d:'6.27 08:00',ct:'奥体中心',lv:'3.0',tn:4,n:3,left:1,f:false,price:'50元/人',creator:'阿强',players:['阿强','小王','小李'],dist:'4.1km',joined:false }
+    ]});
   },
   join(e) {
     var that = this;
