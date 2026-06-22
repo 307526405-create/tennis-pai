@@ -2,10 +2,11 @@ var app = getApp();
 var api = require('../../utils/api');
 
 function mapRacket(r) {
+  var bc = { Wilson: '#E10600', Babolat: '#0055A4', HEAD: '#FF6100', Yonex: '#00B140' };
   return { id: r.id, brand: r.brand, model: r.model, head: r.head_size || '',
     weight: r.weight || '', balance: r.balance || '', pattern: r.pattern || '',
     ra: r.stiffness || '', sw: r.swingweight || '', beam: r.beam || '', type: r.type || '', price: r.price || '',
-    image: r.image || '' };
+    image: r.image || '', color: bc[r.brand] || '#2E8B57' };
 }
 
 Page({
