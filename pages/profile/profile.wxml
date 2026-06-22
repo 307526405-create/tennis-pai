@@ -42,6 +42,18 @@
   <view class="rv"><text class="rvn">沈青禾</text> 正手太猛了，学到了很多</view>
 
   <view class="contact" wx:if="{{!isSelf}}">
+    <button class="cb" bindtap="toggleFav">{{favorited?'★ 常约球友':'☆ 加为常约'}}</button>
     <button class="cb" bindtap="contact">联系TA</button>
+  </view>
+
+  <view class="sec" wx:if="{{isSelf && favorites.length>0}}">
+    <view class="sh">常约球友</view>
+    <view class="fav-list">
+      <view class="fav-item" wx:for="{{favorites}}" wx:key="id" bindtap="toP" data-id="{{item.id}}">
+        <view class="fav-av">{{item.name[0]}}</view>
+        <text class="fav-name">{{item.name}}</text>
+        <text class="fav-lv">{{item.level}}</text>
+      </view>
+    </view>
   </view>
 </scroll-view>

@@ -26,4 +26,9 @@
 .rvn{color:var(--t);font-weight:600}
 
 .contact{text-align:center;padding:32rpx}
-.cb{display:inline-block;padding:24rpx 80rpx;background:var(--g1);color:#fff;border-radius:12rpx;font-size:28rpx;font-weight:600}
+.cb{display:inline-block;padding:20rpx 40rpx;background:var(--g1);color:#fff;border-radius:12rpx;font-size:26rpx;font-weight:600;margin:8rpx}
+
+.fav-list{display:flex;flex-wrap:wrap;gap:16rpx;padding:0 32rpx}
+.fav-item{display:flex;flex-direction:column;align-items:center;gap:4rpx}
+.fav-av{width:88rpx;height:88rpx;border-radius:50%;background:var(--g2);color:#fff;font-size:36rpx;font-weight:600;display:flex;align-items:center;justify-content:center}
+.fav-name{font-size:24rpx;color:var(--t);font-weight:500}.fav-lv{font-size:20rpx;color:var(--t3)}
