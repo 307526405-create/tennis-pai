@@ -4,7 +4,8 @@ var api = require('../../utils/api');
 function mapRacket(r) {
   return { id: r.id, brand: r.brand, model: r.model, head: r.head_size || '',
     weight: r.weight || '', balance: r.balance || '', pattern: r.pattern || '',
-    ra: r.stiffness || '', sw: r.swingweight || '', beam: r.beam || '', type: r.type || '', price: r.price || '' };
+    ra: r.stiffness || '', sw: r.swingweight || '', beam: r.beam || '', type: r.type || '', price: r.price || '',
+    image: r.image || '' };
 }
 
 Page({

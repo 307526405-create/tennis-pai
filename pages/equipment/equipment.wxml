@@ -32,7 +32,7 @@
 
 <scroll-view scroll-y class="grid">
   <view class="card" wx:for="{{rs}}" wx:key="id" bindtap="toD" data-id="{{index}}">
-    <view class="card-img">🎾</view>
+    <image class="card-img" src="{{item.image||''}}" mode="aspectFill"/>
     <view class="card-body">
       <view class="card-name">{{item.model}}</view>
       <view class="card-price">¥{{item.price}}</view>
