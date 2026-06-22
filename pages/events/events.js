@@ -1,7 +1,7 @@
 var api = require('../../utils/api');
 
 function mapEvent(e) {
-  return { id: e.id, t: e.title, d: e.date + ' ' + e.time, ct: e.court, lv: e.level, tn: e.max_players, n: e.current_players, f: e.status === 'full', joined: false, avs: [] };
+  return { id: e.id, t: e.title, d: e.date + ' ' + e.time, ct: e.court, lv: e.level, tn: e.max_players, n: e.current_players, f: e.status === 'full', joined: false, avs: [], price: e.price || 'AA制' };
 }
 
 Page({

@@ -5,7 +5,7 @@
 .evt-date{font-size:22rpx;color:var(--t2)}.evt-level{font-size:22rpx;color:var(--t3)}
 .evt-title{font-size:30rpx;font-weight:600;color:var(--t);margin-bottom:8rpx}
 .evt-loc{font-size:24rpx;color:var(--t2);margin-bottom:16rpx;display:flex;align-items:center;gap:4rpx}
-.evt-loc-icon{font-size:20rpx}
+.evt-loc-icon{font-size:20rpx}.evt-price{color:var(--t3);font-size:22rpx}
 .evt-footer{display:flex;align-items:center;justify-content:space-between}
 .evt-players{display:flex;align-items:center;gap:4rpx}
 .ep-av{width:36rpx;height:36rpx;border-radius:50%;margin-left:-8rpx;border:2rpx solid #FFF}.ep-av:first-child{margin-left:0}

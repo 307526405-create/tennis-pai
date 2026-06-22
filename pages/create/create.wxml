@@ -31,5 +31,10 @@
 
   <input class="fi" placeholder="备注（选填），如：自带球、A级场" value="{{note}}" bindinput="setNote"/>
 
+  <view class="fg" bindtap="pickPrice">
+    <view class="fl">费用</view>
+    <view class="fv">{{price||'AA制'}}<text class="fg-arrow">›</text></view>
+  </view>
+
   <view class="submit" bindtap="publish">确认发起</view>
 </view>

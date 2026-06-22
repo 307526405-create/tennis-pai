@@ -17,7 +17,7 @@
     </view>
     
     <view class="evt-title">{{item.t}}</view>
-    <view class="evt-loc"><text class="evt-loc-icon">📍</text>{{item.ct}}</view>
+    <view class="evt-loc"><text class="evt-loc-icon">📍</text>{{item.ct}}<text class="evt-price" wx:if="{{item.price}}"> · {{item.price}}</text></view>
     
     <view class="evt-footer">
       <view class="evt-players">
