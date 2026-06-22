@@ -2,7 +2,7 @@ var api = require('../../utils/api');
 
 Page({
   data: {
-    s: 44, title: '', date: '', dateVal: '', time: '', court: '', lv: '不限', tn: 4,
+    s: 44, title: '', date: '', dateVal: '', time: '', court: '', showCourtInput: false, lv: '不限', tn: 4,
     note: '', price: '', customPrice: '', priceText: 'AA制',
     times: ['08:00-10:00','10:00-12:00','14:00-16:00','16:00-18:00','18:00-20:00','20:00-22:00'],
     levels: ['不限','2.5','3.0','3.5','4.0','4.5'],
@@ -71,22 +71,17 @@ Page({
       itemList: names,
       success: function(r) {
         if (r.tapIndex === names.length - 1) {
-          // 手动输入
-          wx.showModal({
-            title: '输入球场名',
-            editable: true,
-            placeholderText: '如：朝阳公园',
-            success: function(res) {
-              if (res.content && res.content.trim()) {
-                that.setData({ court: res.content.trim() });
-              }
-            }
-          });
+          that.setData({ showCourtInput: true, court: '' });
         } else {
-          that.setData({ court: names[r.tapIndex] });
+          that.setData({ court: names[r.tapIndex], showCourtInput: false });
         }
       }
     });
+  },
+
+  // 输入新球场名后自动回显
+  onCourtInput(e) {
+    this.setData({ court: e.detail.value });
   },
 
   publish() {
