@@ -7,6 +7,9 @@
 </view>
 
 <scroll-view scroll-y style="padding-bottom:160rpx">
+  <view class="note-banner" wx:if="{{newNote}}">
+    <text class="note-text">{{newNote}}</text>
+  </view>
   <view class="top">
     <view class="av">{{p.name?p.name[0]:'张'}}</view>
     <view class="info">

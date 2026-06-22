@@ -6,8 +6,8 @@
       <view class="c-lv">NTRP {{p.lv||'3.5'}}</view>
     </view>
     <view class="c-stats">
-      <view class="cs"><text class="csn">32</text><text class="csl">场次</text></view>
-      <view class="cs"><text class="csn">58%</text><text class="csl">胜率</text></view>
+      <view class="cs"><text class="csn">{{p.gm||32}}</text><text class="csl">场次</text></view>
+      <view class="cs"><text class="csn">{{p.pct||'58%'}}</text><text class="csl">胜率</text></view>
       <view class="cs"><text class="csn">4.7</text><text class="csl">评分</text></view>
     </view>
     <view class="c-row">
@@ -26,4 +26,3 @@
     <button class="btn btn-share" open-type="share">分享给球友</button>
   </view>
 </view>
-<canvas type="2d" id="myCanvas" style="position:fixed;left:-9999px;width:600rpx;height:800rpx"></canvas>

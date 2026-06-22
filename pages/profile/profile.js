@@ -6,7 +6,7 @@ function mapPlayer(p) {
 }
 
 Page({
-  data: { s: 44, p: null, isSelf: true, favorited: false, favorites: [], currentUserId: 1, pid: null, avail: false },
+  data: { s: 44, p: null, isSelf: true, favorited: false, favorites: [], currentUserId: 1, pid: null, avail: false, notifications: [], newNote: null },
   onLoad(options) {
     var that = this;
     var uid = wx.getStorageSync('currentUserId') || 1;
@@ -64,6 +64,24 @@ Page({
       }).catch(function() {});
     } catch (e) {}
   },
+  loadNotifications(uid) {
+    var that = this;
+    try {
+      api.get('/api/players/' + uid + '/notifications').then(function(res) {
+        var list = res.data || res || [];
+        if (list.length > 0) {
+          var lastCheck = wx.getStorageSync('lastNotifCheck') || '';
+          var latest = list[0];
+          // 如果有比上次查看更新的通知，显示第一条
+          if (latest.time > lastCheck || !lastCheck) {
+            that.setData({ newNote: latest.name + '关注了你' });
+            setTimeout(function() { that.setData({ newNote: null }); }, 4000);
+          }
+          wx.setStorageSync('lastNotifCheck', latest.time);
+        }
+      }).catch(function() {});
+    } catch (e) {}
+  },
   toggleFav() {
     var that = this;
     var pid = this.data.pid;
@@ -94,7 +112,10 @@ Page({
       var p = wx.getStorageSync('profile');
       if (p) this.setData({ p: p });
     }
-    if (this.data.isSelf) this.loadFavorites(this.data.currentUserId);
+    if (this.data.isSelf) {
+      this.loadFavorites(this.data.currentUserId);
+      this.loadNotifications(this.data.currentUserId);
+    }
   },
   toEdit() { wx.navigateTo({ url: '/pages/edit/edit' }); },
   toShare() { wx.navigateTo({ url: '/pages/share/share' }); },
