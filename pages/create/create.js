@@ -1,7 +1,7 @@
 var api = require('../../utils/api');
 
 Page({
-  data: { s: 44, title: '', date: '', time: '', court: '', lv: '', tn: '4', note: '', price: '', levels: ['不限', '2.0', '2.5', '3.0', '3.5', '4.0', '4.5', '5.0+'], counts: ['2', '3', '4', '5', '6', '8'], prices: ['AA制', '免费', '50元/人', '80元/人', '100元/人', '150元/人'] },
+  data: { s: 44, title: '', date: '', time: '', court: '', lv: '', tn: '4', note: '', price: '', levels: ['不限', '2.5', '3.0', '3.5', '4.0', '4.5'], counts: ['2', '3', '4', '5', '6', '8'], prices: ['AA制', '免费', '50元/人', '80元/人', '100元/人', '150元/人'] },
   onLoad() { this.setData({ s: wx.getWindowInfo().statusBarHeight }); },
   setT(e) { this.setData({ title: e.detail.value }); },
   setCt(e) { this.setData({ court: e.detail.value }); },
