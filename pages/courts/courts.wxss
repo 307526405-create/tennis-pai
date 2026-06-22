@@ -1,0 +1,5 @@
+.clist{padding:0 32rpx}
+.citem{display:flex;align-items:flex-start;gap:16rpx;padding:24rpx 0;border-bottom:1rpx solid #F0F0F0}
+.cno{width:44rpx;height:44rpx;border-radius:50%;background:var(--g2);color:#fff;font-size:22rpx;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2rpx}
+.cinfo{flex:1}.cname{font-size:28rpx;font-weight:600;color:var(--t)}.cdesc{font-size:22rpx;color:var(--t2);margin-top:4rpx}.caddr{font-size:20rpx;color:var(--t3);margin-top:2rpx}
+.cdist{font-size:24rpx;color:var(--g2);font-weight:600;flex-shrink:0}

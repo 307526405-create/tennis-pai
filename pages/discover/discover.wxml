@@ -6,40 +6,25 @@
   <view class="nav-search" bindtap="toSearch"><view class="search-icon"><view class="si-circle"></view><view class="si-line"></view></view></view>
 </view>
 
-<view class="tabs">
-  <view class="tab {{a==0?'on':''}}" bindtap="sw" data-i="0">球友</view>
-  <view class="tab {{a==1?'on':''}}" bindtap="sw" data-i="1">约球</view>
-  <view class="tab {{a==2?'on':''}}" bindtap="sw" data-i="2">球场</view>
-  <view class="tab-right">
-    <view class="create-btn" bindtap="goCreate">发起约球</view>
-  </view>
+<view class="header-bar">
+  <view class="hb-left"><text class="hb-title">发现</text></view>
+  <view class="create-btn" bindtap="goCreate">发起约球</view>
 </view>
 
-<view class="feed" wx:if="{{a==0}}">
+<scroll-view scroll-y class="feed" style="padding-bottom:160rpx">
+  <!-- 球友 -->
   <view class="item" wx:for="{{ps}}" wx:key="id" bindtap="toP" data-id="{{item.id}}">
     <view class="i-av" style="background:{{item.c}}">{{item.a}}<view class="i-dot {{item.active?'dot-on':'dot-off'}}"></view></view>
-    <view class="i-body"><view class="i-row"><text class="i-name">{{item.n}}</text><text class="i-lv">{{item.lv}}</text><text class="i-el">{{item.el}}</text></view><view class="i-row3"><text class="i-stat">胜率{{item.pct}}</text><text class="i-stat">{{item.gm}}场</text><text class="i-dist">{{item.ds}}</text></view><view class="i-row2"><text class="i-gear">{{item.g}}</text></view></view>
+    <view class="i-body"><view class="i-row"><text class="i-name">{{item.n}}</text><text class="i-lv">{{item.lv}}</text><text class="i-el">{{item.el}}</text></view><view class="i-row3"><text class="i-stat">胜率{{item.pct}}</text><text class="i-stat">{{item.gm}}场</text><text class="i-dist">{{item.ds||''}}</text></view><view class="i-row2"><text class="i-gear">{{item.g}}</text></view></view>
   </view>
-</view>
 
-<view class="feed" wx:if="{{a==1}}">
+  <!-- 活动分割 -->
+  <view class="section-title" wx:if="{{es.length>0}}"><text class="st-text">约球活动</text></view>
+
+  <!-- 约球 -->
   <view class="evt" wx:for="{{es}}" wx:key="id">
     <view class="evt-top"><text class="badge {{item.f?'full':''}}">{{item.f?'已满':'报名中'}}</text><text class="evt-date">{{item.d}}</text></view>
     <view class="evt-title">{{item.t}}</view><view class="evt-info">{{item.ct}} · {{item.lv}}</view>
     <view class="evt-bar"><view class="evt-avs"><view class="ea" wx:for="{{item.avs}}" wx:key="*this" style="background:{{item}}"></view></view><text class="evt-num">{{item.n}}/{{item.tn}}人</text><view class="join {{item.f?'join-f':''}}" bindtap="join" data-id="{{item.id}}">{{item.joined?'已报名':(item.f?'已满':'报名')}}</view></view>
   </view>
-</view>
-
-<view class="feed" wx:if="{{a==2}}">
-  <map class="real-map" latitude="39.92" longitude="116.40" scale="13" markers="{{markers}}" show-location bindmarkertap="onMarkerTap" style="width:100%;height:400rpx"></map>
-  <view class="court-list">
-    <view class="c-item" wx:for="{{cs}}" wx:key="id" bindtap="toCourt" data-id="{{item.id}}">
-      <view class="c-no">{{index+1}}</view>
-      <view class="c-info">
-        <view class="c-name">{{item.name}}</view>
-        <view class="c-desc">{{item.fd}}片 · {{item.io}}{{item.ft?' · '+item.ft:''}}</view>
-      </view>
-      <view class="c-dist">{{item.dist}}</view>
-    </view>
-  </view>
-</view>
+</scroll-view>

@@ -1,5 +1,5 @@
 <view class="tab-bar">
   <view class="tab {{selected===0?'on':''}}" data-path="/pages/discover/discover" data-idx="0" bindtap="sw">发现</view>
-  <view class="tab {{selected===1?'on':''}}" data-path="/pages/equipment/equipment" data-idx="1" bindtap="sw">装备库</view>
+  <view class="tab {{selected===1?'on':''}}" data-path="/pages/courts/courts" data-idx="1" bindtap="sw">球场</view>
   <view class="tab {{selected===2?'on':''}}" data-path="/pages/profile/profile" data-idx="2" bindtap="sw">我的</view>
 </view>

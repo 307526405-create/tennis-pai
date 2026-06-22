@@ -1,0 +1,21 @@
+<view class="nav" style="padding-top:{{s}}px">
+  <view class="brand-wrap">
+    <view class="brand-row"><text class="brand">网球</text><view class="pai-wrap"><text class="brand-ac">派</text><view class="pai-line"></view></view></view>
+    <text class="brand-en">TENNIS PAI</text>
+  </view>
+  <view class="nav-search" bindtap="toSearch"><view class="search-icon"><view class="si-circle"></view><view class="si-line"></view></view></view>
+</view>
+
+<map latitude="39.92" longitude="116.40" scale="13" markers="{{markers}}" show-location style="width:100%;height:480rpx"></map>
+
+<scroll-view scroll-y class="clist" style="padding-bottom:160rpx">
+  <view class="citem" wx:for="{{courts}}" wx:key="id">
+    <view class="cno">{{index+1}}</view>
+    <view class="cinfo">
+      <view class="cname">{{item.name}}</view>
+      <view class="cdesc">{{item.fields}}片 · {{item.indoor}} · {{item.feature||'--'}}</view>
+      <view class="caddr">{{item.address||''}}</view>
+    </view>
+    <view class="cdist">{{item.distance||'--'}}</view>
+  </view>
+</scroll-view>

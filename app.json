@@ -1,13 +1,13 @@
 {
   "pages": [
     "pages/discover/discover",
-    "pages/equipment/equipment",
+    "pages/courts/courts",
+    "pages/profile/profile",
     "pages/detail/detail",
     "pages/search/search",
     "pages/edit/edit",
     "pages/create/create",
-    "pages/share/share",
-    "pages/profile/profile"
+    "pages/share/share"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -21,7 +21,7 @@
     "backgroundColor": "#FFFFFF",
     "list": [
       { "pagePath": "pages/discover/discover", "text": "发现" },
-      { "pagePath": "pages/equipment/equipment", "text": "装备库" },
+      { "pagePath": "pages/courts/courts", "text": "球场" },
       { "pagePath": "pages/profile/profile", "text": "我的" }
     ]
   },
