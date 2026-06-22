@@ -4,34 +4,36 @@
 </view>
 
 <view class="form">
-  <input class="fi" placeholder="标题，如：周六3.5级单打切磋" value="{{title}}" bindinput="setT"/>
+  <!-- 基本信息 -->
+  <view class="group">
+    <view class="gr"><text class="gl">标题</text><input class="gv" placeholder="周六3.5级单打切磋" value="{{title}}" bindinput="setT"/></view>
+    <picker mode="date" value="{{dateVal}}" bindchange="onDate">
+      <view class="gr"><text class="gl">日期</text><text class="gv-t">{{date||'选择日期'}}</text><text class="arr">›</text></view>
+    </picker>
+    <picker mode="selector" range="{{times}}" bindchange="onTime">
+      <view class="gr"><text class="gl">时间</text><text class="gv-t">{{time||'选择时段'}}</text><text class="arr">›</text></view>
+    </picker>
+  </view>
 
-  <picker mode="date" value="{{dateVal}}" bindchange="onDate">
-    <view class="fg"><view class="fl">日期</view><view class="fv">{{date||'选择日期'}}<text class="fg-arrow">›</text></view></view>
-  </picker>
-
-  <picker mode="selector" range="{{times}}" bindchange="onTime">
-    <view class="fg"><view class="fl">时间</view><view class="fv">{{time||'选择时段'}}<text class="fg-arrow">›</text></view></view>
-  </picker>
-
-  <input class="fi" placeholder="地点，如：朝阳公园网球中心" value="{{court}}" bindinput="setCt"/>
-
-  <view class="fr">
+  <!-- 场地水平 -->
+  <view class="group">
+    <input class="gr-in" placeholder="地点，如：朝阳公园网球中心" value="{{court}}" bindinput="setCt"/>
     <picker mode="selector" range="{{levels}}" bindchange="onLevel">
-      <view class="fg half"><view class="fl">水平</view><view class="fv">{{lv||'不限'}}<text class="fg-arrow">›</text></view></view>
+      <view class="gr"><text class="gl">水平</text><text class="gv-t">{{lv}}</text><text class="arr">›</text></view>
     </picker>
     <picker mode="selector" range="{{counts}}" bindchange="onCount">
-      <view class="fg half"><view class="fl">人数</view><view class="fv">{{tn}}人<text class="fg-arrow">›</text></view></view>
+      <view class="gr"><text class="gl">人数</text><text class="gv-t">{{tn}}人</text><text class="arr">›</text></view>
     </picker>
   </view>
 
-  <view class="fg" bindtap="pickPrice">
-    <view class="fl">费用</view>
-    <view class="fv">{{priceText||'AA制'}}<text class="fg-arrow">›</text></view>
+  <!-- 费用备注 -->
+  <view class="group">
+    <view class="gr" bindtap="pickPrice">
+      <text class="gl">费用</text><text class="gv-t">{{priceText||'AA制'}}</text><text class="arr">›</text>
+    </view>
+    <input class="gr-in" wx:if="{{price==='custom'}}" placeholder="输入金额" value="{{customPrice}}" bindinput="setCustomPrice"/>
+    <input class="gr-in" placeholder="备注（选填）" value="{{note}}" bindinput="setNote"/>
   </view>
-  <input class="fi" wx:if="{{price=='custom'}}" placeholder="输入金额" value="{{customPrice}}" bindinput="setCustomPrice"/>
-
-  <input class="fi" placeholder="备注（选填）" value="{{note}}" bindinput="setNote"/>
 
   <view class="submit" bindtap="publish">确认发起</view>
 </view>
