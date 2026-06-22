@@ -1,85 +1,29 @@
 var api = require('../../utils/api');
 
 Page({
-  data: { s: 44, title: '', date: '', court: '', lv: '', tn: '' },
-  onLoad() {
-    this.setData({ s: wx.getWindowInfo().statusBarHeight });
-  },
+  data: { s: 44, title: '', date: '', time: '', court: '', lv: '', tn: '4', note: '', levels: ['不限', '2.0', '2.5', '3.0', '3.5', '4.0', '4.5', '5.0+'], counts: ['2', '3', '4', '5', '6', '8', '10'] },
+  onLoad() { this.setData({ s: wx.getWindowInfo().statusBarHeight }); },
   setT(e) { this.setData({ title: e.detail.value }); },
-  setD(e) { this.setData({ date: e.detail.value }); },
   setCt(e) { this.setData({ court: e.detail.value }); },
-  setLv(e) { this.setData({ lv: e.detail.value }); },
-  setTn(e) { this.setData({ tn: e.detail.value }); },
+  setNote(e) { this.setData({ note: e.detail.value }); },
+
+  pickDate() { var that=this; wx.showActionSheet({ itemList: ['今天','明天','后天','选择日期'], success: function(r) { if(r.tapIndex===0) that.setData({ date: '今天' }); else if(r.tapIndex===1) that.setData({ date: '明天' }); else if(r.tapIndex===2) that.setData({ date: '后天' }); } }); },
+  
+  pickTime() { var that=this; wx.showActionSheet({ itemList: ['08:00-10:00','10:00-12:00','14:00-16:00','16:00-18:00','18:00-20:00','20:00-22:00'], success: function(r) { that.setData({ time: ['08:00-10:00','10:00-12:00','14:00-16:00','16:00-18:00','18:00-20:00','20:00-22:00'][r.tapIndex] }); } }); },
+  
+  pickLevel() { var that=this; wx.showActionSheet({ itemList: this.data.levels, success: function(r) { that.setData({ lv: that.data.levels[r.tapIndex] }); } }); },
+  
+  pickCount() { var that=this; wx.showActionSheet({ itemList: this.data.counts, success: function(r) { that.setData({ tn: that.data.counts[r.tapIndex] }); } }); },
+
   publish() {
     var d = this.data;
-    if (!d.title) return;
-
-    var that = this;
-
+    if (!d.title || !d.date || !d.court) { wx.showToast({ title: '请填写标题/日期/地点', icon: 'none' }); return; }
     try {
-      api.post('/api/events', {
-        title: d.title,
-        date: d.date,
-        court: d.court,
-        level: d.lv,
-        total: parseInt(d.tn) || 4
-      }).then(function(res) {
-        that.refreshEventsAndBack();
-      }).catch(function() {
-        that.refreshEventsAndBack();
-      });
-    } catch (e) {
-      that.refreshEventsAndBack();
-    }
-  },
-  refreshEventsAndBack() {
-    var d = this.data;
-    var pages = getCurrentPages();
-    var prev = pages[pages.length - 2];
-    if (prev) {
-      try {
-        var api = require('../../utils/api');
-        api.get('/api/events?status=open').then(function(res) {
-          var data = res.data || res;
-          if (data && data.length > 0) {
-            prev.setData({ es: data.map(function(e) {
-              return { id: e.id, t: e.title || '', d: (e.date || '') + ' ' + (e.time || ''),
-                ct: e.court || '', lv: e.level || '', tn: e.max_players || 4, n: e.current_players || 0,
-                f: e.status === 'full', joined: false, avs: [] };
-            }) });
-            wx.showToast({ title: '发布成功' });
-            setTimeout(function() { wx.navigateBack(); }, 500);
-            return;
-          }
-          thatLocal(d, prev);
-        }).catch(function() {
-          thatLocal(d, prev);
-        });
-      } catch (e) {
-        thatLocal(d, prev);
-      }
-    } else {
-      wx.showToast({ title: '发布成功' });
-      setTimeout(function() { wx.navigateBack(); }, 500);
-    }
-
-    function thatLocal(d, prev) {
-      var es = prev.data.es || [];
-      es.unshift({
-        id: Date.now(),
-        t: d.title,
-        d: d.date,
-        ct: d.court,
-        lv: d.lv + '级',
-        avs: [],
-        n: 0,
-        tn: parseInt(d.tn) || 4,
-        f: false
-      });
-      prev.setData({ es: es });
-      wx.showToast({ title: '发布成功' });
-      setTimeout(function() { wx.navigateBack(); }, 500);
-    }
+      api.post('/api/events', { title: d.title, date: d.date, time: d.time || '14:00-16:00', court: d.court, level: d.lv || '不限', max_players: parseInt(d.tn) || 4, creator_id: wx.getStorageSync('currentUserId') || 1 }).then(function() {
+        wx.showToast({ title: '约球发布成功' });
+        setTimeout(function() { wx.navigateBack(); }, 800);
+      }).catch(function() { wx.showToast({ title: '发布失败', icon: 'none' }); });
+    } catch (e) {}
   },
   back() { wx.navigateBack(); }
 });

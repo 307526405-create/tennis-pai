@@ -1,11 +1,22 @@
-.evt{padding:24rpx 40rpx;border-bottom:1rpx solid #F0F0F0}
-.evt-top{display:flex;align-items:center;gap:12rpx;margin-bottom:8rpx}
-.evt-date{font-size:22rpx;color:var(--t3)}
-.badge{font-size:18rpx;font-weight:600;padding:2rpx 10rpx;border-radius:3rpx;background:rgba(46,139,87,.08);color:var(--g2)}.badge.full{background:#F0F0F0;color:var(--t3)}
-.evt-title{font-size:28rpx;font-weight:600;color:var(--t);margin-bottom:6rpx}
-.evt-info{font-size:22rpx;color:var(--t2);margin-bottom:14rpx}
-.evt-bar{display:flex;align-items:center;justify-content:flex-end;gap:12rpx}
-.evt-num{font-size:22rpx;color:var(--t2)}
-.join{padding:8rpx 24rpx;background:var(--g2);color:#fff;border-radius:20rpx;font-size:22rpx;font-weight:600}.join-f{background:#F0F0F0;color:var(--t3)}
-.empty{text-align:center;padding:80rpx;font-size:26rpx;color:var(--t3)}
+.evt{background:#FFF;margin:0 32rpx 16rpx;border-radius:16rpx;padding:24rpx;box-shadow:0 1rpx 4rpx rgba(0,0,0,.04)}
+.evt-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12rpx}
+.evt-badge{font-size:20rpx;font-weight:600;padding:4rpx 12rpx;border-radius:6rpx;background:rgba(46,139,87,.08);color:var(--g2)}.evt-badge.full{background:#F0F0F0;color:var(--t3)}
+.evt-meta{display:flex;align-items:center;gap:12rpx}
+.evt-date{font-size:22rpx;color:var(--t2)}.evt-level{font-size:22rpx;color:var(--t3)}
+.evt-title{font-size:30rpx;font-weight:600;color:var(--t);margin-bottom:8rpx}
+.evt-loc{font-size:24rpx;color:var(--t2);margin-bottom:16rpx;display:flex;align-items:center;gap:4rpx}
+.evt-loc-icon{font-size:20rpx}
+.evt-footer{display:flex;align-items:center;justify-content:space-between}
+.evt-players{display:flex;align-items:center;gap:4rpx}
+.ep-av{width:36rpx;height:36rpx;border-radius:50%;margin-left:-8rpx;border:2rpx solid #FFF}.ep-av:first-child{margin-left:0}
+.ep-count{font-size:22rpx;color:var(--t3);margin-left:4rpx}
+
+.join-btn{padding:12rpx 32rpx;background:var(--g2);color:#fff;border-radius:20rpx;font-size:24rpx;font-weight:600}
+.join-btn.join-f{background:#F0F0F0;color:var(--t3)}
+
+.empty{text-align:center;padding:120rpx 0}
+.empty-icon{font-size:64rpx;margin-bottom:16rpx}
+.empty-text{font-size:26rpx;color:var(--t3);margin-bottom:24rpx}
+.empty-btn{display:inline-block;padding:16rpx 40rpx;background:var(--g2);color:#fff;border-radius:20rpx;font-size:26rpx;font-weight:600}
+
 .create-btn{font-size:22rpx;color:var(--g2);font-weight:600;padding:8rpx 16rpx;border:1rpx solid var(--g2);border-radius:20rpx}

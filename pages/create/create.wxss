@@ -1,5 +1,8 @@
 .back{font-size:36rpx;color:var(--t)}.ntitle{font-size:28rpx;font-weight:600;color:var(--t);flex:1;text-align:center}
 .form{padding:40rpx}
-.fi{width:100%;padding:24rpx 0;font-size:28rpx;color:var(--t);border-bottom:1rpx solid #F0F0F0;margin-bottom:16rpx}
-.fr{display:flex;gap:24rpx}.fs{flex:1}
-.submit{margin-top:40rpx;text-align:center;padding:24rpx;background:var(--g2);color:#fff;border-radius:16rpx;font-size:28rpx;font-weight:600}
+.fi{width:100%;padding:28rpx 0;font-size:28rpx;color:var(--t);border-bottom:1rpx solid #F0F0F0;margin-bottom:4rpx}
+.fg{display:flex;align-items:center;justify-content:space-between;padding:28rpx 0;border-bottom:1rpx solid #F0F0F0;margin-bottom:4rpx}
+.fl{font-size:28rpx;color:var(--t)}.fv{font-size:28rpx;color:var(--t3);display:flex;align-items:center;gap:8rpx}
+.fg-arrow{font-size:32rpx;color:#CCC}
+.fr{display:flex;gap:24rpx}.half{flex:1}
+.submit{text-align:center;padding:28rpx;background:var(--g1);color:#fff;border-radius:12rpx;font-size:28rpx;font-weight:600;margin-top:32rpx}

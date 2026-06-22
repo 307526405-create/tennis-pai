@@ -8,9 +8,31 @@
 
 <scroll-view scroll-y style="padding-bottom:160rpx">
   <view class="evt" wx:for="{{events}}" wx:key="id">
-    <view class="evt-top"><text class="badge {{item.f?'full':''}}">{{item.f?'已满':'报名中'}}</text><text class="evt-date">{{item.d}}</text></view>
-    <view class="evt-title">{{item.t}}</view><view class="evt-info">{{item.ct}} · {{item.lv}}</view>
-    <view class="evt-bar"><text class="evt-num">{{item.n}}/{{item.tn}}人</text><view class="join {{item.f?'join-f':''}}" bindtap="join" data-id="{{item.id}}">{{item.joined?'已报名':(item.f?'已满':'报名')}}</view></view>
+    <view class="evt-header">
+      <view class="evt-badge {{item.f?'full':''}}">{{item.f?'已满':'报名中'}}</view>
+      <view class="evt-meta">
+        <text class="evt-date">{{item.d}}</text>
+        <text class="evt-level">{{item.lv}}</text>
+      </view>
+    </view>
+    
+    <view class="evt-title">{{item.t}}</view>
+    <view class="evt-loc"><text class="evt-loc-icon">📍</text>{{item.ct}}</view>
+    
+    <view class="evt-footer">
+      <view class="evt-players">
+        <view class="ep-av" wx:for="{{item.avs}}" wx:key="*this" style="background:{{item}}"></view>
+        <text class="ep-count">{{item.n}}/{{item.tn}}人</text>
+      </view>
+      <view class="join-btn {{item.f?'join-f':''}}" bindtap="join" data-id="{{item.id}}">
+        {{item.joined?'已报名':(item.f?'已满':'报名')}}
+      </view>
+    </view>
   </view>
-  <view class="empty" wx:if="{{events.length===0}}">暂无约球活动</view>
+  
+  <view class="empty" wx:if="{{events.length===0}}">
+    <view class="empty-icon">🎾</view>
+    <view class="empty-text">还没有约球活动</view>
+    <view class="empty-btn" bindtap="goCreate">发起第一场约球</view>
+  </view>
 </scroll-view>
