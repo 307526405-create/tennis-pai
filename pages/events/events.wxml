@@ -9,23 +9,31 @@
 <scroll-view scroll-y style="padding-bottom:160rpx">
   <view class="evt" wx:for="{{events}}" wx:key="id">
     <view class="evt-header">
-      <view class="evt-badge {{item.f?'full':''}}">{{item.f?'已满':'报名中'}}</view>
-      <view class="evt-meta">
-        <text class="evt-date">{{item.d}}</text>
-        <text class="evt-level">{{item.lv}}</text>
-      </view>
+      <view class="evt-badge {{item.f?'full':''}}">{{item.f?'已满':(item.joined?'已报名':'缺'+item.left+'人')}}</view>
+      <view class="evt-dist" wx:if="{{item.dist}}">{{item.dist}}</view>
     </view>
     
     <view class="evt-title">{{item.t}}</view>
-    <view class="evt-loc"><text class="evt-loc-icon">📍</text>{{item.ct}}<text class="evt-price" wx:if="{{item.price}}"> · {{item.price}}</text></view>
+    <view class="evt-meta-row">
+      <text>{{item.d}}</text>
+      <text class="evt-meta-div">|</text>
+      <text>{{item.lv}}</text>
+      <text class="evt-meta-div">|</text>
+      <text>{{item.ct}}</text>
+      <text class="evt-meta-div" wx:if="{{item.price}}">|</text>
+      <text wx:if="{{item.price}}">{{item.price}}</text>
+    </view>
     
-    <view class="evt-footer">
-      <view class="evt-players">
-        <view class="ep-av" wx:for="{{item.avs}}" wx:key="*this" style="background:{{item}}"></view>
-        <text class="ep-count">{{item.n}}/{{item.tn}}人</text>
+    <view class="evt-creator" wx:if="{{item.creator}}">发起人：{{item.creator}}</view>
+    
+    <view class="evt-foot">
+      <view class="evt-participants">
+        <text class="ep-name" wx:for="{{item.players}}" wx:key="*this" wx:if="{{index<3}}">{{item}}<text wx:if="{{index<2&&index<item.players.length-1}}">、</text></text>
+        <text class="ep-more" wx:if="{{item.players.length>3}}"> 等{{item.players.length}}人</text>
+        <text class="ep-count" wx:if="{{item.players.length===0}}">虚位以待</text>
       </view>
       <view class="join-btn {{item.f?'join-f':''}}" bindtap="join" data-id="{{item.id}}">
-        {{item.joined?'已报名':(item.f?'已满':'报名')}}
+        {{item.joined?'取消报名':(item.f?'已满':'我要报名')}}
       </view>
     </view>
   </view>

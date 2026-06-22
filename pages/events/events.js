@@ -1,7 +1,14 @@
 var api = require('../../utils/api');
 
 function mapEvent(e) {
-  return { id: e.id, t: e.title, d: e.date + ' ' + e.time, ct: e.court, lv: e.level, tn: e.max_players, n: e.current_players, f: e.status === 'full', joined: false, avs: [], price: e.price || 'AA制' };
+  var left = (e.max_players || 4) - (e.current_players || 0);
+  var players = (e.players || []).map(function(p) { return p.name || ''; });
+  return {
+    id: e.id, t: e.title, d: e.date + ' ' + e.time, ct: e.court,
+    lv: e.level, tn: e.max_players, n: e.current_players, left: left,
+    f: left <= 0, joined: false, price: e.price || '', players: players,
+    creator: e.creator_name || '', dist: e.distance || ''
+  };
 }
 
 Page({
@@ -23,8 +30,9 @@ Page({
   join(e) {
     var that = this;
     var id = e.currentTarget.dataset.id;
+    var uid = wx.getStorageSync('currentUserId') || 1;
     try {
-      api.post('/api/events/' + id + '/join', { player_id: 1 }).then(function() {
+      api.post('/api/events/' + id + '/join', { player_id: uid }).then(function() {
         that.loadEvents();
       }).catch(function() {});
     } catch (e) {}
