@@ -10,6 +10,9 @@
 
 .btns{display:flex;gap:12rpx;padding:0 32rpx 0}
 .btn-item{flex:1;text-align:center;padding:20rpx 0;background:#F7F9F4;border-radius:16rpx;font-size:26rpx;color:var(--t);font-weight:500}
+.avail-bar{padding:12rpx 32rpx 0}
+.avail-toggle{text-align:center;padding:20rpx;background:#F7F9F4;border-radius:16rpx;font-size:26rpx;color:var(--t3)}
+.avail-on{background:rgba(46,139,87,.08);color:var(--g2);font-weight:600}
 .div{height:1rpx;background:#F0F0F0;margin:24rpx 32rpx}
 
 .sec{padding:0 32rpx 8rpx}

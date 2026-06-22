@@ -9,4 +9,9 @@ function post(url, data) {
     wx.request({ url: BASE + url, method: 'POST', data: data, success: function(r) { resolve(r.data); }, fail: reject });
   });
 }
-module.exports = { get: get, post: post };
+function put(url, data) {
+  return new Promise(function(resolve, reject) {
+    wx.request({ url: BASE + url, method: 'PUT', data: data, success: function(r) { resolve(r.data); }, fail: reject });
+  });
+}
+module.exports = { get: get, post: post, put: put };

@@ -6,7 +6,7 @@ function mapPlayer(p) {
 }
 
 Page({
-  data: { s: 44, p: null, isSelf: true, favorited: false, favorites: [], currentUserId: 1, pid: null },
+  data: { s: 44, p: null, isSelf: true, favorited: false, favorites: [], currentUserId: 1, pid: null, avail: false },
   onLoad(options) {
     var that = this;
     var uid = wx.getStorageSync('currentUserId') || 1;
@@ -77,6 +77,15 @@ Page({
           wx.showToast({ title: data.favorited ? '已添加常约球友' : '已取消关注', icon: 'none', duration: 1200 });
         }
       }).catch(function() {});
+    } catch (e) {}
+  },
+  toggleAvail() {
+    var that = this;
+    var uid = this.data.currentUserId;
+    var newAvail = !this.data.avail;
+    this.setData({ avail: newAvail });
+    try {
+      api.put('/api/players/' + uid + '/active', {}).catch(function() {});
     } catch (e) {}
   },
   onShow() {

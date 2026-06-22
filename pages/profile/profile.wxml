@@ -21,6 +21,11 @@
   </view>
 
   <view class="btns"><text class="btn-item" bindtap="toEdit">编辑资料</text><text class="btn-item" bindtap="toShare">分享名片</text></view>
+  <view class="avail-bar" wx:if="{{isSelf}}">
+    <view class="avail-toggle {{avail?'avail-on':''}}" bindtap="toggleAvail">
+      {{avail?'有空，等球友约':'想打球，通知球友'}}
+    </view>
+  </view>
   <view class="div"></view>
 
   <view class="sec">
