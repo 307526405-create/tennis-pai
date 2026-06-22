@@ -45,7 +45,7 @@
     "disableSWC": true
   },
   "compileType": "miniprogram",
-  "libVersion": "3.6.0",
+  "libVersion": "3.16.1",
   "appid": "wx70978a5416bd77e3",
   "projectname": "网球派",
   "condition": {},

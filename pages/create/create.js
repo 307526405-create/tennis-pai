@@ -5,7 +5,7 @@ Page({
     s: 44, title: '', date: '', dateVal: '', time: '', court: '', showCourtInput: false, lv: '不限', tn: 4,
     note: '', price: '', customPrice: '', priceText: 'AA制',
     times: ['08:00-10:00','10:00-12:00','14:00-16:00','16:00-18:00','18:00-20:00','20:00-22:00'],
-    levels: ['不限','2.5','3.0','3.5','4.0','4.5'],
+    levels: ['不限','1.5','2.0','2.5','3.0','3.5'],
     counts: [2,3,4,5,6,8]
   },
   onLoad() { this.setData({ s: wx.getWindowInfo().statusBarHeight }); },
@@ -49,7 +49,7 @@ Page({
         api.get('/api/courts').then(function(res) {
           var data = res.data || res;
           if (data && data.length > 0) {
-            var names = data.slice(0, 6).map(function(c) { return c.name; });
+            var names = data.slice(0, 5).map(function(c) { return c.name; });
             names.push('其他（手动输入）');
             that.setData({ courtList: data });
             that.showCourtPicker(names);
@@ -59,7 +59,7 @@ Page({
         });
       } catch (e) {}
     } else {
-      var names = courts.slice(0, 6).map(function(c) { return c.name; });
+      var names = courts.slice(0, 5).map(function(c) { return c.name; });
       names.push('其他（手动输入）');
       that.showCourtPicker(names);
     }
