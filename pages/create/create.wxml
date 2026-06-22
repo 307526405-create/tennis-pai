@@ -4,37 +4,34 @@
 </view>
 
 <view class="form">
-  <input class="fi" placeholder="活动标题，如：周六3.5级单打切磋" value="{{title}}" bindinput="setT"/>
+  <input class="fi" placeholder="标题，如：周六3.5级单打切磋" value="{{title}}" bindinput="setT"/>
 
-  <view class="fg" bindtap="pickDate">
-    <view class="fl">日期</view>
-    <view class="fv">{{date||'选择日期'}}<text class="fg-arrow">›</text></view>
-  </view>
+  <picker mode="date" value="{{dateVal}}" bindchange="onDate">
+    <view class="fg"><view class="fl">日期</view><view class="fv">{{date||'选择日期'}}<text class="fg-arrow">›</text></view></view>
+  </picker>
 
-  <view class="fg" bindtap="pickTime">
-    <view class="fl">时间</view>
-    <view class="fv">{{time||'选择时间'}}<text class="fg-arrow">›</text></view>
-  </view>
+  <picker mode="selector" range="{{times}}" bindchange="onTime">
+    <view class="fg"><view class="fl">时间</view><view class="fv">{{time||'选择时段'}}<text class="fg-arrow">›</text></view></view>
+  </picker>
 
   <input class="fi" placeholder="地点，如：朝阳公园网球中心" value="{{court}}" bindinput="setCt"/>
 
   <view class="fr">
-    <view class="fg half" bindtap="pickLevel">
-      <view class="fl">水平</view>
-      <view class="fv">{{lv||'选择'}}<text class="fg-arrow">›</text></view>
-    </view>
-    <view class="fg half" bindtap="pickCount">
-      <view class="fl">人数</view>
-      <view class="fv">{{tn||'4'}}人<text class="fg-arrow">›</text></view>
-    </view>
+    <picker mode="selector" range="{{levels}}" bindchange="onLevel">
+      <view class="fg half"><view class="fl">水平</view><view class="fv">{{lv||'不限'}}<text class="fg-arrow">›</text></view></view>
+    </picker>
+    <picker mode="selector" range="{{counts}}" bindchange="onCount">
+      <view class="fg half"><view class="fl">人数</view><view class="fv">{{tn}}人<text class="fg-arrow">›</text></view></view>
+    </picker>
   </view>
-
-  <input class="fi" placeholder="备注（选填），如：自带球、A级场" value="{{note}}" bindinput="setNote"/>
 
   <view class="fg" bindtap="pickPrice">
     <view class="fl">费用</view>
-    <view class="fv">{{price||'AA制'}}<text class="fg-arrow">›</text></view>
+    <view class="fv">{{priceText||'AA制'}}<text class="fg-arrow">›</text></view>
   </view>
+  <input class="fi" wx:if="{{price=='custom'}}" placeholder="输入金额" value="{{customPrice}}" bindinput="setCustomPrice"/>
+
+  <input class="fi" placeholder="备注（选填）" value="{{note}}" bindinput="setNote"/>
 
   <view class="submit" bindtap="publish">确认发起</view>
 </view>
