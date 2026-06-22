@@ -7,6 +7,9 @@
 .gv{flex:1;font-size:28rpx;color:var(--t);text-align:right}
 .gv-t{flex:1;font-size:28rpx;color:var(--t3);text-align:right}
 .arr{font-size:32rpx;color:#CCC;margin-left:8rpx}
+.quick-courts{display:flex;flex-wrap:wrap;gap:12rpx;padding:16rpx 24rpx}
+.qc-tag{font-size:24rpx;color:var(--g2);padding:8rpx 20rpx;border:1rpx solid var(--g2);border-radius:20rpx;font-weight:500}
+.qc-tag.qc-other{color:var(--t3);border-color:#E0E0E0}
 .gr-in{width:100%;padding:24rpx;font-size:28rpx;color:var(--t);border-bottom:1rpx solid #F5F5F5}
 .gr-in:last-child{border-bottom:none}
 .submit{text-align:center;padding:28rpx;background:var(--g1);color:#fff;border-radius:14rpx;font-size:28rpx;font-weight:600;margin-top:8rpx}

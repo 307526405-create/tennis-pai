@@ -4,6 +4,7 @@ Page({
   data: {
     s: 44, title: '', date: '', dateVal: '', time: '', court: '', showCourtInput: false, lv: '不限', tn: 4,
     note: '', price: '', customPrice: '', priceText: 'AA制',
+    topCourts: ['国家网球中心','朝阳公园','奥体中心','海淀体育中心','清华紫荆'],
     times: ['08:00-10:00','10:00-12:00','14:00-16:00','16:00-18:00','18:00-20:00','20:00-22:00'],
     levels: ['不限','1.5','2.0','2.5','3.0','3.5'],
     counts: [2,3,4,5,6,8]
@@ -40,49 +41,9 @@ Page({
     });
   },
 
-  pickCourt() {
-    var that = this;
-    var courts = this.data.courtList || [];
-    if (courts.length === 0) {
-      // 从后端加载球场列表
-      try {
-        api.get('/api/courts').then(function(res) {
-          var data = res.data || res;
-          if (data && data.length > 0) {
-            var names = data.slice(0, 5).map(function(c) { return c.name; });
-            names.push('其他（手动输入）');
-            that.setData({ courtList: data });
-            that.showCourtPicker(names);
-          }
-        }).catch(function() {
-          wx.showToast({ title: '请手动输入球场名', icon: 'none' });
-        });
-      } catch (e) {}
-    } else {
-      var names = courts.slice(0, 5).map(function(c) { return c.name; });
-      names.push('其他（手动输入）');
-      that.showCourtPicker(names);
-    }
-  },
-
-  showCourtPicker(names) {
-    var that = this;
-    wx.showActionSheet({
-      itemList: names,
-      success: function(r) {
-        if (r.tapIndex === names.length - 1) {
-          that.setData({ showCourtInput: true, court: '' });
-        } else {
-          that.setData({ court: names[r.tapIndex], showCourtInput: false });
-        }
-      }
-    });
-  },
-
-  // 输入新球场名后自动回显
-  onCourtInput(e) {
-    this.setData({ court: e.detail.value });
-  },
+  selCourt(e) { this.setData({ court: e.currentTarget.dataset.name, showCourtInput: false }); },
+  inputCourt() { this.setData({ showCourtInput: !this.data.showCourtInput, court: '' }); },
+  onCourtInput(e) { this.setData({ court: e.detail.value }); },
 
   publish() {
     var d = this.data;

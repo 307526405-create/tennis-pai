@@ -20,7 +20,11 @@
     <view class="gr" bindtap="pickCourt">
       <text class="gl">地点</text><text class="gv-t">{{court||'选择球场'}}</text><text class="arr">›</text>
     </view>
-    <input class="gr-in" wx:if="{{showCourtInput}}" placeholder="输入新球场名" value="{{court}}" bindinput="onCourtInput" focus/>
+    <view class="quick-courts">
+      <view class="qc-tag" wx:for="{{topCourts}}" wx:key="*this" bindtap="selCourt" data-name="{{item}}">{{item}}</view>
+      <view class="qc-tag qc-other" bindtap="inputCourt">其他球场</view>
+    </view>
+    <input class="gr-in" wx:if="{{showCourtInput}}" placeholder="输入球场名" value="{{court}}" bindinput="onCourtInput"/>
     <picker mode="selector" range="{{levels}}" bindchange="onLevel">
       <view class="gr"><text class="gl">水平</text><text class="gv-t">{{lv}}</text><text class="arr">›</text></view>
     </picker>
