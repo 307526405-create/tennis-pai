@@ -6,8 +6,7 @@
   <view class="create-btn" bindtap="goCreate">发起约球</view>
 </view>
 
-<scroll-view scroll-y style="padding-bottom:160rpx">
-  <view style="height:{{44+s}}px"></view>
+<scroll-view scroll-y style="padding-bottom:160rpx;margin-top:44px">
   <view class="evt" wx:for="{{events}}" wx:key="id">
     <view class="evt-header">
       <view class="evt-badge {{item.f?'full':''}}">{{item.f?'已满':(item.joined?'已报名':'缺'+item.left+'人')}}</view>
