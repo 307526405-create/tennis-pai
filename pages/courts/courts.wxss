@@ -1,6 +1,7 @@
 .map-btns{position:absolute;right:16rpx;bottom:80rpx;display:flex;flex-direction:column;gap:8rpx}
 .mb-btn{width:64rpx;height:64rpx;background:#FFF;border-radius:8rpx;display:flex;align-items:center;justify-content:center;font-size:32rpx;font-weight:300;color:var(--t);box-shadow:0 2rpx 8rpx rgba(0,0,0,.12)}
-.mb-loc{margin-top:8rpx;font-size:28rpx}
+.mb-loc{display:flex;align-items:center;justify-content:center}
+.loc-dot{width:16rpx;height:16rpx;border-radius:50%;border:4rpx solid var(--t)}
 
 .clist{padding:0 32rpx}
 .citem{display:flex;align-items:flex-start;gap:16rpx;padding:24rpx 0;border-bottom:1rpx solid #F0F0F0}

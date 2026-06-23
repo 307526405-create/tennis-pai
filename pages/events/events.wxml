@@ -48,4 +48,4 @@
   </view>
 </scroll-view>
 
-<view class="fab" bindtap="goCreate">＋</view>
+<view class="fab" bindtap="goCreate">+</view>

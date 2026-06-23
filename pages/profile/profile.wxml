@@ -72,7 +72,7 @@
     </view>
   </view>
   <view class="div"></view>
-  <view class="sec s-feedback" bindtap="showFeedback">意见反馈<text class="arr-s">›</text></view>
+  <view class="sec s-feedback" bindtap="showFeedback">意见反馈<text class="arr-s">></text></view>
 
   <!-- 反馈弹框 -->
   <view class="fb-modal" wx:if="{{showFb}}" catchtap="hideFeedback">

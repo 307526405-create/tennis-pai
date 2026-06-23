@@ -1,6 +1,8 @@
 .nav-row{display:flex;align-items:center;gap:16rpx}
 .search-input{flex:1;display:flex;align-items:center;gap:8rpx;background:#F0F2ED;border-radius:16rpx;padding:12rpx 20rpx}
-.si-icon{font-size:28rpx;color:var(--t3)}
+.si-icon{position:relative;width:28rpx;height:28rpx;flex-shrink:0}
+.si-lens{width:18rpx;height:18rpx;border:3rpx solid var(--t3);border-radius:50%;position:absolute;top:0;left:0}
+.si-lens::after{content:'';position:absolute;width:3rpx;height:8rpx;background:var(--t3);border-radius:2rpx;transform:rotate(-45deg);bottom:-6rpx;right:-4rpx}
 .si-field{flex:1;font-size:26rpx;color:var(--t)}
 .cancel{font-size:26rpx;color:var(--g2);font-weight:600;white-space:nowrap}
 .result,.hot{padding:0 40rpx}

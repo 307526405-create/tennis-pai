@@ -1,7 +1,7 @@
 <view class="nav" style="padding-top:{{s}}px">
   <view class="nav-row">
     <view class="search-input">
-      <text class="si-icon">⌕</text>
+      <text class="si-icon"><view class="si-lens"></view></text>
       <input class="si-field" placeholder="搜索球友、装备、球场..." value="{{q}}" bindinput="onInput" focus/>
     </view>
     <text class="cancel" bindtap="back">取消</text>

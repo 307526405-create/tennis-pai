@@ -1,5 +1,5 @@
 <view class="nav" style="padding-top:{{s}}px">
-  <text class="back" bindtap="back">‹</text>
+  <text class="back" bindtap="back"><</text>
   <text class="ntitle">创建名片</text>
   <text class="save" bindtap="save">保存</text>
 </view>
@@ -26,7 +26,7 @@
   <view class="fg">
     <view class="fl">球拍</view>
     <picker mode="selector" range="{{rackets}}" bindchange="setRacket">
-      <view class="picker">{{racketName||'选择你的球拍'}} ›</view>
+      <view class="picker">{{racketName||'选择你的球拍'}}></view>
     </picker>
   </view>
   <view class="fg">

@@ -1,5 +1,5 @@
 <view class="nav" style="padding-top:{{statusBar}}px">
-  <view class="nav-l" bindtap="back"><text class="back">‹</text><text class="ntitle">装备详情</text></view>
+  <view class="nav-l" bindtap="back"><text class="back"><</text><text class="ntitle">装备详情</text></view>
 </view>
 
 <scroll-view scroll-y wx:if="{{r}}">
@@ -7,7 +7,7 @@
   <view class="db">
     <view class="etop"><text class="ebrand">{{r.brand}}</text><text class="etype">{{r.type}}</text></view>
     <view class="dname">{{r.model}}</view>
-    <view class="dstar" wx:if="{{r.star}}">⭐ {{r.star}}</view>
+    <view class="dstar" wx:if="{{r.star}}">{{r.star}}</view>
   </view>
 
   <view class="db">
