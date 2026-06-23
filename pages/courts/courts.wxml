@@ -12,7 +12,6 @@
     <cover-view class="mb-btn" bindtap="zoomIn">+</cover-view>
     <cover-view class="mb-btn" bindtap="zoomOut">-</cover-view>
     <cover-view class="mb-btn mb-loc" bindtap="goLoc"><view class="loc-dot"></view></cover-view>
-    <cover-view class="mb-btn mb-search" bindtap="showSearch"><view class="mb-lens"></view></cover-view>
   </cover-view>
 </map>
 
