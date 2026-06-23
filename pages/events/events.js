@@ -50,9 +50,18 @@ Page({
   applyFilter() {
     var city = this.data.city;
     var fl = this.data.fl;
-    var filtered = this.data.allEvents;
+    var filtered = this.data.allEvents.slice();
     if (city !== '全部') filtered = filtered.filter(function(e) { return e.city === city || !e.city; });
     if (fl) filtered = filtered.filter(function(e) { return e.lv === fl; });
+    // 按距离排序（有距离的排前面）
+    filtered.sort(function(a, b) {
+      if (!a.dist && !b.dist) return 0;
+      if (!a.dist) return 1;
+      if (!b.dist) return -1;
+      var ka = a.dist.indexOf('km') > 0 ? parseFloat(a.dist) : 0;
+      var kb = b.dist.indexOf('km') > 0 ? parseFloat(b.dist) : 0;
+      return ka - kb;
+    });
     this.setData({ events: filtered });
   },
   setFilter(e) {
