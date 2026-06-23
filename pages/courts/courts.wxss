@@ -15,6 +15,8 @@
 .ca-btn{font-size:20rpx;color:var(--g2);padding:4rpx 14rpx;border:1rpx solid var(--g2);border-radius:12rpx;font-weight:500}
 
 .city-tabs{white-space:nowrap;padding:16rpx 32rpx;display:flex;gap:16rpx}
+.court-search{padding:8rpx 32rpx}
+.cs-input{width:100%;padding:16rpx 20rpx;background:#FFF;border-radius:12rpx;font-size:24rpx;color:var(--t);box-sizing:border-box}
 .ctab{display:inline-block;font-size:24rpx;color:var(--t3);padding:6rpx 20rpx;border-radius:16rpx;background:#F5F5F5;flex-shrink:0}
 .ctab-on{background:var(--g2);color:#fff;font-weight:600}
 

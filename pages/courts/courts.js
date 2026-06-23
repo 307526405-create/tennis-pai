@@ -58,7 +58,18 @@ Page({
   setCity(e) {
     var city = e.currentTarget.dataset.city;
     var filtered = this.addDist(this.data.allCourts.filter(function(c) { return c.city === city; }));
-    this.setData({ curCity: city, courts: filtered });
+    this.setData({ curCity: city, courts: filtered, kw: '' });
+    this.buildMarkers(filtered);
+    if (filtered.length > 0) this.setData({ centerLat: filtered[0].lat, centerLng: filtered[0].lng });
+  },
+  onSearch(e) {
+    var kw = (e.detail.value || '').trim();
+    this.setData({ kw: kw });
+    if (!kw) { this.setCity({ currentTarget: { dataset: { city: this.data.curCity } } }); return; }
+    var filtered = this.addDist(this.data.allCourts.filter(function(c) {
+      return c.name.indexOf(kw) >= 0 || (c.address && c.address.indexOf(kw) >= 0);
+    }));
+    this.setData({ courts: filtered });
     this.buildMarkers(filtered);
     if (filtered.length > 0) this.setData({ centerLat: filtered[0].lat, centerLng: filtered[0].lng });
   },

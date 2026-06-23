@@ -10,6 +10,7 @@
 <scroll-view scroll-y style="padding-bottom:160rpx;margin-top:44px">
   <scroll-view scroll-x class="filter-bar">
     <view class="ftab {{fl===l?'ftab-on':''}}" wx:for="{{levels}}" wx:key="*this" bindtap="setFilter" data-lv="{{l}}">{{l}}</view>
+    <view class="ftab {{fl==='online'?'ftab-on':''}}" bindtap="setFilter" data-lv="online">在线</view>
   </scroll-view>
   <view class="item" wx:for="{{ps}}" wx:key="id" bindtap="toP" data-id="{{item.id}}">
     <view class="i-av" style="background:{{item.c}}">{{item.a}}<view class="i-dot {{item.active?'dot-on':'dot-off'}}"></view></view>

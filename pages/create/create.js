@@ -9,7 +9,15 @@ Page({
     levels: ['不限','1.5','2.0','2.5','3.0','3.5'],
     counts: [2,3,4,5,6,8]
   },
-  onLoad() { this.setData({ s: wx.getWindowInfo().statusBarHeight }); },
+  onLoad(options) {
+    var app = getApp();
+    var city = (app && app.globalData.city) || '北京';
+    this.setData({ s: wx.getWindowInfo().statusBarHeight, city: city });
+    // 如果是从约TA打球进来的，预填备注
+    if (options.withPlayer) {
+      this.setData({ note: '约 ' + decodeURIComponent(options.withPlayer) + ' 打球' });
+    }
+  },
   setT(e) { this.setData({ title: e.detail.value }); },
   setCt(e) { this.setData({ court: e.detail.value }); },
   setNote(e) { this.setData({ note: e.detail.value }); },

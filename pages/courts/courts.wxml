@@ -16,6 +16,9 @@
 </map>
 
 <scroll-view scroll-y style="padding-bottom:160rpx;margin-top:calc(55vh + 44px)">
+  <view class="court-search">
+    <input class="cs-input" placeholder="搜索球场..." value="{{kw}}" bindinput="onSearch"/>
+  </view>
   <scroll-view scroll-x class="city-tabs">
     <view class="ctab {{curCity===c?'ctab-on':''}}" wx:for="{{cityList}}" wx:key="*this" bindtap="setCity" data-city="{{c}}">{{c}}</view>
   </scroll-view>
