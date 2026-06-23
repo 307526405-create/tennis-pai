@@ -7,9 +7,15 @@
   <text class="nav-search" bindtap="toSearch"><view class="search-icon"><view class="si-circle"></view><view class="si-line"></view></view></text>
 </view>
 
-<map latitude="{{centerLat}}" longitude="{{centerLng}}" scale="14" markers="{{markers}}" show-location style="width:100%;height:400rpx;position:fixed;top:{{44+s}}px;left:0;z-index:1"></map>
+<map id="cMap" latitude="{{centerLat}}" longitude="{{centerLng}}" scale="14" markers="{{markers}}" show-location show-compass enable-zoom enable-scroll style="width:100%;height:55vh;position:fixed;top:{{44+s}}px;left:0;z-index:1">
+  <cover-view class="map-btns">
+    <cover-view class="mb-btn" bindtap="zoomIn">+</cover-view>
+    <cover-view class="mb-btn" bindtap="zoomOut">−</cover-view>
+    <cover-view class="mb-btn mb-loc" bindtap="goLoc">📍</cover-view>
+  </cover-view>
+</map>
 
-<scroll-view scroll-y style="padding-bottom:160rpx;margin-top:400rpx">
+<scroll-view scroll-y style="padding-bottom:160rpx;margin-top:calc(55vh + 44px)">
   <scroll-view scroll-x class="city-tabs">
     <view class="ctab {{curCity==='全部'?'ctab-on':''}}" bindtap="setCity" data-city="全部">全部</view>
     <view class="ctab {{curCity===c?'ctab-on':''}}" wx:for="{{cityList}}" wx:key="*this" bindtap="setCity" data-city="{{c}}">{{c}}</view>

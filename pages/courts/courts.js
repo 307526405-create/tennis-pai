@@ -3,8 +3,8 @@ var api = require('../../utils/api');
 Page({
   data: { s: 44, courts: [], allCourts: [], markers: [], centerLat: 39.92, centerLng: 116.40, activeId: null, curCity: '全部', cityList: [], showForm: false, rn: '', rc: '', rf: '' },
   onLoad() {
-    var that = this;
     this.setData({ s: wx.getWindowInfo().statusBarHeight });
+    this.mapCtx = wx.createMapContext('cMap', this);
     this.loadData();
   },
 
@@ -20,9 +20,8 @@ Page({
           var cities = [];
           var seen = {};
           data.forEach(function(c) { if (!seen[c.city]) { seen[c.city]=1; cities.push(c.city); } });
-          // 按全局城市过滤
           var filtered = data.filter(function(c) { return c.city === globalCity; });
-          if (filtered.length === 0) filtered = data; // 没数据就全显示
+          if (filtered.length === 0) filtered = data;
           that.setData({ allCourts: data, courts: filtered, cityList: cities });
           that.buildMarkers(filtered);
           if (filtered.length > 0) that.setData({ centerLat: filtered[0].lat, centerLng: filtered[0].lng });
@@ -60,7 +59,6 @@ Page({
   },
 
   buildMarkers(data) {
-    var that = this;
     var markers = data.map(function(c) {
       return { id: c.id, latitude: c.lat, longitude: c.lng, title: c.name, width: 30, height: 30, callout: { content: c.name, fontSize: 12, padding: 6, bgColor: '#1B5E3B', color: '#fff', display: 'BYCLICK', borderRadius: 4 } };
     });
@@ -78,6 +76,16 @@ Page({
         return m;
       })
     });
+  },
+
+  goLoc() {
+    if (this.mapCtx) this.mapCtx.moveToLocation();
+  },
+  zoomIn() {
+    if (this.mapCtx) this.mapCtx.getScale({ success: function(r) { this.setData({ scale: r.scale + 2 }); }.bind(this) });
+  },
+  zoomOut() {
+    if (this.mapCtx) this.mapCtx.getScale({ success: function(r) { this.setData({ scale: Math.max(r.scale - 2, 3) }); }.bind(this) });
   },
 
   onShow() {
