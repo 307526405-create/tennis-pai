@@ -15,7 +15,7 @@
   <view class="block">
     <view class="bl">热门城市</view>
     <view class="hot-grid">
-      <view class="h-item {{city===c?'h-on':''}}" wx:for="{{hots}}" wx:key="*this" bindtap="selCity" data-city="{{c}}">{{c}}</view>
+      <view class="h-item" wx:for="{{hots}}" wx:key="*this" bindtap="selCity" data-city="{{item}}">{{item}}</view>
     </view>
   </view>
 
@@ -28,7 +28,7 @@
   <view class="block">
     <view class="bl">全部城市</view>
     <view class="all-warp">
-      <view class="a-item {{city===c?'a-on':''}}" wx:for="{{allCities}}" wx:key="*this" bindtap="selCity" data-city="{{c}}">{{c}}</view>
+      <view class="a-item" wx:for="{{allCities}}" wx:key="*this" bindtap="selCity" data-city="{{item}}">{{item}}</view>
     </view>
   </view>
 </scroll-view>
