@@ -111,7 +111,7 @@ Page({
   goCall(e) { var phone = e.currentTarget.dataset.phone; if (phone) wx.makePhoneCall({ phoneNumber: phone }); },
   showReport() { this.setData({ showForm: !this.data.showForm, rn: '', rc: '', rf: '' }); },
   showSearch() { this.setData({ showS: true }); },
-  hideSearch() { this.setData({ showS: false, kw: '' }); setCity({ currentTarget: { dataset: { city: this.data.curCity } } }); },
+  hideSearch() { this.setData({ showS: false, kw: '' }); this.setCity({ currentTarget: { dataset: { city: this.data.curCity } } }); },
   setRn(e) { this.setData({ rn: e.detail.value }); },
   setRc(e) { this.setData({ rc: e.detail.value }); },
   setRf(e) { this.setData({ rf: e.detail.value }); },

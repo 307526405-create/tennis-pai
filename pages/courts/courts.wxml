@@ -34,7 +34,7 @@
 
   <view class="search-float" wx:if="{{showS}}">
     <view class="sf-mask" catchtap="hideSearch"></view>
-    <view class="sf-box">
+    <view class="sf-box" style="top:{{44+s}}px">
       <input class="sf-input" placeholder="搜索球场..." value="{{kw}}" bindinput="onSearch" focus/>
     </view>
   </view>
