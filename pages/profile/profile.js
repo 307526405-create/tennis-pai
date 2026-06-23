@@ -160,5 +160,9 @@ Page({
         }
       }
     });
+  },
+  inviteMatch() {
+    var name = (this.data.p && this.data.p.name) || '球友';
+    wx.navigateTo({ url: '/pages/create/create?withPlayer=' + encodeURIComponent(name) });
   }
 });

@@ -51,7 +51,7 @@
 
   <view class="contact" wx:if="{{!isSelf}}">
     <button class="cb" bindtap="toggleFav">{{favorited?'★ 常约球友':'☆ 加为常约'}}</button>
-    <button class="cb" bindtap="contact">联系TA</button>
+    <button class="cb cb-invite" bindtap="inviteMatch">约TA打球</button>
   </view>
 
   <view class="sec" wx:if="{{isSelf && favorites.length>0}}">
