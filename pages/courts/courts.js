@@ -90,15 +90,15 @@ Page({
       centerLat: item.lat,
       centerLng: item.lng,
       activeId: item.id,
+      curCourt: item,
       markers: this.data.markers.map(function(m) {
         m.callout = m.id === item.id ? { content: m.title, fontSize: 12, padding: 6, bgColor: '#1B5E3B', color: '#fff', display: 'ALWAYS', borderRadius: 4 } : (m.callout ? Object.assign({}, m.callout, {display: 'BYCLICK'}) : m.callout);
         return m;
       })
     });
   },
-  closeCourt() { this.setData({ curCourt: null }); },
-
   goLoc() { if (this.mapCtx) this.mapCtx.moveToLocation(); },
+  closeCourt() { this.setData({ curCourt: null }); },
   zoomIn() { var that = this; if (this.mapCtx) this.mapCtx.getScale({ success: function(r) { that.setData({ scale: r.scale + 2 }); } }); },
   zoomOut() { var that = this; if (this.mapCtx) this.mapCtx.getScale({ success: function(r) { that.setData({ scale: Math.max(r.scale - 2, 3) }); } }); },
 

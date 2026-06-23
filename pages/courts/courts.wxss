@@ -11,12 +11,6 @@
 .cn{font-size:26rpx;color:var(--t);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ca{font-size:22rpx;color:var(--t3);margin-top:4rpx}
 .cdist{font-size:22rpx;color:var(--g2);font-weight:600;flex-shrink:0}
-.c-actions{display:flex;gap:12rpx;margin-top:4rpx}
-.ca-icon{width:44rpx;height:44rpx;border-radius:50%;background:#F0F2ED;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.cai-nav{width:0;height:0;border-left:7rpx solid transparent;border-right:7rpx solid transparent;border-bottom:12rpx solid var(--g2);margin-top:-2rpx}
-.cai-nav::after{content:'';display:block;width:3rpx;height:10rpx;background:var(--g2);margin:0 auto;margin-top:2rpx}
-.cai-tel{width:12rpx;height:16rpx;border:2rpx solid var(--g2);border-radius:3rpx 3rpx 2rpx 2rpx;position:relative}
-.cai-tel::after{content:'';position:absolute;bottom:-3rpx;left:50%;transform:translateX(-50%);width:5rpx;height:3rpx;background:var(--g2)}
 
 .city-tabs{white-space:nowrap;padding:16rpx 32rpx;display:flex;gap:16rpx}
 .court-search{padding:8rpx 32rpx}
@@ -29,3 +23,10 @@
 .rf-title{font-size:28rpx;font-weight:600;color:var(--t);margin-bottom:16rpx}
 .rf-input{width:100%;padding:20rpx 0;font-size:26rpx;border-bottom:1rpx solid #F0F0F0;margin-bottom:8rpx}
 .rf-submit{text-align:center;padding:20rpx;background:var(--g2);color:#fff;border-radius:8rpx;font-size:26rpx;font-weight:600;margin-top:16rpx}
+
+.court-popup{position:fixed;bottom:0;left:0;right:0;top:0;background:rgba(0,0,0,.3);z-index:200;display:flex;align-items:flex-end}
+.cp-card{background:#FFF;border-radius:24rpx 24rpx 0 0;padding:32rpx;width:100%;padding-bottom:calc(32rpx + 120rpx + env(safe-area-inset-bottom))}
+.cp-name{font-size:30rpx;font-weight:600;color:var(--t);margin-bottom:8rpx}
+.cp-addr{font-size:24rpx;color:var(--t3);margin-bottom:20rpx}
+.cp-actions{display:flex;gap:16rpx}
+.cpa-btn{flex:1;text-align:center;padding:18rpx;background:var(--g2);color:#fff;border-radius:12rpx;font-size:26rpx;font-weight:600}

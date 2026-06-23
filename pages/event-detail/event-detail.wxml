@@ -1,0 +1,91 @@
+<view class="nav" style="padding-top:{{s}}px">
+  <view class="nav-back" bindtap="goBack">&lt; 返回</view>
+  <text class="nav-title">活动详情</text>
+  <view class="nav-placeholder"></view>
+</view>
+
+<scroll-view scroll-y class="body" wx:if="{{event}}">
+  <view class="hero">
+    <view class="hero-status {{event.isFull?'full':''}}">{{event.isFull?'已满':(event.joined?'已报名':'报名中')}}</view>
+    <view class="hero-title">{{event.title}}</view>
+  </view>
+
+  <view class="info-card">
+    <view class="info-row">
+      <view class="info-icon i-time"></view>
+      <view class="info-content">
+        <text class="info-label">时间</text>
+        <text class="info-value">{{event.date}} {{event.time}}</text>
+      </view>
+    </view>
+    <view class="info-row">
+      <view class="info-icon i-court"></view>
+      <view class="info-content">
+        <text class="info-label">场地</text>
+        <text class="info-value">{{event.court}}</text>
+      </view>
+    </view>
+    <view class="info-row">
+      <view class="info-icon i-level"></view>
+      <view class="info-content">
+        <text class="info-label">水平</text>
+        <text class="info-value">{{event.level}}</text>
+      </view>
+    </view>
+    <view class="info-row">
+      <view class="info-icon i-people"></view>
+      <view class="info-content">
+        <text class="info-label">人数</text>
+        <text class="info-value">{{event.current_players}}/{{event.max_players}}人</text>
+      </view>
+    </view>
+    <view class="info-row" wx:if="{{event.price}}">
+      <view class="info-icon i-price"></view>
+      <view class="info-content">
+        <text class="info-label">费用</text>
+        <text class="info-value">{{event.price}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{event.creatorName}}">
+    <text class="section-title">发起人</text>
+    <view class="creator-card">
+      <view class="avatar-sm">{{event.creatorInitial}}</view>
+      <view class="creator-info">
+        <text class="creator-name">{{event.creatorName}}</text>
+        <text class="creator-level">{{event.creatorLevel || ''}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">已报名玩家 ({{event.current_players}}/{{event.max_players}})</text>
+    <view class="player-list" wx:if="{{event.players.length > 0}}">
+      <view class="player-item" wx:for="{{event.players}}" wx:key="id">
+        <view class="avatar-sm">{{item.initial}}</view>
+        <text class="player-name">{{item.name}}</text>
+        <text class="player-level">{{item.level}}</text>
+      </view>
+    </view>
+    <view class="empty-players" wx:else>
+      <text class="empty-text">暂无玩家报名，快来抢位吧</text>
+    </view>
+  </view>
+
+  <view class="bottom-spacer"></view>
+</scroll-view>
+
+<view class="loading" wx:if="{{!event}}">
+  <text>加载中...</text>
+</view>
+
+<view class="bottom-bar" wx:if="{{event}}">
+  <view class="bb-info">
+    <text class="bb-price" wx:if="{{event.price}}">{{event.price}}</text>
+    <text class="bb-count">{{event.current_players}}/{{event.max_players}}人</text>
+  </view>
+  <view class="bb-btn {{event.joined?'bb-cancel':''}} {{event.isFull&&!event.joined?'bb-full':''}}" bindtap="toggleJoin">
+    {{event.joined?'取消报名':(event.isFull?'已满':'立即报名')}}
+  </view>
+</view>

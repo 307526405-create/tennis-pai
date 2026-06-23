@@ -29,18 +29,21 @@
         <view class="cn">{{item.name}}</view>
         <view class="ca">{{item.address||item.city}}</view>
         </view>
-        <view class="c-actions">
-        <view class="ca-icon" catchtap="goNav" data-item="{{item}}" wx:if="{{item.lat}}">
-          <icon type="search" size="18" color="#07C160"/>
-        </view>
-        <view class="ca-icon" catchtap="goCall" data-phone="{{item.phone}}" wx:if="{{item.phone}}">
-          <icon type="info" size="18" color="#07C160"/>
-        </view>
-        </view>
       <view class="cdist" wx:if="{{item.dist}}">{{item.dist}}</view>
     </view>
   </view>
   <view class="report-btn" bindtap="showReport">+ 上报球场</view>
+
+  <view class="court-popup" wx:if="{{curCourt}}" catchtap="closeCourt">
+    <view class="cp-card" catchtap>
+      <view class="cp-name">{{curCourt.name}}</view>
+      <view class="cp-addr">{{curCourt.address||curCourt.city}}</view>
+      <view class="cp-actions">
+        <view class="cpa-btn" bindtap="goNav" data-item="{{curCourt}}">导航</view>
+        <view class="cpa-btn" wx:if="{{curCourt.phone}}" bindtap="goCall" data-phone="{{curCourt.phone}}">电话</view>
+      </view>
+    </view>
+  </view>
 
   <view class="report-form" wx:if="{{showForm}}">
     <view class="rf-title">上报新球场</view>

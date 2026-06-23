@@ -80,7 +80,7 @@ Page({
   goCreate() { wx.navigateTo({ url: '/pages/create/create' }); },
   toDetail(e) {
     var id = e.currentTarget.dataset.id;
-    wx.showToast({ title: '活动详情开发中', icon: 'none' });
+    wx.navigateTo({ url: '/pages/event-detail/event-detail?event_id=' + id });
   },
   onShow() {
     var app = getApp();
