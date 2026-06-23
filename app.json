@@ -11,7 +11,7 @@
     "pages/city/city",
     "pages/share/share"
   ],
-  "window": { "navigationStyle": "custom", "backgroundColor": "#F4F8F2" },
+  "window": { "navigationStyle": "custom", "backgroundColor": "#F4F8F2", "enablePullDownRefresh": true },
   "lazyCodeLoading": "requiredComponents",
   "tabBar": {
     "custom": true,

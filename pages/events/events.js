@@ -69,4 +69,8 @@ Page({
       }
     });
   },
+  onPullDownRefresh() {
+    this.loadEvents();
+    setTimeout(function() { wx.stopPullDownRefresh(); }, 500);
+  },
 });

@@ -114,12 +114,24 @@ Page({
     var that = this;
     var text = (this.data.fbText || '').trim();
     if (!text) { wx.showToast({ title: '请输入内容', icon: 'none' }); return; }
-    // 先存本地
     var fbs = wx.getStorageSync('feedbacks') || [];
     fbs.push({ text: text, time: new Date().toISOString(), uid: this.data.currentUserId });
     wx.setStorageSync('feedbacks', fbs);
     this.setData({ showFb: false });
     wx.showToast({ title: '收到！谢谢你的建议', icon: 'none' });
+  },
+  onPullDownRefresh() {
+    var that = this;
+    var uid = this.data.currentUserId;
+    if (uid && this.data.isSelf) {
+      try {
+        api.get('/api/players/' + uid).then(function(res) {
+          var data = res.data || res;
+          if (data && data.id) that.setData({ p: mapPlayer(data), pid: data.id });
+        }).catch(function() {});
+      } catch (e) {}
+    }
+    setTimeout(function() { wx.stopPullDownRefresh(); }, 500);
   },
   onShow() {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 2 });

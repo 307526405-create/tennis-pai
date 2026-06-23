@@ -26,5 +26,15 @@ Page({
     if (app) this.setData({ city: app.globalData.city || '北京' });
     if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 0 });
   },
-  pickCity() { wx.navigateTo({ url: '/pages/city/city' }); }
+  pickCity() { wx.navigateTo({ url: '/pages/city/city' }); },
+  onPullDownRefresh() {
+    var that = this;
+    try {
+      api.get('/api/players').then(function(res) {
+        var data = res.data || res;
+        if (data && data.length > 0) that.setData({ ps: data.map(mapPlayer) });
+      }).catch(function() {});
+    } catch (e) {}
+    setTimeout(function() { wx.stopPullDownRefresh(); }, 500);
+  }
 });

@@ -52,6 +52,22 @@ Page({
       }
     });
   },
+  onPullDownRefresh() {
+    var that = this;
+    var globalCity = this.data.curCity;
+    try {
+      api.get('/api/courts').then(function(res) {
+        var data = res.data || res;
+        if (data && data.length > 0) {
+          var filtered = data.filter(function(c) { return c.city === globalCity; });
+          if (filtered.length === 0) filtered = data;
+          that.setData({ courts: filtered, allCourts: data });
+          that.buildMarkers(filtered);
+        }
+      }).catch(function() {});
+    } catch (e) {}
+    setTimeout(function() { wx.stopPullDownRefresh(); }, 500);
+  },
 
   buildMarkers(data) {
     var that = this;
