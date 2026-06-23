@@ -1,0 +1,47 @@
+<view class="nav" style="padding-top:{{s}}px">
+  <text class="back" bindtap="back"><</text>
+  <text class="ntitle">录入战绩</text>
+  <text class="submit" bindtap="submit">提交</text>
+</view>
+
+<scroll-view scroll-y class="form" style="padding-top:44px">
+  <view class="fg">
+    <view class="fl">对手</view>
+    <picker mode="selector" range="{{playerNames}}" bindchange="setOpponent">
+      <view class="picker">{{opponentName||'选择对手'}}></view>
+    </picker>
+  </view>
+
+  <view class="fg">
+    <view class="fl">比分</view>
+    <view class="score-row">
+      <input class="si" type="number" placeholder="我方" value="{{myScore}}" bindinput="setMyScore"/>
+      <text class="score-dash">-</text>
+      <input class="si" type="number" placeholder="对方" value="{{oppScore}}" bindinput="setOppScore"/>
+    </view>
+  </view>
+
+  <view class="fg">
+    <view class="fl">球场</view>
+    <picker mode="selector" range="{{courtNames}}" bindchange="setCourt">
+      <view class="picker">{{courtName||'选择球场'}}></view>
+    </picker>
+    <input class="fi" placeholder="或手动输入球场名" value="{{courtInput}}" bindinput="setCourtInput"/>
+  </view>
+
+  <view class="fg">
+    <view class="fl">日期</view>
+    <picker mode="date" value="{{date}}" bindchange="setDate">
+      <view class="picker">{{date||'选择日期'}}></view>
+    </picker>
+  </view>
+
+  <view class="fg">
+    <view class="fl">备注</view>
+    <input class="fi" placeholder="选填" value="{{note}}" bindinput="setNote"/>
+  </view>
+
+  <view class="submit-btn-wrap">
+    <view class="submit-btn" bindtap="submit">提交战绩</view>
+  </view>
+</scroll-view>

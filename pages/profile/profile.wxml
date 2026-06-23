@@ -39,7 +39,7 @@
   </view>
   <view class="div"></view>
 
-  <view class="sec"><view class="sh">近期战绩</view></view>
+  <view class="sec"><view class="sh-row"><text class="sh">近期战绩</text><text class="sh-add" bindtap="toRecord">录入</text></view></view>
   <view class="m-empty" wx:if="{{matches.length===0}}">暂无战绩记录</view>
   <view class="m" wx:for="{{matches}}" wx:key="id">
     <view class="mt {{item.result==='W'?'mw':'ml'}}">{{item.result}}</view>

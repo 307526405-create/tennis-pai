@@ -9,7 +9,8 @@
     "pages/edit/edit",
     "pages/create/create",
     "pages/city/city",
-    "pages/share/share"
+    "pages/share/share",
+    "pages/record/record"
   ],
   "window": { "navigationStyle": "custom", "backgroundColor": "#F4F8F2", "enablePullDownRefresh": true },
   "lazyCodeLoading": "requiredComponents",

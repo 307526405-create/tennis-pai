@@ -168,6 +168,7 @@ Page({
     }
   },
   toEdit() { wx.navigateTo({ url: '/pages/edit/edit' }); },
+  toRecord() { wx.navigateTo({ url: '/pages/record/record' }); },
   toShare() { wx.navigateTo({ url: '/pages/share/share' }); },
   toSearch() { wx.navigateTo({ url: '/pages/search/search' }); },
   contact() {
