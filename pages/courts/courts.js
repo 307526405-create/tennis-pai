@@ -5,7 +5,8 @@ Page({
   onLoad() {
     var that = this;
     var app = getApp();
-    this.setData({ s: wx.getWindowInfo().statusBarHeight, city: (app && app.globalData.city) || '北京' });
+    var globalCity = (app && app.globalData.city) || '北京';
+    this.setData({ s: wx.getWindowInfo().statusBarHeight, curCity: globalCity });
     try {
       api.get('/api/courts').then(function(res) {
         var data = res.data || res;
@@ -13,10 +14,12 @@ Page({
           var cities = [];
           var seen = {};
           data.forEach(function(c) { if (!seen[c.city]) { seen[c.city]=1; cities.push(c.city); } });
-          that.setData({ allCourts: data, courts: data, cityList: cities });
-          that.buildMarkers(data);
-          var bj = data.filter(function(c) { return c.city === '北京'; });
-          if (bj.length > 0) that.setData({ centerLat: bj[0].lat, centerLng: bj[0].lng });
+          // 按全局城市过滤
+          var filtered = data.filter(function(c) { return c.city === globalCity; });
+          if (filtered.length === 0) filtered = data; // 没数据就全显示
+          that.setData({ allCourts: data, courts: filtered, cityList: cities });
+          that.buildMarkers(filtered);
+          if (filtered.length > 0) that.setData({ centerLat: filtered[0].lat, centerLng: filtered[0].lng });
         }
       }).catch(function() {});
     } catch (e) {}
