@@ -40,14 +40,21 @@
   <view class="div"></view>
 
   <view class="sec"><view class="sh">近期战绩</view></view>
-  <view class="m"><view class="mt mw">W</view><view class="mi">vs 纪云舟 <text class="ms">6-4 6-3 · 朝阳公园</text></view><view class="md">6.15</view></view>
-  <view class="m"><view class="mt mw">W</view><view class="mi">vs 沈青禾 <text class="ms">7-5 4-6 10-8 · 国网中心</text></view><view class="md">6.08</view></view>
-  <view class="m"><view class="mt ml">L</view><view class="mi">vs 许墨白 <text class="ms">3-6 4-6 · 国网中心</text></view><view class="md">6.01</view></view>
+  <view class="m-empty" wx:if="{{matches.length===0}}">暂无战绩记录</view>
+  <view class="m" wx:for="{{matches}}" wx:key="id">
+    <view class="mt {{item.result==='W'?'mw':'ml'}}">{{item.result}}</view>
+    <view class="mi">vs {{item.player2_name||item.player1_name}} <text class="ms">{{item.score}} · {{item.court}}</text></view>
+    <view class="md">{{item.date}}</view>
+  </view>
   <view class="div"></view>
 
   <view class="sec"><view class="sh">球友评价</view></view>
-  <view class="rv"><text class="rvn">纪云舟</text> 反手很稳，守时靠谱，每次约球都很愉快</view>
-  <view class="rv"><text class="rvn">沈青禾</text> 正手太猛了，学到了很多</view>
+  <view class="rv-empty" wx:if="{{reviews.length===0}}">暂无评价</view>
+  <view class="rv" wx:for="{{reviews}}" wx:key="id">
+    <text class="rvn">{{item.from_player_name}}</text>
+    <text class="rv-star">{{item.rating===5?'★★★★★':item.rating===4?'★★★★☆':item.rating===3?'★★★☆☆':'★★☆☆☆'}}</text>
+    <text wx:if="{{item.comment}}"> {{item.comment}}</text>
+  </view>
 
   <view class="contact" wx:if="{{!isSelf}}">
     <button class="cb" bindtap="toggleFav">{{favorited?'★ 常约球友':'☆ 加为常约'}}</button>

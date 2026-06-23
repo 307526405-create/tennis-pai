@@ -6,31 +6,53 @@ function mapPlayer(p) {
 }
 
 Page({
-  data: { s: 44, p: null, isSelf: true, favorited: false, favorites: [], currentUserId: 1, pid: null, avail: false, notifications: [], newNote: null },
+  data: { s: 44, p: null, isSelf: true, favorited: false, favorites: [], currentUserId: 1, pid: null, avail: false, notifications: [], newNote: null, matches: [], reviews: [] },
   onLoad(options) {
     var that = this;
     var uid = wx.getStorageSync('currentUserId') || 1;
     var pid = options.id;
-    this.setData({ s: wx.getWindowInfo().statusBarHeight, currentUserId: uid, pid: pid });
+    this.setData({ s: wx.getWindowInfo().statusBarHeight, currentUserId: uid, pid: pid || String(uid) });
 
     if (pid && pid != uid) {
-      // 查看他人
       try {
         api.get('/api/players/' + pid).then(function(res) {
           var data = res.data || res;
           if (data) {
             that.setData({ p: mapPlayer(data), isSelf: false });
             that.checkFavorite(pid);
+            that.loadMatches(pid);
+            that.loadReviews(pid);
           }
         }).catch(function() { that.loadLocal(pid); });
       } catch (e) { this.loadLocal(pid); }
     } else {
-      // 看自己
       var p = wx.getStorageSync('profile');
       if (p) this.setData({ p: p, isSelf: true });
       this.loadFavorites(uid);
+      this.loadMatches(uid);
+      this.loadReviews(uid);
     }
   },
+
+  loadMatches(pid) {
+    var that = this;
+    try {
+      api.get('/api/players/' + pid + '/matches').then(function(res) {
+        var data = res.data || res;
+        if (data && data.length > 0) that.setData({ matches: data });
+      }).catch(function() {});
+    } catch (e) {}
+  },
+  loadReviews(pid) {
+    var that = this;
+    try {
+      api.get('/api/players/' + pid + '/reviews').then(function(res) {
+        var data = res.data || res;
+        if (data && data.length > 0) that.setData({ reviews: data });
+      }).catch(function() {});
+    } catch (e) {}
+  },
+
   loadLocal(pid) {
     var app = getApp();
     var players = app.globalData.players;
@@ -72,7 +94,6 @@ Page({
         if (list.length > 0) {
           var lastCheck = wx.getStorageSync('lastNotifCheck') || '';
           var latest = list[0];
-          // 如果有比上次查看更新的通知，显示第一条
           if (latest.time > lastCheck || !lastCheck) {
             that.setData({ newNote: latest.name + '关注了你' });
             setTimeout(function() { that.setData({ newNote: null }); }, 4000);
@@ -131,6 +152,8 @@ Page({
         }).catch(function() {});
       } catch (e) {}
     }
+    this.loadMatches(uid);
+    this.loadReviews(uid);
     setTimeout(function() { wx.stopPullDownRefresh(); }, 500);
   },
   onShow() {
