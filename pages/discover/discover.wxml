@@ -10,10 +10,9 @@
 <scroll-view scroll-y style="padding-bottom:160rpx;margin-top:44px">
   <scroll-view scroll-x class="filter-bar">
     <view class="ftab {{fl===l?'ftab-on':''}}" wx:for="{{levels}}" wx:key="*this" bindtap="setFilter" data-lv="{{l}}">{{l}}</view>
-    <view class="ftab {{fl==='online'?'ftab-on':''}}" bindtap="setFilter" data-lv="online">在线</view>
   </scroll-view>
   <view class="item" wx:for="{{ps}}" wx:key="id" bindtap="toP" data-id="{{item.id}}">
-    <view class="i-av" style="background:{{item.c}}">{{item.a}}<view class="i-dot {{item.active?'dot-on':'dot-off'}}"></view></view>
+    <view class="i-av" style="background:{{item.c}}">{{item.a}}</view>
     <view class="i-body"><view class="i-row"><text class="i-name">{{item.n}}</text><text class="i-lv">{{item.lv}}</text></view><view class="i-row3"><text class="i-stat">胜率{{item.pct}}</text><text class="i-stat">{{item.gm}}场</text></view><view class="i-row2"><text class="i-gear">{{item.g}}</text></view></view>
   </view>
 </scroll-view>

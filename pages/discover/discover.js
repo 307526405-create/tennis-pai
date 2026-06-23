@@ -52,8 +52,7 @@ Page({
   applyFilter() {
     var fl = this.data.fl;
     var ps = this.data.allPs;
-    if (fl === 'online') ps = ps.filter(function(p) { return p.active; });
-    else if (fl) ps = ps.filter(function(p) { return p.lv === fl; });
+    if (fl) ps = ps.filter(function(p) { return p.lv === fl; });
     this.setData({ ps: ps });
   },
 
