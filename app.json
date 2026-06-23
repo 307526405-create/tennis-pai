@@ -8,6 +8,7 @@
     "pages/search/search",
     "pages/edit/edit",
     "pages/create/create",
+    "pages/city/city",
     "pages/share/share"
   ],
   "window": { "navigationStyle": "custom", "backgroundColor": "#F4F8F2" },
