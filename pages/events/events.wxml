@@ -7,7 +7,11 @@
 </view>
 
 <scroll-view scroll-y style="padding-bottom:160rpx;margin-top:44px">
-  <view class="evt" wx:for="{{events}}" wx:key="id">
+  <scroll-view scroll-x class="filter-bar">
+    <view class="ftab {{fl==='全部'?'ftab-on':''}}" bindtap="setFilter" data-lv="全部">全部水平</view>
+    <view class="ftab {{fl===l?'ftab-on':''}}" wx:for="{{levels}}" wx:key="*this" bindtap="setFilter" data-lv="{{l}}">{{l}}</view>
+  </scroll-view>
+  <view class="evt" wx:for="{{events}}" wx:key="id" bindtap="toDetail" data-id="{{item.id}}">
     <view class="evt-header">
       <view class="evt-badge {{item.f?'full':''}}">{{item.f?'已满':(item.joined?'已报名':'缺'+item.left+'人')}}</view>
       <view class="evt-dist" wx:if="{{item.dist}}">{{item.dist}}</view>

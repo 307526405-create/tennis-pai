@@ -1,4 +1,7 @@
 .item{display:flex;align-items:center;gap:20rpx;padding:24rpx 40rpx;border-bottom:1rpx solid #F0F0F0}
+.filter-bar{white-space:nowrap;padding:12rpx 32rpx;display:flex;gap:12rpx}
+.ftab{display:inline-block;font-size:22rpx;color:var(--t3);padding:6rpx 18rpx;border-radius:14rpx;background:#F5F5F5;flex-shrink:0}
+.ftab-on{background:var(--g2);color:#fff;font-weight:600}
 .i-av{width:88rpx;height:88rpx;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32rpx;font-weight:600;color:#fff;flex-shrink:0;position:relative}
 .i-dot{position:absolute;bottom:-2rpx;right:-2rpx;width:16rpx;height:16rpx;border-radius:50%;border:2rpx solid var(--bg)}
 .dot-on{background:#3DAF6E}.dot-off{background:#CCC}

@@ -1,38 +1,66 @@
 var api = require('../../utils/api');
 
 var currentUserId = 1;
+var colors = ['#2E8B57','#3A7BD5','#E85D3A','#9B59B6','#F39C12','#1ABC9C','#E74C3C','#3498DB'];
 
 function mapPlayer(p, favIds) {
   var n = p.name || '';
-  return { id: p.id, n: n, a: n[0] || '?', c: '#2E8B57', lv: p.level || '', g: (p.equipment && p.equipment.model) || '', el: String(p.elo || '1500'), pct: p.win_rate != null ? Math.round(p.win_rate * 100) + '%' : '0%', gm: p.match_count || 0, active: !!p.active, fav: favIds.indexOf(p.id) >= 0 };
+  return { id: p.id, n: n, a: n[0] || '?', c: colors[(p.id-1) % colors.length], lv: p.level || '', g: (p.equipment && p.equipment.model) || '', el: String(p.elo || '1500'), pct: p.win_rate != null ? Math.round(p.win_rate * 100) + '%' : '0%', gm: p.match_count || 0, active: !!p.active, fav: favIds.indexOf(p.id) >= 0 };
 }
 
 Page({
-  data: { s: 44, ps: [], city: '北京' },
+  data: { s: 44, ps: [], allPs: [], city: '北京', fl: '全部', levels: ['2.0','2.5','3.0','3.5','4.0','4.5','5.0'] },
   onLoad() {
-    var that = this;
     this.setData({ s: wx.getWindowInfo().statusBarHeight });
     this.loadData();
   },
 
   loadData() {
     var that = this;
+    var app = getApp();
+    var city = (app && app.globalData.city) || '北京';
+    this.setData({ city: city });
     try {
       api.get('/api/players/' + currentUserId + '/favorites').then(function(fres) {
         var fdata = fres.data || fres;
-        var favIds = (fdata && fdata.favorites || fdata || []).map(function(f) { return f.id; });
+        var favIds = (fdata && fdata.data || fdata || []).map(function(f) { return f.id; });
         api.get('/api/players').then(function(res) {
           var data = res.data || res;
-          if (data && data.length > 0) that.setData({ ps: data.map(function(p) { return mapPlayer(p, favIds); }) });
+          if (data && data.length > 0) {
+            var cityFiltered = data.filter(function(p) { return p.city === city; });
+            if (cityFiltered.length === 0) cityFiltered = data;
+            var mapped = cityFiltered.map(function(p) { return mapPlayer(p, favIds); });
+            that.setData({ allPs: mapped });
+            that.applyFilter();
+          }
         }).catch(function() {});
       }).catch(function() {
         api.get('/api/players').then(function(res) {
           var data = res.data || res;
-          if (data && data.length > 0) that.setData({ ps: data.map(function(p) { return mapPlayer(p, []); }) });
+          if (data && data.length > 0) {
+            var cityFiltered = data.filter(function(p) { return p.city === city; });
+            if (cityFiltered.length === 0) cityFiltered = data;
+            var mapped = cityFiltered.map(function(p) { return mapPlayer(p, []); });
+            that.setData({ allPs: mapped });
+            that.applyFilter();
+          }
         }).catch(function() {});
       });
     } catch (e) {}
   },
+
+  applyFilter() {
+    var fl = this.data.fl;
+    var ps = this.data.allPs;
+    if (fl !== '全部') ps = ps.filter(function(p) { return p.lv === fl; });
+    this.setData({ ps: ps });
+  },
+
+  setFilter(e) {
+    this.setData({ fl: e.currentTarget.dataset.lv });
+    this.applyFilter();
+  },
+
   toP(e) {
     wx.navigateTo({ url: '/pages/profile/profile?id=' + e.currentTarget.dataset.id });
   },
@@ -52,7 +80,8 @@ Page({
   toSearch() { wx.navigateTo({ url: '/pages/search/search' }); },
   onShow() {
     var app = getApp();
-    if (app) this.setData({ city: app.globalData.city || '北京' });
+    var city = (app && app.globalData.city) || '北京';
+    if (city !== this.data.city) this.loadData();
     if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 0 });
   },
   pickCity() { wx.navigateTo({ url: '/pages/city/city' }); },
