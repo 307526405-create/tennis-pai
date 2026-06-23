@@ -12,7 +12,7 @@ function calDist(lat1, lng1, lat2, lng2) {
 }
 
 Page({
-  data: { s: 44, courts: [], allCourts: [], markers: [], centerLat: 39.92, centerLng: 116.40, activeId: null, curCity: '全部', cityList: [], showForm: false, rn: '', rc: '', rf: '', myLat: null, myLng: null },
+  data: { s: 44, courts: [], allCourts: [], markers: [], centerLat: 39.92, centerLng: 116.40, activeId: null, curCity: '全部', cityList: [], showForm: false, rn: '', rc: '', rf: '', myLat: null, myLng: null, scale: 14 },
   onLoad() {
     var that = this;
     this.setData({ s: wx.getWindowInfo().statusBarHeight });
@@ -89,8 +89,8 @@ Page({
   closeCourt() { this.setData({ curCourt: null }); },
 
   goLoc() { if (this.mapCtx) this.mapCtx.moveToLocation(); },
-  zoomIn() { if (this.mapCtx) this.mapCtx.getScale({ success: function(r) { this.setData({ scale: r.scale + 2 }); }.bind(this) }); },
-  zoomOut() { if (this.mapCtx) this.mapCtx.getScale({ success: function(r) { this.setData({ scale: Math.max(r.scale - 2, 3) }); }.bind(this) }); },
+  zoomIn() { var that = this; if (this.mapCtx) this.mapCtx.getScale({ success: function(r) { that.setData({ scale: r.scale + 2 }); } }); },
+  zoomOut() { var that = this; if (this.mapCtx) this.mapCtx.getScale({ success: function(r) { that.setData({ scale: Math.max(r.scale - 2, 3) }); } }); },
 
   onShow() {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 2 });

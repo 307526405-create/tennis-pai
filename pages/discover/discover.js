@@ -73,8 +73,13 @@ Page({
       api.post('/api/players/' + id + '/favorite', { user_id: currentUserId }).then(function(res) {
         var d = res.data || res;
         var ps = that.data.ps;
+        var allPs = that.data.allPs;
         ps[idx].fav = d.favorited;
-        that.setData({ ps: ps });
+        // 同步allPs中的同ID球员
+        for (var i = 0; i < allPs.length; i++) {
+          if (allPs[i].id === id) allPs[i].fav = d.favorited;
+        }
+        that.setData({ ps: ps, allPs: allPs });
       }).catch(function() {});
     } catch (e) {}
   },
