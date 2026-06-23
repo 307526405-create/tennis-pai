@@ -7,6 +7,7 @@
 </view>
 
 <scroll-view scroll-y style="padding-bottom:160rpx">
+  <view style="height:{{44+s}}px"></view>
   <view class="note-banner" wx:if="{{newNote}}">
     <text class="note-text">{{newNote}}</text>
   </view>
