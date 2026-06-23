@@ -8,7 +8,7 @@
   <view class="fg">
     <view class="fl">对手</view>
     <picker mode="selector" range="{{playerNames}}" bindchange="setOpponent">
-      <view class="picker">{{opponentName||'选择对手'}}></view>
+      <view class="picker">{{opponentName||'选择对手'}}</view>
     </picker>
   </view>
 
@@ -24,7 +24,7 @@
   <view class="fg">
     <view class="fl">球场</view>
     <picker mode="selector" range="{{courtNames}}" bindchange="setCourt">
-      <view class="picker">{{courtName||'选择球场'}}></view>
+      <view class="picker">{{courtName||'选择球场'}}</view>
     </picker>
     <input class="fi" placeholder="或手动输入球场名" value="{{courtInput}}" bindinput="setCourtInput"/>
   </view>
@@ -32,7 +32,7 @@
   <view class="fg">
     <view class="fl">日期</view>
     <picker mode="date" value="{{date}}" bindchange="setDate">
-      <view class="picker">{{date||'选择日期'}}></view>
+      <view class="picker">{{date||'选择日期'}}</view>
     </picker>
   </view>
 

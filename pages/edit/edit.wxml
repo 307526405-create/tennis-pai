@@ -26,7 +26,7 @@
   <view class="fg">
     <view class="fl">球拍</view>
     <picker mode="selector" range="{{rackets}}" bindchange="setRacket">
-      <view class="picker">{{racketName||'选择你的球拍'}}></view>
+      <view class="picker">{{racketName||'选择你的球拍'}}</view>
     </picker>
   </view>
   <view class="fg">
