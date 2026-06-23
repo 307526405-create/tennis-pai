@@ -116,11 +116,16 @@ Page({
   doReport() {
     var that = this, d = this.data;
     if (!d.rn || !d.rc) { wx.showToast({ title: '请填写名称和城市', icon: 'none' }); return; }
-    try {
-      api.post('/api/courts', { name: d.rn, city: d.rc, lat: 0, lng: 0, fields: parseInt(d.rf) || 1, address: '' }).then(function() {
+    wx.request({
+      url: 'http://localhost:8081/api/courts',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: { name: d.rn, city: d.rc, address: d.rc, lat: 39.9, lng: 116.4, fields: parseInt(d.rf) || 1 },
+      success: function() {
         wx.showToast({ title: '已提交，审核后显示', icon: 'none' });
         that.setData({ showForm: false, rn: '', rc: '', rf: '' });
-      }).catch(function() { wx.showToast({ title: '提交失败', icon: 'none' }); });
-    } catch (e) {}
+      },
+      fail: function() { wx.showToast({ title: '提交失败', icon: 'none' }); }
+    });
   },
 });
