@@ -12,11 +12,11 @@
 .ca{font-size:22rpx;color:var(--t3);margin-top:4rpx}
 .cdist{font-size:22rpx;color:var(--g2);font-weight:600;flex-shrink:0}
 .c-actions{display:flex;gap:12rpx;margin-top:4rpx}
-.ca-icon{width:40rpx;height:40rpx;border-radius:50%;background:#F7F9F4;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.cai-nav{width:14rpx;height:14rpx;border:2rpx solid var(--g2);border-radius:3rpx;position:relative}
-.cai-nav::after{content:'';position:absolute;top:-6rpx;right:-8rpx;width:0;height:0;border-left:6rpx solid var(--g2);border-top:3rpx solid transparent;border-bottom:3rpx solid transparent;transform:rotate(-45deg)}
-.cai-tel{width:14rpx;height:18rpx;border:2rpx solid var(--g2);border-radius:3rpx 3rpx 2rpx 2rpx;position:relative}
-.cai-tel::after{content:'';position:absolute;bottom:-4rpx;left:50%;transform:translateX(-50%);width:6rpx;height:4rpx;background:var(--g2);border-radius:0 0 2rpx 2rpx}
+.ca-icon{width:44rpx;height:44rpx;border-radius:50%;background:#F0F2ED;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cai-nav{width:0;height:0;border-left:7rpx solid transparent;border-right:7rpx solid transparent;border-bottom:12rpx solid var(--g2);margin-top:-2rpx}
+.cai-nav::after{content:'';display:block;width:3rpx;height:10rpx;background:var(--g2);margin:0 auto;margin-top:2rpx}
+.cai-tel{width:12rpx;height:16rpx;border:2rpx solid var(--g2);border-radius:3rpx 3rpx 2rpx 2rpx;position:relative}
+.cai-tel::after{content:'';position:absolute;bottom:-3rpx;left:50%;transform:translateX(-50%);width:5rpx;height:3rpx;background:var(--g2)}
 
 .city-tabs{white-space:nowrap;padding:16rpx 32rpx;display:flex;gap:16rpx}
 .court-search{padding:8rpx 32rpx}
