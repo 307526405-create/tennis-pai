@@ -5,7 +5,17 @@
 </view>
 
 <scroll-view scroll-y class="form">
-  <button class="wx-btn" open-type="chooseAvatar" bindchooseavatar="onAvatar">点击获取微信头像</button>
+  <!-- 头像上传 -->
+  <view class="fg fg-avatar">
+    <view class="fl">头像</view>
+    <view class="avatar-wrap" bindtap="chooseAvatar">
+      <image class="avatar-img" wx:if="{{avatarUrl}}" src="{{avatarUrl}}" mode="aspectFill"></image>
+      <view class="avatar-placeholder" wx:else>
+        <text class="avatar-tip">点击拍照</text>
+      </view>
+    </view>
+  </view>
+
   <view class="fg">
     <view class="fl">名字</view>
     <input class="fi" placeholder="你的称呼" value="{{name}}" bindinput="setName"/>

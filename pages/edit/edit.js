@@ -6,7 +6,7 @@ Page({
     s: 44, name: '', lv: 2, st: 0, racket: 0, court: '', city: '',
     levels: ['2.0', '2.5', '3.0', '3.5', '4.0', '4.5', '5.0+'],
     styles: ['底线进攻型', '底线防守型', '发球上网型', '全能型'],
-    rackets: [], racketName: ''
+    rackets: [], racketName: '', avatar: '', avatarUrl: ''
   },
   onLoad() {
     this.setData({ s: wx.getWindowInfo().statusBarHeight, rackets: app.globalData.rackets.map(function(r) { return r.brand + ' ' + r.model; }) });
@@ -22,12 +22,47 @@ Page({
   },
   setCourt(e) { this.setData({ court: e.detail.value }); },
   setCity(e) { this.setData({ city: e.detail.value }); },
+  chooseAvatar() {
+    var that = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        var tempFilePath = res.tempFilePaths[0];
+        // 转 base64
+        wx.getFileSystemManager().readFile({
+          filePath: tempFilePath,
+          encoding: 'base64',
+          success: function(fileRes) {
+            var base64 = 'data:image/png;base64,' + fileRes.data;
+            that.setData({ avatar: base64, avatarUrl: tempFilePath });
+
+            // 上传到后端
+            var uid = wx.getStorageSync('currentUserId') || 1;
+            try {
+              api.post('/api/players/' + uid + '/avatar', { image: base64 }).then(function(res) {
+                var data = res.data || res;
+                if (data && data.avatar) {
+                  that.setData({ avatar: data.avatar, avatarUrl: data.avatar });
+                  wx.showToast({ title: '头像上传成功', icon: 'success' });
+                }
+              }).catch(function() {});
+            } catch (e) {}
+          },
+          fail: function() {
+            wx.showToast({ title: '读取图片失败', icon: 'none' });
+          }
+        });
+      }
+    });
+  },
   save() {
     var d = this.data;
     var name = d.name || '球友';
     var lv = d.levels[d.lv];
     var g = app.globalData.rackets[d.racket] ? app.globalData.rackets[d.racket].model : '';
-    var p = { name: name, lv: lv, st: d.styles[d.st], g: g, court: d.court, city: d.city };
+    var p = { name: name, lv: lv, st: d.styles[d.st], g: g, court: d.court, city: d.city, avatar: d.avatarUrl || '' };
 
     // 保存到本地storage
     wx.setStorageSync('profile', p);

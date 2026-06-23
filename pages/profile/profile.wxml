@@ -48,6 +48,17 @@
   </view>
   <view class="div"></view>
 
+  <view class="sec"><view class="sh">我的约球</view></view>
+  <view class="ev-empty" wx:if="{{events.length===0}}">暂无约球记录</view>
+  <view class="ev" wx:for="{{events}}" wx:key="id">
+    <view class="ev-title">{{item.title}}</view>
+    <view class="ev-info">{{item.date}} {{item.time}} · {{item.court}}</view>
+    <view class="ev-status {{item.status==='open'?'ev-open':item.status==='full'?'ev-full':'ev-closed'}}">
+      {{item.status==='open'?'报名中':item.status==='full'?'已满':'已结束'}}
+    </view>
+  </view>
+  <view class="div"></view>
+
   <view class="sec"><view class="sh">球友评价</view></view>
   <view class="rv-empty" wx:if="{{reviews.length===0}}">暂无评价</view>
   <view class="rv" wx:for="{{reviews}}" wx:key="id">
@@ -61,8 +72,7 @@
     <button class="cb cb-invite" bindtap="inviteMatch">约TA打球</button>
   </view>
 
-  <view class="sec" wx:if="{{isSelf && favorites.length>0}}">
-    <view class="sh">常约球友</view>
+  <view class="sec"><view class="sh">常约球友</view>
     <view class="fav-list">
       <view class="fav-item" wx:for="{{favorites}}" wx:key="id" bindtap="toP" data-id="{{item.id}}">
         <view class="fav-av">{{item.name[0]}}</view>
@@ -72,6 +82,16 @@
     </view>
   </view>
   <view class="div"></view>
+
+  <view class="sec" wx:if="{{isSelf}}">
+    <view class="sh-row"><text class="sh">我的约球</text></view>
+    <view class="rv-empty" wx:if="{{myEvents.length===0}}">暂无约球记录</view>
+    <view class="evt-mini" wx:for="{{myEvents}}" wx:key="id">
+      <text class="em-title">{{item.title}}</text>
+      <text class="em-meta">{{item.date}} | {{item.court}}</text>
+    </view>
+  </view>
+
   <view class="sec s-feedback" bindtap="showFeedback">意见反馈<text class="arr-s">></text></view>
 
   <!-- 反馈弹框 -->

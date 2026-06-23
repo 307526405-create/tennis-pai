@@ -1,7 +1,16 @@
 .back{font-size:36rpx;color:var(--t)}.ntitle{font-size:28rpx;font-weight:600;color:var(--t);flex:1;text-align:center}.save{font-size:26rpx;color:var(--g2);font-weight:600}
 .form{padding:0 40rpx}
 .fg{padding:28rpx 0;border-bottom:1rpx solid #F0F0F0}
+.fg-avatar{display:flex;align-items:center;justify-content:space-between}
 .fl{font-size:26rpx;color:var(--t3);margin-bottom:12rpx}
+.fg-avatar .fl{margin-bottom:0}
+
+.avatar-wrap{width:140rpx;height:140rpx;border-radius:50%;overflow:hidden;background:#F0F2ED;display:flex;align-items:center;justify-content:center}
+.avatar-img{width:100%;height:100%}
+.avatar-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%}
+.avatar-icon{font-size:40rpx;line-height:1}
+.avatar-tip{font-size:18rpx;color:var(--t3);margin-top:4rpx;text-align:center}
+
 .wx-btn{width:200rpx;height:200rpx;padding:0;margin:20rpx 0;border-radius:50%;overflow:hidden;font-size:22rpx;color:var(--t3);background:#F0F2ED;line-height:1.3}
 .fi{font-size:28rpx;color:var(--t);width:100%}
 .fi-nick{margin-top:8rpx}

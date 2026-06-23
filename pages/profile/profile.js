@@ -6,7 +6,7 @@ function mapPlayer(p) {
 }
 
 Page({
-  data: { s: 44, p: null, isSelf: true, favorited: false, favorites: [], currentUserId: 1, pid: null, avail: false, notifications: [], newNote: null, matches: [], reviews: [] },
+  data: { s: 44, p: null, isSelf: true, favorited: false, favorites: [], currentUserId: 1, pid: null, avail: false, notifications: [], newNote: null, matches: [], reviews: [], myEvents: [] },
   onLoad(options) {
     var that = this;
     var uid = wx.getStorageSync('currentUserId') || 1;
@@ -22,6 +22,7 @@ Page({
             that.checkFavorite(pid);
             that.loadMatches(pid);
             that.loadReviews(pid);
+            that.loadEvents(pid);
           }
         }).catch(function() { that.loadLocal(pid); });
       } catch (e) { this.loadLocal(pid); }
@@ -31,6 +32,7 @@ Page({
       this.loadFavorites(uid);
       this.loadMatches(uid);
       this.loadReviews(uid);
+      this.loadEvents(uid);
     }
   },
 
@@ -49,6 +51,15 @@ Page({
       api.get('/api/players/' + pid + '/reviews').then(function(res) {
         var data = res.data || res;
         if (data && data.length > 0) that.setData({ reviews: data });
+      }).catch(function() {});
+    } catch (e) {}
+  },
+  loadEvents(pid) {
+    var that = this;
+    try {
+      api.get('/api/players/' + pid + '/events').then(function(res) {
+        var data = res.data || res;
+        if (data && data.length > 0) that.setData({ events: data });
       }).catch(function() {});
     } catch (e) {}
   },
@@ -95,7 +106,8 @@ Page({
           var lastCheck = wx.getStorageSync('lastNotifCheck') || '';
           var latest = list[0];
           if (latest.time > lastCheck || !lastCheck) {
-            that.setData({ newNote: latest.name + '关注了你' });
+            var msg = latest.type === 'follow' ? (latest.name + '关注了你') : latest.content;
+            that.setData({ newNote: msg });
             setTimeout(function() { that.setData({ newNote: null }); }, 4000);
           }
           wx.setStorageSync('lastNotifCheck', latest.time);
@@ -154,6 +166,7 @@ Page({
     }
     this.loadMatches(uid);
     this.loadReviews(uid);
+    this.loadEvents(uid);
     setTimeout(function() { wx.stopPullDownRefresh(); }, 500);
   },
   onShow() {

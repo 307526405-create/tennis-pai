@@ -32,6 +32,15 @@
 .rv-star{color:#F5A623;margin:0 6rpx}
 .rv-empty{padding:16rpx 32rpx;font-size:24rpx;color:var(--t3)}
 .m-empty{padding:16rpx 32rpx;font-size:24rpx;color:var(--t3)}
+.ev-empty{padding:16rpx 32rpx;font-size:24rpx;color:var(--t3)}
+
+.ev{display:flex;align-items:center;gap:14rpx;padding:12rpx 32rpx;font-size:24rpx;border-bottom:1rpx solid #F5F5F5}
+.ev-title{flex:1;color:var(--t);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ev-info{font-size:22rpx;color:var(--t3);flex-shrink:0}
+.ev-status{font-size:20rpx;padding:4rpx 12rpx;border-radius:6rpx;flex-shrink:0}
+.ev-open{background:#E8F5E9;color:#2E7D32}
+.ev-full{background:#FFF3E0;color:#E65100}
+.ev-closed{background:#F5F5F5;color:#999}
 
 .contact{text-align:center;padding:32rpx}
 .cb{display:inline-block;padding:20rpx 40rpx;background:var(--g1);color:#fff;border-radius:12rpx;font-size:26rpx;font-weight:600;margin:8rpx}
