@@ -32,9 +32,7 @@ Page({
 
   setCity(e) {
     var city = e.currentTarget.dataset.city;
-    var filtered;
-    if (city === '全部') filtered = this.data.allCourts;
-    else filtered = this.data.allCourts.filter(function(c) { return c.city === city; });
+    var filtered = this.data.allCourts.filter(function(c) { return c.city === city; });
     this.setData({ curCity: city, courts: filtered });
     this.buildMarkers(filtered);
     if (filtered.length > 0) this.setData({ centerLat: filtered[0].lat, centerLng: filtered[0].lng });

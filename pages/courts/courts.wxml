@@ -17,7 +17,6 @@
 
 <scroll-view scroll-y style="padding-bottom:160rpx;margin-top:calc(55vh + 44px)">
   <scroll-view scroll-x class="city-tabs">
-    <view class="ctab {{curCity==='全部'?'ctab-on':''}}" bindtap="setCity" data-city="全部">全部</view>
     <view class="ctab {{curCity===c?'ctab-on':''}}" wx:for="{{cityList}}" wx:key="*this" bindtap="setCity" data-city="{{c}}">{{c}}</view>
   </scroll-view>
   <view class="clist">
