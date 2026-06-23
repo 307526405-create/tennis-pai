@@ -1,12 +1,14 @@
 .clist{padding:0 32rpx}
 .citem{display:flex;align-items:flex-start;gap:16rpx;padding:24rpx 0;border-bottom:1rpx solid #F0F0F0}
-.cno{width:44rpx;height:44rpx;border-radius:50%;background:var(--g2);color:#fff;font-size:22rpx;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2rpx}
-.cinfo{flex:1}.cname{font-size:28rpx;font-weight:600;color:var(--t)}.cdesc{font-size:22rpx;color:var(--t2);margin-top:4rpx}.caddr{font-size:20rpx;color:var(--t3);margin-top:2rpx}
-.cdist{font-size:24rpx;color:var(--g2);font-weight:600;flex-shrink:0}
-.report-btn{text-align:center;padding:16rpx;font-size:24rpx;color:var(--g2);font-weight:600;background:#F7F9F4;margin:8rpx 32rpx;border-radius:12rpx}
-.report-form{padding:24rpx 32rpx;background:#FFF;margin:0 32rpx 16rpx;border-radius:12rpx}
+.citem-on{background:rgba(27,94,59,.04);margin:0 -32rpx;padding-left:32rpx;padding-right:32rpx}
+.cno{width:40rpx;height:40rpx;border-radius:50%;background:#F5F5F5;color:var(--t3);font-size:20rpx;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cinfo{flex:1;min-width:0}
+.cn{font-size:26rpx;color:var(--t);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ca{font-size:22rpx;color:var(--t3);margin-top:4rpx}
+.cdist{font-size:22rpx;color:var(--g2);font-weight:600;flex-shrink:0}
+
+.report-btn{text-align:center;padding:16rpx;font-size:24rpx;color:var(--g2);font-weight:600;background:#F7F9F4;margin:16rpx 0;border-radius:8rpx}
+.report-form{padding:24rpx;background:#FFF;border-radius:12rpx;margin-bottom:16rpx}
 .rf-title{font-size:28rpx;font-weight:600;color:var(--t);margin-bottom:16rpx}
-.rf-input{width:100%;padding:16rpx 0;font-size:26rpx;border-bottom:1rpx solid #F0F0F0;margin-bottom:8rpx}
-.rf-row{display:flex;gap:12rpx;margin-top:16rpx}
-.rf-btn{flex:1;text-align:center;padding:16rpx;background:var(--g2);color:#fff;border-radius:8rpx;font-size:24rpx}
-.rf-cancel{background:#F0F0F0;color:#999}
+.rf-input{width:100%;padding:20rpx 0;font-size:26rpx;border-bottom:1rpx solid #F0F0F0;margin-bottom:8rpx}
+.rf-submit{text-align:center;padding:20rpx;background:var(--g2);color:#fff;border-radius:8rpx;font-size:26rpx;font-weight:600;margin-top:16rpx}

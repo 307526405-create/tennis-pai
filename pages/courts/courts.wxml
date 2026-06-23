@@ -3,35 +3,29 @@
     <view class="brand-row"><text class="brand">网球</text><view class="pai-wrap"><text class="brand-ac">派</text><view class="pai-line"></view></view></view>
     <text class="brand-en">TENNIS PAI</text>
   </view>
-  <view class="nav-search" bindtap="toSearch"><view class="search-icon"><view class="si-circle"></view><view class="si-line"></view></view></view>
+  <text class="nav-search" bindtap="toSearch"><view class="search-icon"><view class="si-circle"></view><view class="si-line"></view></view></text>
 </view>
 
-<map latitude="39.92" longitude="116.40" scale="13" markers="{{markers}}" show-location style="width:100%;height:480rpx"></map>
+<map latitude="{{centerLat}}" longitude="{{centerLng}}" scale="14" markers="{{markers}}" show-location style="width:100%;height:400rpx;position:fixed;top:{{44+s}}px;left:0;z-index:1"></map>
 
-<view class="report-btn" bindtap="showReport">+ 上报球场</view>
-
-<view class="clist" style="padding-bottom:160rpx">
-
-<!-- 上报表单 -->
-<view class="report-form" wx:if="{{showForm}}">
-  <view class="rf-title">上报新球场</view>
-  <input class="rf-input" placeholder="球场名称" value="{{rname}}" bindinput="setRname"/>
-  <input class="rf-input" placeholder="城市（如广州）" value="{{rcity}}" bindinput="setRcity"/>
-  <input class="rf-input" placeholder="几片场地" value="{{rfields}}" bindinput="setRfields" type="number"/>
-  <view class="rf-row">
-    <button class="rf-btn" bindtap="submitCourt">提交</button>
-    <button class="rf-btn rf-cancel" bindtap="hideForm">取消</button>
-  </view>
-</view>
-
-
-  <view class="citem" wx:for="{{courts}}" wx:key="id">
-    <view class="cno">{{index+1}}</view>
-    <view class="cinfo">
-      <view class="cname">{{item.name}}</view>
-      <view class="cdesc">{{item.fields}}片 · {{item.indoor}} · {{item.feature||'--'}}</view>
-      <view class="caddr">{{item.address||''}}</view>
+<scroll-view scroll-y style="padding-bottom:160rpx;margin-top:400rpx">
+  <view class="clist">
+    <view class="citem {{item.id===activeId?'citem-on':''}}" wx:for="{{courts}}" wx:key="id" bindtap="onTap" data-item="{{item}}">
+      <view class="cno">{{index+1}}</view>
+      <view class="cinfo">
+        <view class="cn">{{item.name}}</view>
+        <view class="ca">{{item.address||item.city}}</view>
+      </view>
+      <view class="cdist" wx:if="{{item.dist}}">{{item.dist}}</view>
     </view>
-    <view class="cdist">{{item.distance||'--'}}</view>
   </view>
-</view>
+  <view class="report-btn" bindtap="showReport">+ 上报球场</view>
+
+  <view class="report-form" wx:if="{{showForm}}">
+    <view class="rf-title">上报新球场</view>
+    <input class="rf-input" placeholder="球场名称" value="{{rn}}" bindinput="setRn"/>
+    <input class="rf-input" placeholder="城市" value="{{rc}}" bindinput="setRc"/>
+    <input class="rf-input" placeholder="场地数量" value="{{rf}}" bindinput="setRf"/>
+    <view class="rf-submit" bindtap="doReport">提交审核</view>
+  </view>
+</scroll-view>
