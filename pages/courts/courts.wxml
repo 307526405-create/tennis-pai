@@ -15,7 +15,7 @@
   </cover-view>
 </map>
 
-<scroll-view scroll-y style="padding-bottom:160rpx;margin-top:calc(55vh + 44px)">
+<scroll-view scroll-y style="padding-bottom:160rpx;margin-top:calc(55vh + {{44+s}}px)">
   <view class="court-search">
     <input class="cs-input" placeholder="搜索球场..." value="{{kw}}" bindinput="onSearch"/>
   </view>
