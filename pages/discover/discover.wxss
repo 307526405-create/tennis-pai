@@ -8,3 +8,5 @@
 .i-el{font-size:22rpx;color:var(--g1);font-weight:600;margin-left:auto}
 .i-row3{display:flex;gap:16rpx;margin-bottom:4rpx}.i-stat{font-size:20rpx;color:var(--t3)}
 .i-gear{font-size:20rpx;color:var(--t3)}
+.i-fav{font-size:36rpx;color:#CCC;padding:8rpx;flex-shrink:0}
+.fav-on{color:#F5A623}
