@@ -106,6 +106,21 @@ Page({
       api.put('/api/players/' + uid + '/active', {}).catch(function() {});
     } catch (e) {}
   },
+
+  showFeedback() { this.setData({ showFb: true, fbText: '' }); },
+  hideFeedback() { this.setData({ showFb: false }); },
+  doFbText(e) { this.setData({ fbText: e.detail.value }); },
+  submitFeedback() {
+    var that = this;
+    var text = (this.data.fbText || '').trim();
+    if (!text) { wx.showToast({ title: '请输入内容', icon: 'none' }); return; }
+    // 先存本地
+    var fbs = wx.getStorageSync('feedbacks') || [];
+    fbs.push({ text: text, time: new Date().toISOString(), uid: this.data.currentUserId });
+    wx.setStorageSync('feedbacks', fbs);
+    this.setData({ showFb: false });
+    wx.showToast({ title: '收到！谢谢你的建议', icon: 'none' });
+  },
   onShow() {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 2 });
     if (!this.data.p || this.data.isSelf) {
