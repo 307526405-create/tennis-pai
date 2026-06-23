@@ -11,7 +11,7 @@
   <cover-view class="map-btns">
     <cover-view class="mb-btn" bindtap="zoomIn">+</cover-view>
     <cover-view class="mb-btn" bindtap="zoomOut">−</cover-view>
-    <cover-view class="mb-btn mb-loc" bindtap="goLoc">📍</cover-view>
+    <cover-view class="mb-btn mb-loc" bindtap="goLoc">⊙</cover-view>
   </cover-view>
 </map>
 
@@ -41,8 +41,8 @@
       <view class="cp-name">{{curCourt.name}}</view>
       <view class="cp-addr">{{curCourt.address||curCourt.city}}</view>
       <view class="cp-actions">
-        <view class="cpa-btn" bindtap="goNav" data-item="{{curCourt}}">🧭 导航</view>
-        <view class="cpa-btn" wx:if="{{curCourt.phone}}" bindtap="goCall" data-phone="{{curCourt.phone}}">📞 电话</view>
+        <view class="cpa-btn" bindtap="goNav" data-item="{{curCourt}}">导航</view>
+        <view class="cpa-btn" wx:if="{{curCourt.phone}}" bindtap="goCall" data-phone="{{curCourt.phone}}">电话</view>
       </view>
     </view>
   </view>

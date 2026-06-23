@@ -52,12 +52,12 @@
   <view class="rv-empty" wx:if="{{reviews.length===0}}">暂无评价</view>
   <view class="rv" wx:for="{{reviews}}" wx:key="id">
     <text class="rvn">{{item.from_player_name}}</text>
-    <text class="rv-star">{{item.rating===5?'★★★★★':item.rating===4?'★★★★☆':item.rating===3?'★★★☆☆':'★★☆☆☆'}}</text>
+    <text class="rv-star">{{item.rating}}分</text>
     <text wx:if="{{item.comment}}"> {{item.comment}}</text>
   </view>
 
   <view class="contact" wx:if="{{!isSelf}}">
-    <button class="cb" bindtap="toggleFav">{{favorited?'★ 常约球友':'☆ 加为常约'}}</button>
+    <button class="cb" bindtap="toggleFav">{{favorited?'常约球友':'加为常约'}}</button>
     <button class="cb cb-invite" bindtap="inviteMatch">约TA打球</button>
   </view>
 

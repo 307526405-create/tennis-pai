@@ -42,7 +42,7 @@
   </view>
   
   <view class="empty" wx:if="{{events.length===0}}">
-    <view class="empty-icon">🎾</view>
+    <view class="empty-icon"></view>
     <view class="empty-text">还没有约球活动</view>
     <view class="empty-btn" bindtap="goCreate">发起第一场约球</view>
   </view>

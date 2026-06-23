@@ -11,5 +11,5 @@
 .i-el{font-size:22rpx;color:var(--g1);font-weight:600;margin-left:auto}
 .i-row3{display:flex;gap:16rpx;margin-bottom:4rpx}.i-stat{font-size:20rpx;color:var(--t3)}
 .i-gear{font-size:20rpx;color:var(--t3)}
-.i-fav{font-size:36rpx;color:#CCC;padding:8rpx;flex-shrink:0}
-.fav-on{color:#F5A623}
+.i-fav{font-size:22rpx;color:var(--t3);padding:6rpx 16rpx;border:1rpx solid #E0E0E0;border-radius:20rpx;flex-shrink:0}
+.fav-on{color:var(--g2);border-color:var(--g2);background:rgba(27,94,59,.04)}

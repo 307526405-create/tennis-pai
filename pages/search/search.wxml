@@ -20,7 +20,7 @@
 
   <view class="rh">装备</view>
   <view class="item" wx:for="{{rackets}}" wx:key="id" bindtap="toD" data-id="{{index}}">
-    <view class="eq-thumb">🎾</view>
+    <view class="eq-thumb"></view>
     <view class="info">
       <view class="name">{{item.model}}</view>
       <text class="gear">{{item.brand}}</text>
