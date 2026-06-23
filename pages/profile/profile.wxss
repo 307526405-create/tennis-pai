@@ -54,6 +54,9 @@
 .note-text{font-size:26rpx;color:var(--g1);font-weight:500}
 
 .s-feedback{color:var(--t3);font-size:26rpx;padding:24rpx 32rpx;display:flex;align-items:center;justify-content:space-between}
+.evt-mini{padding:12rpx 32rpx;font-size:24rpx;color:var(--t);border-bottom:1rpx solid #F5F5F5}
+.em-title{font-weight:500;display:block}
+.em-meta{font-size:20rpx;color:var(--t3);margin-top:4rpx;display:block}
 .fb-modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:999;display:flex;align-items:center;justify-content:center}
 .fb-box{background:#FFF;border-radius:16rpx;width:600rpx;padding:32rpx}
 .fb-title{font-size:30rpx;font-weight:600;color:var(--t);text-align:center;margin-bottom:20rpx}

@@ -140,6 +140,16 @@ Page({
     } catch (e) {}
   },
 
+  loadMyEvents(uid) {
+    var that = this;
+    try {
+      api.get('/api/players/' + uid + '/events').then(function(res) {
+        var data = res.data || res;
+        if (data && data.length > 0) that.setData({ myEvents: data });
+      }).catch(function() {});
+    } catch (e) {}
+  },
+
   showFeedback() { this.setData({ showFb: true, fbText: '' }); },
   hideFeedback() { this.setData({ showFb: false }); },
   doFbText(e) { this.setData({ fbText: e.detail.value }); },
@@ -178,6 +188,7 @@ Page({
     if (this.data.isSelf) {
       this.loadFavorites(this.data.currentUserId);
       this.loadNotifications(this.data.currentUserId);
+      this.loadMyEvents(this.data.currentUserId);
     }
   },
   toEdit() { wx.navigateTo({ url: '/pages/edit/edit' }); },

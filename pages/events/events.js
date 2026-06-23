@@ -30,8 +30,8 @@ Page({
     this.setData({ s: wx.getWindowInfo().statusBarHeight });
     wx.getLocation({ type: 'gcj02', success: function(r) {
       that.setData({ myLat: r.latitude, myLng: r.longitude });
-    }, fail: function() {} });
-    this.loadEvents();
+      that.loadEvents();
+    }, fail: function() { that.loadEvents(); } });
   },
   loadEvents() {
     var that = this;
