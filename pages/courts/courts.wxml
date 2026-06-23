@@ -3,6 +3,7 @@
     <view class="brand-row"><text class="brand">网球</text><view class="pai-wrap"><text class="brand-ac">派</text><view class="pai-line"></view></view></view>
     <text class="brand-en">TENNIS PAI</text>
   </view>
+  <text class="nav-city" bindtap="pickCity">{{curCity}} ▾</text>
   <text class="nav-search" bindtap="toSearch"><view class="search-icon"><view class="si-circle"></view><view class="si-line"></view></view></text>
 </view>
 

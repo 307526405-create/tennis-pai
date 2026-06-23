@@ -4,9 +4,15 @@ Page({
   data: { s: 44, courts: [], allCourts: [], markers: [], centerLat: 39.92, centerLng: 116.40, activeId: null, curCity: '全部', cityList: [], showForm: false, rn: '', rc: '', rf: '' },
   onLoad() {
     var that = this;
+    this.setData({ s: wx.getWindowInfo().statusBarHeight });
+    this.loadData();
+  },
+
+  loadData() {
+    var that = this;
     var app = getApp();
     var globalCity = (app && app.globalData.city) || '北京';
-    this.setData({ s: wx.getWindowInfo().statusBarHeight, curCity: globalCity });
+    this.setData({ curCity: globalCity });
     try {
       api.get('/api/courts').then(function(res) {
         var data = res.data || res;
@@ -35,23 +41,7 @@ Page({
     if (filtered.length > 0) this.setData({ centerLat: filtered[0].lat, centerLng: filtered[0].lng });
   },
 
-  pickCity() {
-    var that = this;
-    var app = getApp();
-    var cities = (app && app.globalData.cities) || ['北京','上海','广州','深圳','杭州','成都','武汉','南京'];
-    wx.showActionSheet({
-      itemList: cities.slice(0, 6),
-      success: function(r) {
-        var city = cities[r.tapIndex];
-        if (app) { app.globalData.city = city; wx.setStorageSync('city', city); }
-        that.setData({ city: city, curCity: city });
-        var filtered = that.data.allCourts.filter(function(c) { return c.city === city; });
-        that.setData({ courts: filtered });
-        that.buildMarkers(filtered);
-        if (filtered.length > 0) that.setData({ centerLat: filtered[0].lat, centerLng: filtered[0].lng });
-      }
-    });
-  },
+  pickCity() { wx.navigateTo({ url: '/pages/city/city' }); },
   onPullDownRefresh() {
     var that = this;
     var globalCity = this.data.curCity;
@@ -90,6 +80,10 @@ Page({
     });
   },
 
+  onShow() {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 2 });
+    this.loadData();
+  },
   toSearch() { wx.navigateTo({ url: '/pages/search/search' }); },
   goNav(e) {
     var item = e.currentTarget.dataset.item;

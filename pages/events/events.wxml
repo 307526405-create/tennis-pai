@@ -3,7 +3,7 @@
     <view class="brand-row"><text class="brand">网球</text><view class="pai-wrap"><text class="brand-ac">派</text><view class="pai-line"></view></view></view>
     <text class="brand-en">TENNIS PAI</text>
   </view>
-  <view class="create-btn" bindtap="goCreate">发起约球</view>
+  <text class="nav-city" bindtap="pickCity">{{city}} ▾</text>
 </view>
 
 <scroll-view scroll-y style="padding-bottom:160rpx;margin-top:44px">
@@ -44,3 +44,5 @@
     <view class="empty-btn" bindtap="goCreate">发起第一场约球</view>
   </view>
 </scroll-view>
+
+<view class="fab" bindtap="goCreate">＋</view>
