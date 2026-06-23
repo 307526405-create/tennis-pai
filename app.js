@@ -15,8 +15,29 @@ App({
   onLaunch() {
     var city = wx.getStorageSync('city') || '北京';
     this.globalData.city = city;
-    // 尝试定位
+
+    // 微信登录
     var that = this;
+    wx.login({
+      success: function(res) {
+        if (res.code) {
+          wx.request({
+            url: 'http://localhost:8081/api/auth/login',
+            method: 'POST',
+            data: { code: res.code },
+            success: function(r) {
+              var d = r.data;
+              if (d.code === 0 && d.data) {
+                wx.setStorageSync('currentUserId', d.data.user_id);
+                that.globalData.userId = d.data.user_id;
+              }
+            }
+          });
+        }
+      }
+    });
+
+    // 尝试定位
     wx.getLocation({ type: 'gcj02', success: function(res) {
       var qqmapsdk;
       try { qqmapsdk = require('./libs/qqmap'); } catch(e) { return; }
