@@ -9,7 +9,6 @@
 <map latitude="{{centerLat}}" longitude="{{centerLng}}" scale="14" markers="{{markers}}" show-location style="width:100%;height:400rpx;position:fixed;top:{{44+s}}px;left:0;z-index:1"></map>
 
 <scroll-view scroll-y style="padding-bottom:160rpx;margin-top:400rpx">
-  <view class="locate-btn" bindtap="goMyLoc" wx:if="{{myLat}}">📍 回当前位置</view>
   <scroll-view scroll-x class="city-tabs">
     <view class="ctab {{curCity==='全部'?'ctab-on':''}}" bindtap="setCity" data-city="全部">全部</view>
     <view class="ctab {{curCity===c?'ctab-on':''}}" wx:for="{{cityList}}" wx:key="*this" bindtap="setCity" data-city="{{c}}">{{c}}</view>
@@ -20,11 +19,11 @@
       <view class="cinfo">
         <view class="cn">{{item.name}}</view>
         <view class="ca">{{item.address||item.city}}</view>
-        <view class="c-actions">
-          <view class="ca-btn" catchtap="goNav" data-item="{{item}}">导航</view>
-          <view class="ca-btn" catchtap="goCall" data-phone="{{item.phone}}" wx:if="{{item.phone}}">电话</view>
         </view>
-      </view>
+        <view class="c-actions">
+        <view class="ca-btn" catchtap="goNav" data-item="{{item}}" wx:if="{{item.lat}}">导航</view>
+        <view class="ca-btn" catchtap="goCall" data-phone="{{item.phone}}" wx:if="{{item.phone}}">电话</view>
+        </view>
       <view class="cdist" wx:if="{{item.dist}}">{{item.dist}}</view>
     </view>
   </view>

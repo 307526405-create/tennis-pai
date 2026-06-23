@@ -1,24 +1,10 @@
 var api = require('../../utils/api');
 
-function getDist(lat1, lng1, lat2, lng2) {
-  var R = 6371;
-  var dLat = (lat2 - lat1) * Math.PI / 180;
-  var dLng = (lng2 - lng1) * Math.PI / 180;
-  var a = Math.sin(dLat/2)*Math.sin(dLat/2) + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)*Math.sin(dLng/2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-  var km = R * c;
-  return km < 1 ? (km*1000).toFixed(0)+'m' : km.toFixed(1)+'km';
-}
-
 Page({
-  data: { s: 44, courts: [], allCourts: [], markers: [], centerLat: 39.92, centerLng: 116.40, 
-    activeId: null, curCity: '全部', cityList: [], showForm: false, rn: '', rc: '', rf: '',
-    myLat: null, myLng: null
-  },
+  data: { s: 44, courts: [], allCourts: [], markers: [], centerLat: 39.92, centerLng: 116.40, activeId: null, curCity: '全部', cityList: [], showForm: false, rn: '', rc: '', rf: '' },
   onLoad() {
     var that = this;
     this.setData({ s: wx.getWindowInfo().statusBarHeight });
-    this.getLocation();
     try {
       api.get('/api/courts').then(function(res) {
         var data = res.data || res;
@@ -26,13 +12,6 @@ Page({
           var cities = [];
           var seen = {};
           data.forEach(function(c) { if (!seen[c.city]) { seen[c.city]=1; cities.push(c.city); } });
-          // 算距离
-          if (that.data.myLat) {
-            data = data.map(function(c) {
-              c.dist = getDist(that.data.myLat, that.data.myLng, c.lat, c.lng);
-              return c;
-            });
-          }
           that.setData({ allCourts: data, courts: data, cityList: cities });
           that.buildMarkers(data);
           var bj = data.filter(function(c) { return c.city === '北京'; });
@@ -40,19 +19,6 @@ Page({
         }
       }).catch(function() {});
     } catch (e) {}
-  },
-
-  getLocation() {
-    var that = this;
-    wx.getLocation({ type: 'gcj02', success: function(res) {
-      that.setData({ myLat: res.latitude, myLng: res.longitude });
-    }, fail: function() {} });
-  },
-
-  goMyLoc() {
-    if (this.data.myLat) {
-      this.setData({ centerLat: this.data.myLat, centerLng: this.data.myLng });
-    }
   },
 
   setCity(e) {
@@ -66,6 +32,7 @@ Page({
   },
 
   buildMarkers(data) {
+    var that = this;
     var markers = data.map(function(c) {
       return { id: c.id, latitude: c.lat, longitude: c.lng, title: c.name, width: 30, height: 30, callout: { content: c.name, fontSize: 12, padding: 6, bgColor: '#1B5E3B', color: '#fff', display: 'BYCLICK', borderRadius: 4 } };
     });
@@ -74,7 +41,15 @@ Page({
 
   onTap(e) {
     var item = e.currentTarget.dataset.item;
-    this.setData({ centerLat: item.lat, centerLng: item.lng, activeId: item.id });
+    this.setData({
+      centerLat: item.lat,
+      centerLng: item.lng,
+      activeId: item.id,
+      markers: this.data.markers.map(function(m) {
+        m.callout = m.id === item.id ? { content: m.title, fontSize: 12, padding: 6, bgColor: '#1B5E3B', color: '#fff', display: 'ALWAYS', borderRadius: 4 } : (m.callout ? Object.assign({}, m.callout, {display: 'BYCLICK'}) : m.callout);
+        return m;
+      })
+    });
   },
 
   toSearch() { wx.navigateTo({ url: '/pages/search/search' }); },
