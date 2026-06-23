@@ -12,7 +12,7 @@ function mapEvent(e) {
 }
 
 Page({
-  data: { s: 44, events: [], allEvents: [], city: '北京', fl: '全部', levels: ['2.0','2.5','3.0','3.5','4.0','4.5','5.0'] },
+  data: { s: 44, events: [], allEvents: [], city: '北京', fl: '', levels: ['2.0','2.5','3.0','3.5','4.0','4.5','5.0'] },
   onLoad() {
     this.setData({ s: wx.getWindowInfo().statusBarHeight });
     this.loadEvents();
@@ -35,11 +35,12 @@ Page({
     var fl = this.data.fl;
     var filtered = this.data.allEvents;
     if (city !== '全部') filtered = filtered.filter(function(e) { return e.city === city || !e.city; });
-    if (fl !== '全部') filtered = filtered.filter(function(e) { return e.lv === fl; });
+    if (fl) filtered = filtered.filter(function(e) { return e.lv === fl; });
     this.setData({ events: filtered });
   },
   setFilter(e) {
-    this.setData({ fl: e.currentTarget.dataset.lv });
+    var lv = e.currentTarget.dataset.lv;
+    this.setData({ fl: this.data.fl === lv ? '' : lv });
     this.applyFilter();
   },
   loadFallback() {

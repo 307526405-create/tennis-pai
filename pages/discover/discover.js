@@ -9,7 +9,7 @@ function mapPlayer(p, favIds) {
 }
 
 Page({
-  data: { s: 44, ps: [], allPs: [], city: '北京', fl: '全部', levels: ['2.0','2.5','3.0','3.5','4.0','4.5','5.0'] },
+  data: { s: 44, ps: [], allPs: [], city: '北京', fl: '', levels: ['2.0','2.5','3.0','3.5','4.0','4.5','5.0'] },
   onLoad() {
     this.setData({ s: wx.getWindowInfo().statusBarHeight });
     this.loadData();
@@ -52,12 +52,13 @@ Page({
   applyFilter() {
     var fl = this.data.fl;
     var ps = this.data.allPs;
-    if (fl !== '全部') ps = ps.filter(function(p) { return p.lv === fl; });
+    if (fl) ps = ps.filter(function(p) { return p.lv === fl; });
     this.setData({ ps: ps });
   },
 
   setFilter(e) {
-    this.setData({ fl: e.currentTarget.dataset.lv });
+    var lv = e.currentTarget.dataset.lv;
+    this.setData({ fl: this.data.fl === lv ? '' : lv });
     this.applyFilter();
   },
 

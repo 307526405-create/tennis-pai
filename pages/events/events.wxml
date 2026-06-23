@@ -8,7 +8,6 @@
 
 <scroll-view scroll-y style="padding-bottom:160rpx;margin-top:44px">
   <scroll-view scroll-x class="filter-bar">
-    <view class="ftab {{fl==='全部'?'ftab-on':''}}" bindtap="setFilter" data-lv="全部">全部水平</view>
     <view class="ftab {{fl===l?'ftab-on':''}}" wx:for="{{levels}}" wx:key="*this" bindtap="setFilter" data-lv="{{l}}">{{l}}</view>
   </scroll-view>
   <view class="evt" wx:for="{{events}}" wx:key="id" bindtap="toDetail" data-id="{{item.id}}">
