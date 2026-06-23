@@ -4,37 +4,31 @@
 </view>
 
 <scroll-view scroll-y style="padding-bottom:40rpx;margin-top:44px">
-
-<!-- 定位 -->
-<view class="loc" wx:if="{{autoCity}}">
-  <text class="loc-label">自动定位</text>
-  <view class="loc-row" bindtap="selAuto">
-    <text class="loc-name">{{autoCity}}</text>
-    <text class="loc-done" wx:if="{{autoCity===city}}">✓</text>
-  </view>
-</view>
-
-<!-- 热门城市 -->
-<view class="block">
-  <view class="bl">热门城市</view>
-  <view class="hot-grid">
-    <view class="h-item {{city===c?'h-on':''}}" wx:for="{{hots}}" wx:key="*this" bindtap="selCity" data-city="{{c}}">{{c}}</view>
-  </view>
-</view>
-
-<!-- 搜索 -->
-<view class="block">
-  <view class="bl">搜索城市</view>
-  <input class="search-input" placeholder="输入城市名" value="{{kw}}" bindinput="onKw"/>
-  <view class="result" wx:for="{{results}}" wx:key="*this" bindtap="selCity" data-city="{{item}}">{{item}}</view>
-</view>
-
-<!-- 全部城市 -->
-<view class="block">
-  <view class="bl">全部城市</view>
-  <view class="all-warp">
-    <view class="a-item {{city===c?'a-on':''}}" wx:for="{{allCities}}" wx:key="*this" bindtap="selCity" data-city="{{c}}">{{c}}</view>
+  <view class="loc" wx:if="{{autoCity}}">
+    <text class="loc-label">自动定位</text>
+    <view class="loc-row" bindtap="selAuto">
+      <text class="loc-name">{{autoCity}}</text>
+      <text class="loc-done" wx:if="{{autoCity===city}}">✓</text>
     </view>
   </view>
-</view>
+
+  <view class="block">
+    <view class="bl">热门城市</view>
+    <view class="hot-grid">
+      <view class="h-item {{city===c?'h-on':''}}" wx:for="{{hots}}" wx:key="*this" bindtap="selCity" data-city="{{c}}">{{c}}</view>
+    </view>
+  </view>
+
+  <view class="block">
+    <view class="bl">搜索城市</view>
+    <input class="search-input" placeholder="输入城市名" value="{{kw}}" bindinput="onKw"/>
+    <view class="result" wx:for="{{results}}" wx:key="*this" bindtap="selCity" data-city="{{item}}">{{item}}</view>
+  </view>
+
+  <view class="block">
+    <view class="bl">全部城市</view>
+    <view class="all-warp">
+      <view class="a-item {{city===c?'a-on':''}}" wx:for="{{allCities}}" wx:key="*this" bindtap="selCity" data-city="{{c}}">{{c}}</view>
+    </view>
+  </view>
 </scroll-view>
