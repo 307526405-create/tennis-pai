@@ -12,7 +12,7 @@ function mapEvent(e) {
 }
 
 Page({
-  data: { s: 44, events: [] },
+  data: { s: 44, events: [], city: '北京' },
   onLoad() {
     var that = this;
     this.setData({ s: wx.getWindowInfo().statusBarHeight });
@@ -51,7 +51,22 @@ Page({
   },
   goCreate() { wx.navigateTo({ url: '/pages/create/create' }); },
   onShow() {
+    var app = getApp();
+    if (app) this.setData({ city: app.globalData.city || '北京' });
     if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 1 });
     this.loadEvents();
-  }
+  },
+  pickCity() {
+    var that = this;
+    var app = getApp();
+    var cities = (app && app.globalData.cities) || ['北京','上海','广州','深圳','杭州','成都','武汉','南京'];
+    wx.showActionSheet({
+      itemList: cities.slice(0, 6),
+      success: function(r) {
+        var city = cities[r.tapIndex];
+        if (app) { app.globalData.city = city; wx.setStorageSync('city', city); }
+        that.setData({ city: city });
+      }
+    });
+  },
 });
