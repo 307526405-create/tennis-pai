@@ -63,18 +63,19 @@
         <text class="fav-lv">{{item.level}}</text>
       </view>
     </view>
-    <view class="div"></view>
-    <view class="sec s-feedback" bindtap="showFeedback">意见反馈<text class="arr-s">›</text></view>
+  </view>
+  <view class="div"></view>
+  <view class="sec s-feedback" bindtap="showFeedback">意见反馈<text class="arr-s">›</text></view>
 
-    <!-- 反馈弹框 -->
-    <view class="fb-modal" wx:if="{{showFb}}" catchtap="hideFeedback">
-      <view class="fb-box" catchtap>
-        <view class="fb-title">建议或反馈</view>
-        <textarea class="fb-text" placeholder="说说你的想法..." value="{{fbText}}" bindinput="doFbText" maxlength="500"/>
-        <view class="fb-btns">
-          <view class="fb-cancel" bindtap="hideFeedback">取消</view>
-          <view class="fb-submit" bindtap="submitFeedback">提交</view>
-        </view>
+  <!-- 反馈弹框 -->
+  <view class="fb-modal" wx:if="{{showFb}}" catchtap="hideFeedback">
+    <view class="fb-box" catchtap>
+      <view class="fb-title">建议或反馈</view>
+      <textarea class="fb-text" placeholder="说说你的想法..." value="{{fbText}}" bindinput="doFbText" maxlength="500"></textarea>
+      <view class="fb-btns">
+        <view class="fb-cancel" bindtap="hideFeedback">取消</view>
+        <view class="fb-submit" bindtap="submitFeedback">提交</view>
       </view>
     </view>
-    </scroll-view>
+  </view>
+</scroll-view>
