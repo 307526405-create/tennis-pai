@@ -35,6 +35,14 @@ Page({
   },
 
   toSearch() { wx.navigateTo({ url: '/pages/search/search' }); },
+  goNav(e) {
+    var item = e.currentTarget.dataset.item;
+    wx.openLocation({ latitude: item.lat, longitude: item.lng, name: item.name, address: item.address, scale: 16 });
+  },
+  goCall(e) {
+    var phone = e.currentTarget.dataset.phone;
+    if (phone) wx.makePhoneCall({ phoneNumber: phone });
+  },
   showReport() { this.setData({ showForm: !this.data.showForm, rn: '', rc: '', rf: '' }); },
   setRn(e) { this.setData({ rn: e.detail.value }); },
   setRc(e) { this.setData({ rc: e.detail.value }); },

@@ -15,7 +15,11 @@
       <view class="cinfo">
         <view class="cn">{{item.name}}</view>
         <view class="ca">{{item.address||item.city}}</view>
-      </view>
+        </view>
+        <view class="c-actions">
+        <view class="ca-btn" catchtap="goNav" data-item="{{item}}" wx:if="{{item.lat}}">导航</view>
+        <view class="ca-btn" catchtap="goCall" data-phone="{{item.phone}}" wx:if="{{item.phone}}">电话</view>
+        </view>
       <view class="cdist" wx:if="{{item.dist}}">{{item.dist}}</view>
     </view>
   </view>
