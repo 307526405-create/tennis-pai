@@ -1,5 +1,5 @@
 <view class="nav" style="padding-top:{{s}}px">
-  <text class="back" bindtap="back"><</text>
+  <text class="back" bindtap="back">返回</text>
   <text class="ntitle">创建名片</text>
   <text class="save" bindtap="save">保存</text>
 </view>

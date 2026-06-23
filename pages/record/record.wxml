@@ -1,5 +1,5 @@
 <view class="nav" style="padding-top:{{s}}px">
-  <text class="back" bindtap="back"><</text>
+  <text class="back" bindtap="back">返回</text>
   <text class="ntitle">录入战绩</text>
   <text class="submit" bindtap="submit">提交</text>
 </view>

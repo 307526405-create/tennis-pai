@@ -1,5 +1,5 @@
 <view class="nav" style="padding-top:{{s}}px">
-  <text class="back" bindtap="back"><</text>
+  <text class="back" bindtap="back">返回</text>
   <text class="ntitle">发起约球</text>
 </view>
 
