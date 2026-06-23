@@ -30,8 +30,12 @@
         <view class="ca">{{item.address||item.city}}</view>
         </view>
         <view class="c-actions">
-        <view class="ca-icon" catchtap="goNav" data-item="{{item}}" wx:if="{{item.lat}}"><view class="cai-nav"></view></view>
-        <view class="ca-icon" catchtap="goCall" data-phone="{{item.phone}}" wx:if="{{item.phone}}"><view class="cai-tel"></view></view>
+        <view class="ca-icon" catchtap="goNav" data-item="{{item}}" wx:if="{{item.lat}}">
+          <icon type="search" size="18" color="#07C160"/>
+        </view>
+        <view class="ca-icon" catchtap="goCall" data-phone="{{item.phone}}" wx:if="{{item.phone}}">
+          <icon type="info" size="18" color="#07C160"/>
+        </view>
         </view>
       <view class="cdist" wx:if="{{item.dist}}">{{item.dist}}</view>
     </view>
