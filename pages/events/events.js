@@ -19,12 +19,12 @@ function mapEvent(e, myLat, myLng) {
     id: e.id, t: e.title, d: e.date + ' ' + e.time, ct: e.court,
     lv: e.level, tn: e.max_players, n: e.current_players, left: left,
     f: left <= 0, joined: false, price: e.price || '', dist: dist,
-    creator: e.creator_name || '', city: e.city || ''
+    creator: e.creator_name || '', city: e.city || '', rawDate: e.date
   };
 }
 
 Page({
-  data: { s: 44, events: [], allEvents: [], city: '北京', fl: '', levels: ['2.0','2.5','3.0','3.5','4.0','4.5','5.0'], myLat: null, myLng: null },
+  data: { s: 44, events: [], allEvents: [], city: '北京', fl: '', df: 'all', levels: ['2.0','2.5','3.0','3.5','4.0','4.5','5.0'], myLat: null, myLng: null },
   onLoad() {
     var that = this;
     this.setData({ s: wx.getWindowInfo().statusBarHeight });
@@ -50,10 +50,23 @@ Page({
   applyFilter() {
     var city = this.data.city;
     var fl = this.data.fl;
+    var df = this.data.df;
     var filtered = this.data.allEvents.slice();
     if (city !== '全部') filtered = filtered.filter(function(e) { return e.city === city || !e.city; });
     if (fl) filtered = filtered.filter(function(e) { return e.lv === fl; });
-    // 按距离排序（有距离的排前面）
+    // 日期筛选
+    if (df && df !== 'all') {
+      var today = new Date().toISOString().slice(0,10);
+      if (df === 'today') filtered = filtered.filter(function(e) { return e.rawDate === today; });
+      else if (df === 'tomorrow') {
+        var tm = new Date(Date.now()+86400000).toISOString().slice(0,10);
+        filtered = filtered.filter(function(e) { return e.rawDate === tm; });
+      } else if (df === 'week') {
+        var weekEnd = new Date(Date.now()+7*86400000).toISOString().slice(0,10);
+        filtered = filtered.filter(function(e) { return e.rawDate >= today && e.rawDate <= weekEnd; });
+      }
+    }
+    // 按距离排序
     filtered.sort(function(a, b) {
       if (!a.dist && !b.dist) return 0;
       if (!a.dist) return 1;
@@ -67,6 +80,11 @@ Page({
   setFilter(e) {
     var lv = e.currentTarget.dataset.lv;
     this.setData({ fl: this.data.fl === lv ? '' : lv });
+    this.applyFilter();
+  },
+  setDate(e) {
+    var df = e.currentTarget.dataset.df;
+    this.setData({ df: this.data.df === df ? 'all' : df });
     this.applyFilter();
   },
   loadFallback() {

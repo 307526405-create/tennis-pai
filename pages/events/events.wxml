@@ -10,6 +10,12 @@
   <scroll-view scroll-x class="filter-bar">
     <view class="ftab {{fl===l?'ftab-on':''}}" wx:for="{{levels}}" wx:key="*this" bindtap="setFilter" data-lv="{{l}}">{{l}}</view>
   </scroll-view>
+  <scroll-view scroll-x class="date-bar">
+    <view class="dtab {{df==='all'?'dtab-on':''}}" bindtap="setDate" data-df="all">全部</view>
+    <view class="dtab {{df==='today'?'dtab-on':''}}" bindtap="setDate" data-df="today">今天</view>
+    <view class="dtab {{df==='tomorrow'?'dtab-on':''}}" bindtap="setDate" data-df="tomorrow">明天</view>
+    <view class="dtab {{df==='week'?'dtab-on':''}}" bindtap="setDate" data-df="week">本周</view>
+  </scroll-view>
   <view class="evt" wx:for="{{events}}" wx:key="id" bindtap="toDetail" data-id="{{item.id}}">
     <view class="evt-header">
       <view class="evt-badge {{item.f?'full':''}}">{{item.f?'已满':(item.joined?'已报名':'缺'+item.left+'人')}}</view>
