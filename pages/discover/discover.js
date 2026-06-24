@@ -9,10 +9,14 @@ function mapPlayer(p, favIds) {
 }
 
 Page({
-  data: { s: 44, ps: [], allPs: [], city: '北京', fl: '', levels: ['2.0','2.5','3.0','3.5','4.0','4.5','5.0'] },
+  data: { s: 44, ps: [], allPs: [], city: '北京', fl: '', levels: ['2.0','2.5','3.0','3.5','4.0','4.5','5.0'], showGuide: false },
   onLoad() {
     this.setData({ s: wx.getWindowInfo().statusBarHeight });
     this.loadData();
+    // 首次使用引导
+    if (!wx.getStorageSync('guide_shown')) {
+      this.setData({ showGuide: true });
+    }
   },
 
   loadData() {
@@ -91,5 +95,10 @@ Page({
     if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 0 });
   },
   pickCity() { wx.navigateTo({ url: '/pages/city/city' }); },
+  closeGuide() {
+    wx.setStorageSync('guide_shown', true);
+    this.setData({ showGuide: false });
+  },
+  noop() {},
   onPullDownRefresh() { this.loadData(); setTimeout(function() { wx.stopPullDownRefresh(); }, 500); }
 });

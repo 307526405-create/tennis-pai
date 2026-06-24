@@ -3,11 +3,17 @@ var api = require('../../utils/api');
 Page({
   data: {
     s: 44, title: '', date: '', dateVal: '', time: '', court: '', showCourtInput: false, lv: '不限', tn: 4,
-    note: '', price: '', customPrice: '', priceText: 'AA制',
+    note: '', price: '', customPrice: '', priceText: 'AA制', tplIdx: -1,
     topCourts: ['国家网球中心','朝阳公园','奥体中心','海淀体育中心','清华紫荆'],
     times: ['08:00-10:00','10:00-12:00','14:00-16:00','16:00-18:00','18:00-20:00','20:00-22:00'],
     levels: ['不限','1.5','2.0','2.5','3.0','3.5'],
-    counts: [2,3,4,5,6,8]
+    counts: [2,3,4,5,6,8],
+    templates: [
+      { t: '周末双打约球', n: 'AA制，4人双打' },
+      { t: '工作日晚场约球', n: '下班畅打，费用AA' },
+      { t: '新手约球友好局', n: '新手友好，互相学习' },
+      { t: '高水平对抗赛', n: '水平3.5+，认真切磋' }
+    ]
   },
   onLoad(options) {
     var app = getApp();
@@ -22,6 +28,12 @@ Page({
   setCt(e) { this.setData({ court: e.detail.value }); },
   setNote(e) { this.setData({ note: e.detail.value }); },
   setCustomPrice(e) { this.setData({ customPrice: e.detail.value }); },
+
+  useTpl(e) {
+    var idx = e.currentTarget.dataset.idx;
+    var tpl = this.data.templates[idx];
+    this.setData({ tplIdx: idx, title: tpl.t, note: tpl.n });
+  },
 
   onDate(e) {
     var d = new Date(e.detail.value);

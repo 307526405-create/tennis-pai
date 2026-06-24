@@ -16,3 +16,34 @@
     <view class="i-body"><view class="i-row"><text class="i-name">{{item.n}}</text><text class="i-lv">{{item.lv}}</text></view><view class="i-row3"><text class="i-stat">胜率{{item.pct}}</text><text class="i-stat">{{item.gm}}场</text></view><view class="i-row2"><text class="i-gear">{{item.g}}</text></view></view>
   </view>
 </scroll-view>
+
+<!-- 首次使用引导 -->
+<view class="guide-mask" wx:if="{{showGuide}}" catchtouchmove="noop">
+  <view class="guide-card">
+    <text class="guide-title">🎾 欢迎加入网球派</text>
+    <view class="guide-steps">
+      <view class="guide-step">
+        <view class="gs-num">①</view>
+        <view class="gs-body">
+          <text class="gs-title">发现球友</text>
+          <text class="gs-desc">浏览附近球员，查看水平和风格</text>
+        </view>
+      </view>
+      <view class="guide-step">
+        <view class="gs-num">②</view>
+        <view class="gs-body">
+          <text class="gs-title">发起约球</text>
+          <text class="gs-desc">创建活动，一键约附近球友</text>
+        </view>
+      </view>
+      <view class="guide-step">
+        <view class="gs-num">③</view>
+        <view class="gs-body">
+          <text class="gs-title">记录战绩</text>
+          <text class="gs-desc">记录比分，积累你的网球ELO</text>
+        </view>
+      </view>
+    </view>
+    <view class="guide-btn" bindtap="closeGuide">知道了</view>
+  </view>
+</view>

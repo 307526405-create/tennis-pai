@@ -1,5 +1,9 @@
 .back{font-size:36rpx;color:var(--t)}.ntitle{font-size:28rpx;font-weight:600;color:var(--t);flex:1;text-align:center}
 .form{padding:20rpx 32rpx}
+.tpl-bar{display:flex;align-items:center;gap:12rpx;margin-bottom:20rpx;flex-wrap:wrap}
+.tpl-label{font-size:24rpx;color:var(--t3);flex-shrink:0;margin-right:4rpx}
+.tpl-btn{font-size:24rpx;color:var(--t2);padding:10rpx 22rpx;border:1rpx solid #D4DFCF;border-radius:20rpx;font-weight:500;background:#FFF}
+.tpl-btn.tpl-on{color:#fff;background:var(--g2);border-color:var(--g2);font-weight:600}
 .group{background:#FFF;border-radius:16rpx;overflow:hidden;margin-bottom:24rpx}
 .gr{display:flex;align-items:center;padding:24rpx;border-bottom:1rpx solid #F5F5F5;position:relative}
 .gr:last-child{border-bottom:none}

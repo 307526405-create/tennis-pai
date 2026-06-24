@@ -4,6 +4,15 @@
 </view>
 
 <view class="form">
+  <!-- 快速模板 -->
+  <view class="tpl-bar">
+    <text class="tpl-label">快速模板</text>
+    <view class="tpl-btn {{tplIdx===0?'tpl-on':''}}" bindtap="useTpl" data-idx="0">周末双打</view>
+    <view class="tpl-btn {{tplIdx===1?'tpl-on':''}}" bindtap="useTpl" data-idx="1">工作日晚场</view>
+    <view class="tpl-btn {{tplIdx===2?'tpl-on':''}}" bindtap="useTpl" data-idx="2">新手约球</view>
+    <view class="tpl-btn {{tplIdx===3?'tpl-on':''}}" bindtap="useTpl" data-idx="3">高水平对抗</view>
+  </view>
+
   <!-- 基本信息 -->
   <view class="group">
     <view class="gr"><text class="gl">标题</text><input class="gv" placeholder="周六3.5级单打切磋" value="{{title}}" bindinput="setT"/></view>

@@ -13,3 +13,15 @@
 .i-gear{font-size:20rpx;color:var(--t3)}
 .i-fav{font-size:22rpx;color:var(--t3);padding:6rpx 16rpx;border:1rpx solid #E0E0E0;border-radius:20rpx;flex-shrink:0}
 .fav-on{color:var(--g2);border-color:var(--g2);background:rgba(27,94,59,.04)}
+
+/* 首次使用引导 */
+.guide-mask{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:999;display:flex;align-items:center;justify-content:center}
+.guide-card{width:600rpx;background:#FFF;border-radius:24rpx;padding:48rpx 40rpx 36rpx;display:flex;flex-direction:column;align-items:center}
+.guide-title{font-size:34rpx;font-weight:700;color:var(--g1);margin-bottom:36rpx}
+.guide-steps{width:100%;display:flex;flex-direction:column;gap:28rpx;margin-bottom:36rpx}
+.guide-step{display:flex;align-items:flex-start;gap:20rpx}
+.gs-num{width:48rpx;height:48rpx;border-radius:50%;background:var(--bg);color:var(--g2);font-size:24rpx;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.gs-body{flex:1;display:flex;flex-direction:column;gap:6rpx}
+.gs-title{font-size:28rpx;font-weight:600;color:var(--t)}
+.gs-desc{font-size:24rpx;color:var(--t3)}
+.guide-btn{width:100%;text-align:center;padding:24rpx;background:var(--g2);color:#fff;border-radius:14rpx;font-size:28rpx;font-weight:600}
