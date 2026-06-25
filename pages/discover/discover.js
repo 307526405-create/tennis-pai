@@ -74,7 +74,7 @@ Page({
     var id = e.currentTarget.dataset.id;
     var idx = e.currentTarget.dataset.index;
     try {
-      api.post('/api/players/' + id + '/favorite', { user_id: currentUserId }).then(function(res) {
+      api.post('/api/players/' + id + '/favorite', { player_id: currentUserId }).then(function(res) {
         var d = res.data || res;
         var ps = that.data.ps;
         var allPs = that.data.allPs;
